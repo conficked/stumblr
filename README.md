@@ -1,63 +1,36 @@
-# Stumblr (Private Draft MVP)
+# Stumblr
 
-Stumblr is a modern, guest-first public-web discovery experience inspired by the "stumble" interaction pattern: one persistent interface, one destination at a time, and explicit controls for `Stumbl` (neutral next destination), `Not for me`, `Save`, local history, and local reports.
+**Explore the internet as your forefathers intended.**
 
-This repository currently contains a private-draft MVP focused on:
-- curated embeddable catalogue entries
-- deterministic no-repeat sampling
-- race-safe frame loading and fallback states
-- local-only persistence for preferences/history/saves/reports
-- desktop + mobile-first control surfaces
+[stumblr.dev](https://stumblr.dev)
 
-## Tech stack
-- Next.js (App Router) + TypeScript
-- Tailwind CSS
-- Radix UI primitives (drawer/dialog)
-- Vitest + Testing Library
-- Playwright
+Stumblr is a love letter to StumbleUpon and the old web, back when the internet felt like a place you wandered through instead of a feed that came to you. Press **Stumbl** and land somewhere you didn't know existed: an interactive toy, a hand-built personal site, a strange little game, an old archive, a map, a science explainer, a weird corner of someone's homepage.
 
-## Run locally
-```bash
-npm install
-npm run dev -- --hostname 127.0.0.1 --port 43123
-```
+One button. One destination at a time. No account, no algorithm deciding what you should see.
 
-Open: `http://127.0.0.1:43123`
+## What you'll find
 
-## Verification commands
-```bash
-npm run lint
-npm run typecheck
-npm run test
-npm run build
-npm run test:e2e
-npx playwright test tests/e2e/discovery-deck.spec.ts
-STUMBLR_BASE_URL=http://127.0.0.1:43124 npm run test:proof
-STUMBLR_BASE_URL=http://127.0.0.1:43124 npm run test:external
-STUMBLR_BASE_URL=http://127.0.0.1:43124 npm run test:newcand
-STUMBLR_BASE_URL=http://127.0.0.1:43124 npm run test:soak
-npm run catalogue:discover
-npm run catalogue:generate
-node scripts/check-catalogue-health.mjs
-```
+Stumblr's catalogue leans toward the stuff that made the web fun to explore:
 
-The focused discovery-deck proof covers two persistent no-repeat cycles and their boundary, mid-cycle runtime additions, v1 local-state migration, selected-topic cycles, and the difference between removing a history row and resetting discovery. It runs in desktop Chrome and Pixel 7 mobile emulation; current evidence is in [`docs/testing/stumblr-evidence.md`](docs/testing/stumblr-evidence.md).
+- Interactive experiments and creative coding
+- Web art and small games
+- Maps, science visualizations and explorable explanations
+- Archives and digital libraries
+- Music toys and instruments
+- Independent, handmade personal websites
 
-## Product notes
-- This MVP intentionally uses a bounded curated pool; it does not claim arbitrary web embedding support.
-- Reports are local-only records in this milestone (no moderation backend).
-- Destination sites may track visitors independently.
-- Framing behavior is subject to publisher XFO/CSP policies and can change over time.
+The catalogue keeps growing. Hand-picked destinations are joined by new sites found automatically in webrings, small-web directories and open-source project demos. Every new site is checked in a real browser before it can show up.
 
-## Planning docs
-- `docs/superpowers/specs/2026-11-07-stumblr-design.md`
-- `docs/superpowers/plans/2026-11-07-stumblr-mvp.md`
-- [Upcoming discovery: indie apps, overlooked repositories, and research](docs/superpowers/plans/2026-11-07-stumblr-mvp.md#upcoming-indie-apps-overlooked-repositories-and-research) — planned, not shipped.
-- `docs/testing/stumblr-evidence.md`
+## How it works
 
-## Private launch prep
-- `docs/launch/2026-11-08-stumblr-dev-launch-readiness.md` (no DNS/public deploy performed)
+- **Stumbl** takes you somewhere new. Stumblr remembers where you've been in your own browser, so you don't keep landing in the same places.
+- **Save** what you love, mark things **Not for me**, and filter by topic.
+- Your history, saves and preferences stay in your own browser. There are no accounts and no tracking by Stumblr.
 
-## Catalogue operations
-- Autonomous publisher rollout, report-only inspection, rollback/recovery, health quarantine, and evidence retention: [`docs/operations/runtime-catalogue.md`](docs/operations/runtime-catalogue.md#autonomous-catalogue-publisher).
-- Automated entries remain `evaluation_only`; the workflow does not grant public status.
+The sites you visit are their own places on the web and may have their own privacy practices.
+
+## Built with
+
+Next.js, TypeScript, Tailwind CSS and SQLite, with GitHub Actions doing the discovery and publishing work.
+
+*Stumblr is an independent project and isn't affiliated with StumbleUpon.*
