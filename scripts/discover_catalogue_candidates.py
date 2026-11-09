@@ -116,13 +116,6 @@ SOURCE_CONFIG = [
         "source_family": "community-feed",
     },
     {
-        "id": "hn-show-rss",
-        "kind": "feed",
-        "url": "https://news.ycombinator.com/showrss",
-        "topic_hint": "culture",
-        "source_family": "show-hn",
-    },
-    {
         "id": "nrich-maths",
         "kind": "html",
         "url": "https://nrich.maths.org/",

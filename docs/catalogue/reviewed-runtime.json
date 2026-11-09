@@ -7132,6 +7132,216 @@
         "observedAt": "2026-11-09T22:26:28.095Z",
         "device": "desktop"
       }
+    },
+    {
+      "id": "ossia-io-ab5629f7cd56",
+      "title": "ossia | Open Software System for Interactive Applications",
+      "canonicalUrl": "https://ossia.io/",
+      "domain": "ossia.io",
+      "topics": [
+        "art",
+        "games"
+      ],
+      "description": "An interactive web demo with a verified GitHub repository.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source github-live-demo.",
+        "reviewer": "stumblr-auto-policy/6 run/42717283635",
+        "reviewedAt": "2026-11-09T23:03:50.469Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T22:59:25.027Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "maps-open-meteo-com-7c8499eae744",
+      "title": "Open-Meteo Maps",
+      "canonicalUrl": "https://maps.open-meteo.com/",
+      "domain": "maps.open-meteo.com",
+      "topics": [
+        "science",
+        "maps",
+        "art"
+      ],
+      "description": "An interactive web demo with a verified GitHub repository.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source github-live-demo.",
+        "reviewer": "stumblr-auto-policy/6 run/42717283635",
+        "reviewedAt": "2026-11-09T23:03:50.469Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T22:58:52.931Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "jrcpl-us-bcc49edb1d0a",
+      "title": "Vegetable Gardening for Engineers | John Chang (jrc+)",
+      "canonicalUrl": "https://jrcpl.us/contrib/2020/gardening-for-engineers/",
+      "domain": "jrcpl.us",
+      "topics": [
+        "culture"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source hn-show-rss.",
+        "reviewer": "stumblr-auto-policy/6 run/42717283635",
+        "reviewedAt": "2026-11-09T23:03:50.469Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:00:13.780Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "leonardcser-github-io-f3ac8b70fae2",
+      "title": "Resource use of coding agents - Harness resource bench",
+      "canonicalUrl": "https://leonardcser.github.io/harness-resource-bench/",
+      "domain": "leonardcser.github.io",
+      "topics": [
+        "culture"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source hn-show-rss.",
+        "reviewer": "stumblr-auto-policy/6 run/42717283635",
+        "reviewedAt": "2026-11-09T23:03:50.469Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:00:15.544Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "tilde-guru-87d0590acb75",
+      "title": "tilde.guru — FreeBSD Pubnix",
+      "canonicalUrl": "https://tilde.guru/",
+      "domain": "tilde.guru",
+      "topics": [
+        "education"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source tildeverse.",
+        "reviewer": "stumblr-auto-policy/6 run/42717283635",
+        "reviewedAt": "2026-11-09T23:03:50.469Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:02:07.054Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "tildepages-org-f3cb0a77df06",
+      "title": "tildegit pages - static pages for your projects",
+      "canonicalUrl": "https://tildepages.org/",
+      "domain": "tildepages.org",
+      "topics": [
+        "education"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source tildeverse.",
+        "reviewer": "stumblr-auto-policy/6 run/42717283635",
+        "reviewedAt": "2026-11-09T23:03:50.469Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:02:13.859Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "tilde-green-421efd40c585",
+      "title": "~green",
+      "canonicalUrl": "https://tilde.green/",
+      "domain": "tilde.green",
+      "topics": [
+        "education"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source tildeverse.",
+        "reviewer": "stumblr-auto-policy/6 run/42717283635",
+        "reviewedAt": "2026-11-09T23:03:50.469Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:02:04.546Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "tilde-pink-8bb98858137c",
+      "title": "tilde.pink",
+      "canonicalUrl": "https://tilde.pink/",
+      "domain": "tilde.pink",
+      "topics": [
+        "education"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source tildeverse.",
+        "reviewer": "stumblr-auto-policy/6 run/42717283635",
+        "reviewedAt": "2026-11-09T23:03:50.469Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:02:09.581Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "quotes-tilde-chat-f3a3ac2aa87d",
+      "title": "~chat irc quote database",
+      "canonicalUrl": "https://quotes.tilde.chat/",
+      "domain": "quotes.tilde.chat",
+      "topics": [
+        "education"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source tildeverse.",
+        "reviewer": "stumblr-auto-policy/6 run/42717283635",
+        "reviewedAt": "2026-11-09T23:03:50.469Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:01:57.847Z",
+        "device": "desktop"
+      }
     }
   ]
 }

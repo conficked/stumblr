@@ -32,7 +32,6 @@ const SOURCES: ReadonlyMap<string, readonly [family: string, url: string, kind: 
   ["indie-web-index", ["indie-directory", "https://theindex.fyi/", "independent"]],
   ["tildeverse", ["tilde", "https://tildeverse.org/", "independent"]],
   ["lobsters-rss", ["community-feed", "https://lobste.rs/rss", "article"]],
-  ["hn-show-rss", ["show-hn", "https://news.ycombinator.com/showrss", "independent"]],
   ["nrich-maths", ["educational", "https://nrich.maths.org/", "education"]],
   ["exploratorium-explore", ["educational", "https://www.exploratorium.edu/explore", "education"]],
   ["p5js-examples", ["creative-coding", "https://p5js.org/examples/", "interactive"]],

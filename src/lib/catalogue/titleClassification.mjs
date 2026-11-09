@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 
 const UNSAFE_CONTROL = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]/u;
-const GENERIC_TITLE = /^(?:(?:welcome to )?(?:(?:my|our|the) )?(?:home(?:page)?|web ?site|site|blog|personal blog|personal website)|welcome|official site|test page|index|untitled(?: document)?|default page|read more|click here|learn more|loading|error|not found|access denied|just a moment)$/iu;
+const GENERIC_TITLE = /^(?:(?:welcome to )?(?:(?:my|our|the) )?(?:home(?:page)?|web ?site|site|blog|personal blog|personal website)|welcome|official site|test page|index|untitled(?: document)?|default page|index of\b.*|read more|click here|learn more|loading|error|not found|access denied|just a moment)$/iu;
 const DENIED_TITLE = [
   /\b(?:online (?:store|shop)|print shop|print store|buy now|shopping cart|checkout|plans and pricing|pricing plans|pricing|sign[ -]?in|log[ -]?in|sign[ -]?up|create an account|verify (?:your identity|you are human)|job openings|we.re hiring|careers at|recruitment|digital agency|design agency)\b/iu,
   /\b(?:api reference|developer documentation|documentation portal|generic documentation|installation guide|donation page|make a donation|donate now|coming soon|under construction|domain (?:is )?for sale|parked domain|template preview|sample page)\b/iu,
