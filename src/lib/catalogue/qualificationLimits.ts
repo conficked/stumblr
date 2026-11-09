@@ -6,4 +6,5 @@ export const MAX_QUALIFICATION_EVIDENCE_AGE_MS = 48 * 60 * 60 * 1000;
 
 // v2: blocked third-party subresources and nested frames no longer void an observation.
 // v3: records whether the rendered page carries product sales language.
-export const QUALIFIER_VERSION = "browser-qualification-v3";
+// v4: records whether the page is generated documentation.
+export const QUALIFIER_VERSION = "browser-qualification-v4";

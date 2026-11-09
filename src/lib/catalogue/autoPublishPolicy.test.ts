@@ -15,7 +15,7 @@ function fixture(): AutoPublishInput {
     device: "desktop", observed_at: observedAt, ...getQualificationUrlIdentity(canonicalUrl),
     document_http_status: 200, render_result: "text_observed", functionality_result: "not_demonstrated",
     meaningful_text_length: 810, interaction_evidence: { attempted: false, visible_state_changed: false },
-    network_failure_reasons: [], frame_failure_reasons: [], console_failure_count: 0, commercial_signal: false,
+    network_failure_reasons: [], frame_failure_reasons: [], console_failure_count: 0, commercial_signal: false, documentation_signal: false,
   };
   return {
     now,
@@ -26,7 +26,7 @@ function fixture(): AutoPublishInput {
     },
     qualification: {
       candidate_id: "chromatic-memory", canonical_url: canonicalUrl, run_id: "70", run_attempt: 1,
-      qualifier_version: "browser-qualification-v3", desktop, mobile: { ...desktop, device: "mobile" },
+      qualifier_version: "browser-qualification-v4", desktop, mobile: { ...desktop, device: "mobile" },
     },
     repositories: [], bundled: [], runtime: [],
   };
@@ -97,6 +97,7 @@ describe("universal publication gates", () => {
     ["generic title", "title_quality", x => { x.candidate.title = "Welcome to my website"; }],
     ["placeholder title", "title_missing", x => { x.candidate.title = "Website at thoughts.example"; }],
     ["product landing page", "commercial_landing", x => { x.qualification!.mobile.commercial_signal = true; }],
+    ["generated documentation", "documentation_site", x => { x.qualification!.desktop.documentation_signal = true; }],
     ["thin placeholder title", "title_quality", x => { x.candidate.title = "Welcome"; }],
     ["raw unsafe metadata", "metadata_denied", x => { x.candidate.title = "A field guide\u0000 to chromatic memory"; }],
     ["insufficient article text", "reading_text_insufficient", x => { x.qualification!.mobile.meaningful_text_length = 190; }],

@@ -72,6 +72,15 @@ function options(args) {
   };
 }
 
+// Generated documentation and component explorers: project reference pages,
+// not destinations, even though their navigation responds to clicks.
+const DOCUMENTATION_SELECTOR = [
+  ".theme-doc-markdown", "[class*='docusaurus']", ".md-content", ".md-sidebar", ".wy-nav-content", ".sphinxsidebar", ".bd-article",
+  ".VPDoc", ".vp-doc", ".markdown-section", "#documenter", ".docs-main", ".sidebar-scrollbox", "#storybook-root", ".ladle-main",
+  ".tsd-page-title", ".rustdoc", "#starlight__on-this-page", ".sl-markdown-content", ".nextra-content", ".gitbook-root", ".docMainContainer",
+].join(",");
+const DOCUMENTATION_GENERATOR = "docusaurus|mkdocs|sphinx|vitepress|vuepress|docsify|documenter|typedoc|pkgdown|mdbook|rustdoc|starlight|nextra|gitbook|docfx|jsdoc|doxygen|ladle|storybook|hugo-book|just the docs";
+
 // Product landing pages, not something to stumble onto. Only unambiguous
 // sales language: subscription prices and app-store links also appear on
 // donation-funded and hobby sites.
@@ -92,6 +101,7 @@ function observation(url, device) {
     console_failure_reasons: [],
     frame_failure_reasons: [],
     commercial_signal: false,
+    documentation_signal: false,
   };
 }
 
@@ -392,6 +402,9 @@ async function inspect(page, url, row, timeout, config, navigation, plan, deadli
     if (!["blank", "inconclusive"].includes(row.render_result) || Date.now() >= readyBy || await frame.locator(SAFE_CONTROL_SELECTOR).count()) break;
     await page.waitForTimeout(Math.min(READINESS_POLL_MS, Math.max(0, readyBy - Date.now())));
   }
+  row.documentation_signal = await frame.evaluate(([selector, generator]) =>
+    new RegExp(generator, "i").test([...document.querySelectorAll("meta[name=generator]")].map(meta => meta.content).join(" ")) ||
+    document.querySelector(selector) !== null, [DOCUMENTATION_SELECTOR, DOCUMENTATION_GENERATOR]).catch(() => false);
   if (loginOnly || navigation.networkBlocked || navigation.guardFailed || navigation.denied || navigation.failed || row.document_http_status >= 300) return;
 
   // Avoid submit buttons, links and authentication flows. Try at most one control.

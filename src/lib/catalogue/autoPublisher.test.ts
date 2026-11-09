@@ -41,7 +41,7 @@ function seedCandidate(id: string, title: string, url = `https://${id}.example/`
 
 function addEvidence(url: string, runId: string, render_result = "text_observed", finalUrl = url) {
   importQualificationEvidence({
-    run_id: runId, run_attempt: 1, qualifier_version: "browser-qualification-v3",
+    run_id: runId, run_attempt: 1, qualifier_version: "browser-qualification-v4",
     observations: ["desktop", "mobile"].map(device => ({
       device, canonical_url: url, final_url: finalUrl, observed_at: when(), document_http_status: 200, render_result,
       functionality_result: "not_demonstrated", meaningful_text_length: 810,
@@ -294,7 +294,7 @@ test("a page whose rendered text carries sales language is not published", async
   const url = "https://launch.example/";
   seedCandidate("launch", "Launch your workflow faster", url);
   importQualificationEvidence({
-    run_id: "50", run_attempt: 1, qualifier_version: "browser-qualification-v3",
+    run_id: "50", run_attempt: 1, qualifier_version: "browser-qualification-v4",
     observations: ["desktop", "mobile"].map(device => ({
       device, canonical_url: url, final_url: url, observed_at: when(), document_http_status: 200, render_result: "text_observed",
       functionality_result: "not_demonstrated", meaningful_text_length: 810, commercial_signal: device === "desktop",
@@ -933,7 +933,7 @@ function runtimePair(run: number, denied = false): RuntimeObservationPair {
     frame_failure_reasons: denied ? ["browser enforced destination frame policy"] : [], network_failure_reasons: [],
   };
   return {
-    run_id: String(run), run_attempt: 1, qualifier_version: "browser-qualification-v3",
+    run_id: String(run), run_attempt: 1, qualifier_version: "browser-qualification-v4",
     desktop: { device: "desktop", ...row }, mobile: { device: "mobile", ...row },
   };
 }

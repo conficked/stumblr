@@ -43,6 +43,7 @@ const observationSchema = z.strictObject({
   frame_failure_reasons: failureReasons,
   console_failure_reasons: failureReasons,
   commercial_signal: z.boolean().optional(),
+  documentation_signal: z.boolean().optional(),
 }).refine(row => (row.final_url === undefined) !== (row.final_url_identity === undefined));
 
 const batchSchema = z.strictObject({
@@ -84,8 +85,9 @@ function frameReason(reason: string) {
 type Observation = z.infer<typeof observationSchema>;
 export { getQualificationUrlIdentity } from "./destinationIdentity.mjs";
 
-type StoredObservation = Omit<Observation, "candidate_id" | "canonical_url" | "console_failure_reasons" | "final_url" | "final_url_identity" | "commercial_signal"> & {
+type StoredObservation = Omit<Observation, "candidate_id" | "canonical_url" | "console_failure_reasons" | "final_url" | "final_url_identity" | "commercial_signal" | "documentation_signal"> & {
   commercial_signal: boolean;
+  documentation_signal: boolean;
   final_url_origin: string | null;
   final_url_sha256: string | null;
   console_failure_count: number;
@@ -110,8 +112,8 @@ export function importQualificationEvidence(input: unknown, actor: CollectionAct
     candidate_id, canonical_url, run_id, run_attempt, qualifier_version, device, observed_at,
     final_url_origin, final_url_sha256,
     document_http_status, render_result, functionality_result, meaningful_text_length, interaction_attempted,
-    visible_state_changed, network_failure_reasons_json, frame_failure_reasons_json, console_failure_count, commercial_signal
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    visible_state_changed, network_failure_reasons_json, frame_failure_reasons_json, console_failure_count, commercial_signal, documentation_signal
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   ON CONFLICT (candidate_id, run_id, run_attempt, qualifier_version, device) DO NOTHING`);
 
   db.exec("BEGIN IMMEDIATE");
@@ -133,6 +135,7 @@ export function importQualificationEvidence(input: unknown, actor: CollectionAct
         JSON.stringify([...new Set(row.network_failure_reasons.map(networkReason))]),
         JSON.stringify([...new Set(row.frame_failure_reasons.map(frameReason))]),
         row.console_failure_reasons.length, Number(row.commercial_signal === true),
+        Number(row.documentation_signal === true),
       ).changes);
     }
     db.exec("COMMIT");
@@ -143,7 +146,7 @@ export function importQualificationEvidence(input: unknown, actor: CollectionAct
   }
 }
 
-type EvidenceRow = Omit<StoredObservation, "interaction_evidence" | "network_failure_reasons" | "frame_failure_reasons" | "commercial_signal"> &
+type EvidenceRow = Omit<StoredObservation, "interaction_evidence" | "network_failure_reasons" | "frame_failure_reasons" | "commercial_signal" | "documentation_signal"> &
   QualificationIdentity & {
     candidate_id: string;
     canonical_url: string;
@@ -152,6 +155,7 @@ type EvidenceRow = Omit<StoredObservation, "interaction_evidence" | "network_fai
     network_failure_reasons_json: string;
     frame_failure_reasons_json: string;
     commercial_signal: number;
+    documentation_signal: number;
   };
 
 function readObservation(row: EvidenceRow): StoredObservation {
@@ -169,6 +173,7 @@ function readObservation(row: EvidenceRow): StoredObservation {
     frame_failure_reasons: JSON.parse(row.frame_failure_reasons_json),
     console_failure_count: row.console_failure_count,
     commercial_signal: Boolean(row.commercial_signal),
+    documentation_signal: Boolean(row.documentation_signal),
   };
 }
 

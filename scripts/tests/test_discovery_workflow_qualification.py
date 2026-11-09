@@ -113,7 +113,7 @@ class DiscoveryQualificationWorkflowTests(unittest.TestCase):
         self.assertEqual(download["with"]["pattern"], upload["with"]["name"].replace("${{ matrix.family }}", "*"))
         post = next(step for step in steps if step.get("uses", "").startswith("actions/github-script@"))
         self.assertEqual(post["env"]["EVIDENCE_DIR"], download["with"]["path"])
-        self.assertEqual(post["env"]["QUALIFIER_VERSION"], "browser-qualification-v3")
+        self.assertEqual(post["env"]["QUALIFIER_VERSION"], "browser-qualification-v4")
         self.assertTrue(upload["with"]["path"].endswith("/browser-qualification.json"))
 
         artifact = [{"device": device, "canonical_url": "https://example.org/", "meaningful_text_length": 72}
@@ -123,7 +123,7 @@ class DiscoveryQualificationWorkflowTests(unittest.TestCase):
             "url": "https://stumblr.dev/api/catalogue/evidence", "method": "POST",
             "headers": {"Authorization": "Bearer collector-token", "Content-Type": "application/json"},
             "body": {
-                "run_id": "1234", "run_attempt": 3, "qualifier_version": "browser-qualification-v3",
+                "run_id": "1234", "run_attempt": 3, "qualifier_version": "browser-qualification-v4",
                 "observations": artifact,
             },
             "redirect": "error",

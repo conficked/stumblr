@@ -13,7 +13,7 @@ import { getLatestQualificationSet, getPendingQualificationCandidates, getQualif
 const canonicalUrl = "https://example.org/";
 const collectorAudience = "https://stumblr.dev/catalogue-collect";
 const actor = { revision: "a".repeat(40), issuedAt: 1_799_000_000, runId: "1234", runAttempt: 1 };
-const version = "browser-qualification-v3";
+const version = "browser-qualification-v4";
 let directory: string;
 
 vi.mock("jose", async (importOriginal) => {
@@ -118,7 +118,7 @@ test("raw failure strings never enter durable storage, even when the page copies
 test.each([
   [{ run_id: "1235" }, { runId: "1235" }],
   [{ run_attempt: 2 }, { runAttempt: 2 }],
-  [{ qualifier_version: "browser-qualification-v4" }, {}],
+  [{ qualifier_version: "browser-qualification-v5" }, {}],
 ])("new evidence cannot borrow the other device across qualification identities: %j", (metadata, actorMetadata) => {
   importQualificationEvidence(batch(), actor);
   const nextDesktop = observation("desktop", "2026-11-09T00:00:00.000Z");

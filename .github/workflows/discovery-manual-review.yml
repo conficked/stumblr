@@ -567,7 +567,7 @@ jobs:
         uses: actions/github-script@v7
         env:
           EVIDENCE_DIR: ${{ runner.temp }}/qualification-evidence
-          QUALIFIER_VERSION: browser-qualification-v3
+          QUALIFIER_VERSION: browser-qualification-v4
         with:
           script: |
             const fs = require('node:fs');

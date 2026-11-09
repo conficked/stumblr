@@ -57,7 +57,7 @@ export type AutoPublishReason =
   | "qualification_mismatch" | "qualifier_version_unsupported" | "qualification_stale"
   | "terminal_http_status" | "redirect_mismatch" | "network_guard_failure" | "frame_denied"
   | "login_only" | "blank" | "render_inconclusive" | "source_disallowed" | "topic_disallowed"
-  | "metadata_denied" | "title_quality" | "title_missing" | "commercial_landing" | "title_digest_missing" | "duplicate_id" | "duplicate_url" | "duplicate_domain"
+  | "metadata_denied" | "title_quality" | "title_missing" | "commercial_landing" | "documentation_site" | "title_digest_missing" | "duplicate_id" | "duplicate_url" | "duplicate_domain"
   | "duplicate_repository" | "duplicate_destination" | "duplicate_title" | "reading_text_insufficient"
   | "interaction_missing" | "interactive_content_insufficient" | "repository_identity_invalid"
   | "repository_archived" | "repository_activity_insufficient";
@@ -260,6 +260,7 @@ function checkObservation(
   if (row.render_result === "frame_denied" || row.frame_failure_reasons.includes("candidate_frame_denied")) reasons.add("frame_denied");
   if (row.render_result === "login_only") reasons.add("login_only");
   if (row.commercial_signal) reasons.add("commercial_landing");
+  if (row.documentation_signal) reasons.add("documentation_site");
   if (row.render_result === "blank") reasons.add("blank");
   if (["inconclusive", "error", "timeout", "budget_exhausted"].includes(row.render_result) ||
     row.functionality_result === "inconclusive" ||
