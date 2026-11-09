@@ -1,0 +1,43 @@
+# Prepared scheduler workflow for a FUTURE public GitHub release.
+# NOT connected / NOT authorized to run against production yet.
+# Private Origin remains source of truth until a controlled release plan is approved.
+# Do not enable spending, secrets, or schedule activation without the owner's approval.
+
+name: discovery-batch
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Odd minute to reduce top-of-hour load contention (GitHub best-effort schedules).
+    - cron: "17 4 * * *"
+
+concurrency:
+  group: stumblr-discovery-batch
+  cancel-in-progress: false
+
+jobs:
+  bounded-batch:
+    if: false # hard-disabled until GitHub release plan + secrets/hosting decisions
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run bounded discovery batch
+        env:
+          STUMBLR_DB_PATH: ${{ runner.temp }}/stumblr-ops.sqlite
+        run: |
+          python3 scripts/discover_catalogue_candidates.py \
+            --db-path "$STUMBLR_DB_PATH" \
+            --max-candidates 80 \
+            --owner "gha-${GITHUB_RUN_ID}" \
+            --output-dir docs/catalogue
+      - name: Upload local proof artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-artifacts
+          path: |
+            docs/catalogue/discovery_summary.json
+            docs/catalogue/discovery_selected.json

@@ -1,0 +1,814 @@
+[
+  {
+    "id": "www-openculture-com-was-homer-s-ithaca-really-an-island-new-research-challenges-",
+    "canonical_url": "https://www.openculture.com/2026/11/was-homers-ithaca-really-an-island.html",
+    "domain": "www.openculture.com",
+    "title_hint": "Was Homer&#039;s Ithaca Really an Island?: New Research Challenges a 2,000-Year-Old Assumption | Open Culture",
+    "topics": [
+      "culture"
+    ],
+    "source_id": "open-culture-rss",
+    "source_url": "https://www.openculture.com/feed",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "science-nasa-gov-apod-2026-november-7-de-gerlache-kocher-massif",
+    "canonical_url": "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif",
+    "domain": "science.nasa.gov",
+    "title_hint": "APOD: 2026 November 7 \u2013 De Gerlache-Kocher Massif - NASA Science",
+    "topics": [
+      "art",
+      "science"
+    ],
+    "source_id": "nasa-breaking-rss",
+    "source_url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+    "x_frame_options": "SAMEORIGIN",
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "blocked",
+    "notes": "Explicit framing denial from headers; quarantine from ordinary discovery."
+  },
+  {
+    "id": "www-nasa-gov-nasa-awards-moon-base-transportation-technology-science-projects",
+    "canonical_url": "https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects",
+    "domain": "www.nasa.gov",
+    "title_hint": "NASA Awards Moon Base Transportation, Technology, Science Projects - NASA",
+    "topics": [
+      "science"
+    ],
+    "source_id": "nasa-breaking-rss",
+    "source_url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+    "x_frame_options": "SAMEORIGIN",
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "publicdomainreview-org",
+    "canonical_url": "https://publicdomainreview.org/collection/marian-wawrzeniecki",
+    "domain": "publicdomainreview.org",
+    "title_hint": "Slavdom Unearthed: Marian Wawrzeniecki\u2019s Neopagan Paintings (1891\u20131923) \u2014 The Public Domain Review",
+    "topics": [
+      "archives"
+    ],
+    "source_id": "public-domain-review-rss",
+    "source_url": "https://publicdomainreview.org/feed/",
+    "x_frame_options": "DENY",
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "diff-wikimedia-org-enthusiasm-was-never-the-problem-the-case-of-western-armenian",
+    "canonical_url": "https://diff.wikimedia.org/2026/11/08/enthusiasm-was-never-the-problem-the-case-of-western-armenian-wikipedia",
+    "domain": "diff.wikimedia.org",
+    "title_hint": "Enthusiasm Was Never the Problem: The Case of Western Armenian Wikipedia &#8211; Diff",
+    "topics": [
+      "archives"
+    ],
+    "source_id": "wikimedia-glam-rss",
+    "source_url": "https://diff.wikimedia.org/feed/",
+    "x_frame_options": "SAMEORIGIN",
+    "content_security_policy": "default-src 'self'; connect-src 'self' https://*.wikipedia.org https://*.wikimedia.org; font-src data: 'self' https://*.wp.com; frame-src 'self' https://*.wikimedia.org https://*.wikipedia.org https://datawrapper.dwcdn.net https://*.wp.com https://www.youtube.com https://player.vimeo.com https://platform.instagram.com https://www.instagram.com https://embed.bsky.app; img-src data: 'self' https://wikipedia.org https://*.wikipedia.org https://*.wp.com https://*.wikimedia.org; media-src 'self' https://commons.wikimedia.org https://upload.wikimedia.org; script-src 'unsafe-inline' 'self' https://*.wp.com https://www.youtube.com https://player.vimeo.com https://platform.instagram.com https://www.instagram.com https://embed.bsky.app https://*.wikimedia.org; style-src 'unsafe-inline' 'self' https://*.wp.com https://*.wikimedia.org; worker-src 'self'; base-uri 'self'; form-action 'self' https://donate.wikimedia.org; frame-ancestors 'self'; object-src 'none'; block-all-mixed-content",
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "developer-mozilla-org-mozilla-developer-network",
+    "canonical_url": "https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API",
+    "domain": "developer.mozilla.org",
+    "title_hint": "Canvas API - Web APIs | MDN",
+    "topics": [
+      "art"
+    ],
+    "source_id": "awesome-canvas",
+    "source_url": "https://raw.githubusercontent.com/raphamorim/awesome-canvas/master/README.md",
+    "x_frame_options": "DENY",
+    "content_security_policy": "default-src 'self'; script-src 'report-sample' 'self' 'wasm-unsafe-eval' assets.codepen.io production-assets.codepen.io https://js.stripe.com transcend-cdn.com 'sha256-XNBp89FG76amD8BqrJzyflxOF9PaWPqPqvJfKZPCv7M=' 'sha256-YCNoU9DNiinACbd8n6UPyB/8vj0kXvhkOni9/06SuYw=' 'sha256-PZjP7OR6mBEtnvXIZfCZ5PuOlxoDF1LDZL8aj8c42rw='; script-src-elem 'report-sample' 'self' 'wasm-unsafe-eval' assets.codepen.io production-assets.codepen.io https://js.stripe.com transcend-cdn.com 'sha256-XNBp89FG76amD8BqrJzyflxOF9PaWPqPqvJfKZPCv7M=' 'sha256-YCNoU9DNiinACbd8n6UPyB/8vj0kXvhkOni9/06SuYw=' 'sha256-PZjP7OR6mBEtnvXIZfCZ5PuOlxoDF1LDZL8aj8c42rw='; style-src 'report-sample' 'self' 'unsafe-inline' transcend-cdn.com; object-src 'none'; base-uri 'self'; connect-src 'self' developer.allizom.org bcd.developer.allizom.org bcd.developer.mozilla.org updates.developer.allizom.org updates.developer.mozilla.org https://incoming.telemetry.mozilla.org https://observatory-api.mdn.allizom.net https://observatory-api.mdn.mozilla.net telemetry.transcend.io telemetry.us.transcend.io transcend-cdn.com https://api.github.com/search/issues https://api.stripe.com; font-src 'self'; frame-src 'self' mdn.github.io *.mdnplay.dev *.mdnyalp.dev *.play.test.mdn.allizom.net https://v2.scrimba.com https://scrimba.com jsfiddle.net www.youtube-nocookie.com codepen.io survey.alchemer.com https://js.stripe.com; img-src 'self' data: *.githubusercontent.com *.gravatar.com mozillausercontent.com firefoxusercontent.com profile.stage.mozaws.net profile.accounts.firefox.com developer.mozilla.org mdn.dev wikipedia.org upload.wikimedia.org https://mdn.github.io/shared-assets/ https://mdn.dev/; manifest-src 'self'; media-src 'self' archive.org videos.cdn.mozilla.net https://mdn.github.io/shared-assets/; child-src 'self'; worker-src 'self';",
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "matrix-dotglitch-dev-matrix-animation",
+    "canonical_url": "https://matrix.dotglitch.dev/",
+    "domain": "matrix.dotglitch.dev",
+    "title_hint": "Matrix Animation",
+    "topics": [
+      "art"
+    ],
+    "source_id": "awesome-canvas",
+    "source_url": "https://raw.githubusercontent.com/raphamorim/awesome-canvas/master/README.md",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "www-sitepoint-com-sitepoint",
+    "canonical_url": "https://www.sitepoint.com/design-ux",
+    "domain": "www.sitepoint.com",
+    "title_hint": "Design &amp; UX - SitePoint \u2014 SitePoint",
+    "topics": [
+      "art",
+      "culture"
+    ],
+    "source_id": "awesome-web-design",
+    "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+    "x_frame_options": "SAMEORIGIN",
+    "content_security_policy": "frame-ancestors 'self'",
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "www-designernews-co-designer-news",
+    "canonical_url": "https://www.designernews.co/",
+    "domain": "www.designernews.co",
+    "title_hint": "Designer News - Hand picked links for the design community",
+    "topics": [
+      "art",
+      "culture"
+    ],
+    "source_id": "awesome-web-design",
+    "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "morningreader-com-morning-reader",
+    "canonical_url": "https://morningreader.com/",
+    "domain": "morningreader.com",
+    "title_hint": "Peek / News",
+    "topics": [
+      "art",
+      "culture"
+    ],
+    "source_id": "awesome-web-design",
+    "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+    "x_frame_options": null,
+    "content_security_policy": "default-src * 'unsafe-inline' 'unsafe-eval'",
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "uimovement-com-ui-movement",
+    "canonical_url": "https://uimovement.com/",
+    "domain": "uimovement.com",
+    "title_hint": "UI/UX Design Inspiration & User Flows from Top Apps \u2014 Page Flows",
+    "topics": [
+      "art",
+      "culture"
+    ],
+    "source_id": "awesome-web-design",
+    "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+    "x_frame_options": "DENY",
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "brandcolors-net-brandcolors",
+    "canonical_url": "https://brandcolors.net/",
+    "domain": "brandcolors.net",
+    "title_hint": "BrandColors - official brand color hex codes",
+    "topics": [
+      "art",
+      "culture"
+    ],
+    "source_id": "awesome-web-design",
+    "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "color-adobe-com-adobe-color-cc",
+    "canonical_url": "https://color.adobe.com/",
+    "domain": "color.adobe.com",
+    "title_hint": "Color Palettes &#x26; Themes | Adobe Express\u200b",
+    "topics": [
+      "art",
+      "culture"
+    ],
+    "source_id": "awesome-web-design",
+    "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "coolors-co-coolors",
+    "canonical_url": "https://coolors.co/",
+    "domain": "coolors.co",
+    "title_hint": "Coolors - The super fast color palettes generator!",
+    "topics": [
+      "art",
+      "culture"
+    ],
+    "source_id": "awesome-web-design",
+    "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "archive-it-org-the-web-archiving-lifecycle-model",
+    "canonical_url": "https://archive-it.org/blog/post/announcing-the-web-archiving-life-cycle-model",
+    "domain": "archive-it.org",
+    "title_hint": "Rate limit reached",
+    "topics": [
+      "archives"
+    ],
+    "source_id": "awesome-archives",
+    "source_url": "https://raw.githubusercontent.com/iipc/awesome-web-archiving/master/README.md",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "kit-exposingtheinvisible-org-retrieving-and-archiving-information-from-websites-",
+    "canonical_url": "https://kit.exposingtheinvisible.org/en/web-archive.html",
+    "domain": "kit.exposingtheinvisible.org",
+    "title_hint": "Retrieving and Archiving Information from Websites &mdash; The Kit 1.0 documentation",
+    "topics": [
+      "archives"
+    ],
+    "source_id": "awesome-archives",
+    "source_url": "https://raw.githubusercontent.com/iipc/awesome-web-archiving/master/README.md",
+    "x_frame_options": null,
+    "content_security_policy": "upgrade-insecure-requests",
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "netpreserve-org-iipc-and-dpc-training-materials-module-for-beginners-8-sessions",
+    "canonical_url": "https://netpreserve.org/web-archiving/training-materials",
+    "domain": "netpreserve.org",
+    "title_hint": "Training materials - IIPC",
+    "topics": [
+      "archives"
+    ],
+    "source_id": "awesome-archives",
+    "source_url": "https://raw.githubusercontent.com/iipc/awesome-web-archiving/master/README.md",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "netpreserveblog-wordpress-com-this-related-blog-post-on-asking-questions-with-we",
+    "canonical_url": "https://netpreserveblog.wordpress.com/2020/05/28/asking-questions-with-web-archives",
+    "domain": "netpreserveblog.wordpress.com",
+    "title_hint": "Asking questions with web archives \u2013 introductory notebooks for historians",
+    "topics": [
+      "archives"
+    ],
+    "source_id": "awesome-archives",
+    "source_url": "https://raw.githubusercontent.com/iipc/awesome-web-archiving/master/README.md",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "aut-docs-archivesunleashed-org-archives-unleashed-toolkit-documentation",
+    "canonical_url": "https://aut.docs.archivesunleashed.org/",
+    "domain": "aut.docs.archivesunleashed.org",
+    "title_hint": "Archives Unleashed Toolkit \u00b7 An open-source platform for analyzing web archives with Apache Spark",
+    "topics": [
+      "archives"
+    ],
+    "source_id": "awesome-archives",
+    "source_url": "https://raw.githubusercontent.com/iipc/awesome-web-archiving/master/README.md",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "sobre-arquivo-pt-tutorial-for-humanities-researchers-about-how-to-explore-arquiv",
+    "canonical_url": "https://sobre.arquivo.pt/en/tutorial-for-humanities-researchers-about-how-to-use-arquivo-pt",
+    "domain": "sobre.arquivo.pt",
+    "title_hint": "Tutorial: how to explore Arquivo.pt using Python \u2013 sobre.arquivo.pt",
+    "topics": [
+      "archives",
+      "education"
+    ],
+    "source_id": "awesome-archives",
+    "source_url": "https://raw.githubusercontent.com/iipc/awesome-web-archiving/master/README.md",
+    "x_frame_options": "SAMEORIGIN",
+    "content_security_policy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://*.googletagmanager.com; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; frame-src https://www.youtube-nocookie.com https://docs.google.com https://www.slideshare.net; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'",
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "nullhandle-org-definition-of-web-archivability",
+    "canonical_url": "https://nullhandle.org/web-archivability/index.html",
+    "domain": "nullhandle.org",
+    "title_hint": "web archivability - nullhandle.org",
+    "topics": [
+      "archives"
+    ],
+    "source_id": "awesome-archives",
+    "source_url": "https://raw.githubusercontent.com/iipc/awesome-web-archiving/master/README.md",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks.",
+    "selection_status": "evaluation_candidate"
+  },
+  {
+    "id": "web-archive-org-archived-version-from-the-stanford-libraries",
+    "canonical_url": "https://web.archive.org/web/20230728211501/https://library.stanford.edu/projects/web-archiving/archivability",
+    "domain": "web.archive.org",
+    "title_hint": "Archivability | Stanford Libraries",
+    "topics": [
+      "archives"
+    ],
+    "source_id": "awesome-archives",
+    "source_url": "https://raw.githubusercontent.com/iipc/awesome-web-archiving/master/README.md",
+    "x_frame_options": null,
+    "content_security_policy": "default-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob: archive.org web.archive.org web-static.archive.org wayback-api.archive.org athena.archive.org analytics.archive.org pragma.archivelab.org wwwb-events.archive.org",
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "aidn-jp-remove-frame",
+    "canonical_url": "https://aidn.jp/wowa",
+    "domain": "aidn.jp",
+    "title_hint": "Wonder of Wonder Art",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "babadum-com-remove-frame",
+    "canonical_url": "https://babadum.com/",
+    "domain": "babadum.com",
+    "title_hint": "Ba Ba Dum",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "benisland-neocities-org-remove-frame",
+    "canonical_url": "https://benisland.neocities.org/petpet",
+    "domain": "benisland.neocities.org",
+    "title_hint": "petpet",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": "upgrade-insecure-requests; default-src 'unsafe-inline' 'unsafe-eval' 'self' data: blob: *",
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "cat-bounce-com-embedded-url",
+    "canonical_url": "https://cat-bounce.com/",
+    "domain": "cat-bounce.com",
+    "title_hint": "CAT BOUNCE!",
+    "topics": [
+      "games"
+    ],
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "checkboxrace-com-embedded-url",
+    "canonical_url": "https://checkboxrace.com/",
+    "domain": "checkboxrace.com",
+    "title_hint": "Checkbox Race!",
+    "topics": [
+      "games"
+    ],
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "demo-marpi-pl-remove-frame",
+    "canonical_url": "https://demo.marpi.pl/eyes",
+    "domain": "demo.marpi.pl",
+    "title_hint": "eyes",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "everysiteknows-ferrucc-io-remove-frame",
+    "canonical_url": "https://everysiteknows.ferrucc.io/",
+    "domain": "everysiteknows.ferrucc.io",
+    "title_hint": "What Every Site Knows About You",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "gameaboutsquares-com-remove-frame",
+    "canonical_url": "https://gameaboutsquares.com/",
+    "domain": "gameaboutsquares.com",
+    "title_hint": "Game about Squares",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "heeeeeeeey-com-embedded-url",
+    "canonical_url": "https://heeeeeeeey.com/",
+    "domain": "heeeeeeeey.com",
+    "title_hint": "HEEEEEEEEEEEEEEY!",
+    "topics": [
+      "games"
+    ],
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "humanbenchmark-com-remove-frame",
+    "canonical_url": "https://humanbenchmark.com/",
+    "domain": "humanbenchmark.com",
+    "title_hint": "Human Benchmark",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "igfonts-io-remove-frame",
+    "canonical_url": "https://igfonts.io/",
+    "domain": "igfonts.io",
+    "title_hint": "Instagram Fonts Generator (\ud835\udcec\ud835\udcf8\ud835\udcf9\ud835\udd02 \ud835\udd52\ud835\udd5f\ud835\udd55 \ud835\udcc5\ud835\udcb6\ud835\udcc8\ud835\udcc9\ud835\udc52) \u2015 IGFonts.io",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "jspaint-app-remove-frame",
+    "canonical_url": "https://jspaint.app/",
+    "domain": "jspaint.app",
+    "title_hint": "JS Paint",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "lab-nationalmedals-org-remove-frame",
+    "canonical_url": "https://lab.nationalmedals.org/gravity",
+    "domain": "lab.nationalmedals.org",
+    "title_hint": "NSTMF Gravity",
+    "topics": [
+      "science",
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "longdogechallenge-com-embedded-url",
+    "canonical_url": "https://longdogechallenge.com/",
+    "domain": "longdogechallenge.com",
+    "title_hint": "The Long Doge Challenge",
+    "topics": [
+      "games"
+    ],
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "mondrianandme-com-embedded-url",
+    "canonical_url": "https://mondrianandme.com/",
+    "domain": "mondrianandme.com",
+    "title_hint": "Mondrian And Me",
+    "topics": [
+      "games"
+    ],
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "morsecode-world-remove-frame",
+    "canonical_url": "https://morsecode.world/international/translator.html",
+    "domain": "morsecode.world",
+    "title_hint": "Morse Code Translator | Morse Code World",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "onesquareminesweeper-com-embedded-url",
+    "canonical_url": "https://onesquareminesweeper.com/",
+    "domain": "onesquareminesweeper.com",
+    "title_hint": "One Square Minesweeper",
+    "topics": [
+      "games"
+    ],
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "pangram-me-remove-frame",
+    "canonical_url": "https://pangram.me/en",
+    "domain": "pangram.me",
+    "title_hint": "Pangram.me",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "potatoortomato-com-embedded-url",
+    "canonical_url": "https://potatoortomato.com/",
+    "domain": "potatoortomato.com",
+    "title_hint": "Potato or Tomato",
+    "topics": [
+      "games"
+    ],
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "x_frame_options": "SAMEORIGIN",
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "blocked",
+    "notes": "Explicit framing denial from headers; quarantine from ordinary discovery."
+  },
+  {
+    "id": "projects-playables-net-remove-frame",
+    "canonical_url": "https://projects.playables.net/pointer",
+    "domain": "projects.playables.net",
+    "title_hint": "Pointer",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "puginarug-com-embedded-url",
+    "canonical_url": "https://puginarug.com/",
+    "domain": "puginarug.com",
+    "title_hint": "The Pug In A Rug",
+    "topics": [
+      "games"
+    ],
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "sliding-toys-remove-frame",
+    "canonical_url": "https://sliding.toys/mystic-square/8-puzzle",
+    "domain": "sliding.toys",
+    "title_hint": "8 puzzle | Sliding Toys",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "stonet2000-github-io-remove-frame",
+    "canonical_url": "https://stonet2000.github.io/Cut-Bread",
+    "domain": "stonet2000.github.io",
+    "title_hint": "Cut Bread!",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "thepigeon-org-embedded-url",
+    "canonical_url": "https://thepigeon.org/",
+    "domain": "thepigeon.org",
+    "title_hint": "embedded-url",
+    "topics": [
+      "maps",
+      "games"
+    ],
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "theremin-site-remove-frame",
+    "canonical_url": "https://theremin.site/",
+    "domain": "theremin.site",
+    "title_hint": "Interactive Virtual Theremin",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "tjukanovt-github-io-remove-frame",
+    "canonical_url": "https://tjukanovt.github.io/notable-people",
+    "domain": "tjukanovt.github.io",
+    "title_hint": "Notable people",
+    "topics": [
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "unpigeon-me-remove-frame",
+    "canonical_url": "https://unpigeon.me/",
+    "domain": "unpigeon.me",
+    "title_hint": "Discover your new ambition",
+    "topics": [
+      "maps",
+      "games"
+    ],
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "x_frame_options": null,
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "evaluation_candidate",
+    "notes": "Technical framing compatibility not yet proven; keep evaluation_only until browser checks."
+  },
+  {
+    "id": "www-scratchapixel-com-c-rasterization-a-practical-implementation",
+    "canonical_url": "https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/overview-rasterization-algorithm",
+    "domain": "www.scratchapixel.com",
+    "title_hint": "An Overview of the Rasterization Algorithm",
+    "topics": [
+      "education"
+    ],
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "x_frame_options": "SAMEORIGIN",
+    "content_security_policy": null,
+    "availability_status": 200,
+    "selection_status": "blocked",
+    "notes": "Explicit framing denial from headers; quarantine from ordinary discovery."
+  }
+]

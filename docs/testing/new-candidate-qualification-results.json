@@ -1,0 +1,529 @@
+{
+  "checkedAt": "2026-11-08T14:12:19.420Z",
+  "baseUrl": "http://127.0.0.1:43124",
+  "targets": [
+    "checkboxrace.com",
+    "onesquareminesweeper.com",
+    "mondrianandme.com",
+    "jspaint.app",
+    "longdogechallenge.com",
+    "puginarug.com",
+    "cat-bounce.com",
+    "gameaboutsquares.com",
+    "projects.playables.net",
+    "lab.nationalmedals.org",
+    "theremin.site",
+    "sliding.toys"
+  ],
+  "desktop": {
+    "mobile": false,
+    "sequence": [
+      "www.openculture.com",
+      "aidn.jp",
+      "benisland.neocities.org",
+      "morsecode.world",
+      "unpigeon.me",
+      "gameaboutsquares.com",
+      "humanbenchmark.com",
+      "stonet2000.github.io",
+      "matrix.dotglitch.dev",
+      "ramesaliyev.com",
+      "zoomquilt.org",
+      "pangram.me",
+      "puginarug.com",
+      "theremin.site",
+      "www.designernews.co",
+      "jspaint.app",
+      "igfonts.io",
+      "color.adobe.com",
+      "weavesilk.com",
+      "www.desmos.com",
+      "lab.nationalmedals.org",
+      "babadum.com",
+      "www.bellingcat.com",
+      "projects.playables.net",
+      "cat-bounce.com",
+      "archive-it.org",
+      "www.openstreetmap.org",
+      "heeeeeeeey.com",
+      "web.archive.org",
+      "littlealchemy2.com",
+      "stellarium-web.org",
+      "nullhandle.org",
+      "earth.nullschool.net",
+      "netpreserve.org",
+      "onesquareminesweeper.com",
+      "longdogechallenge.com",
+      "morningreader.com",
+      "tjukanovt.github.io",
+      "color.hailpixel.com",
+      "thepigeon.org"
+    ],
+    "uniqueDomains": [
+      "www.openculture.com",
+      "aidn.jp",
+      "benisland.neocities.org",
+      "morsecode.world",
+      "unpigeon.me",
+      "gameaboutsquares.com",
+      "humanbenchmark.com",
+      "stonet2000.github.io",
+      "matrix.dotglitch.dev",
+      "ramesaliyev.com",
+      "zoomquilt.org",
+      "pangram.me",
+      "puginarug.com",
+      "theremin.site",
+      "www.designernews.co",
+      "jspaint.app",
+      "igfonts.io",
+      "color.adobe.com",
+      "weavesilk.com",
+      "www.desmos.com",
+      "lab.nationalmedals.org",
+      "babadum.com",
+      "www.bellingcat.com",
+      "projects.playables.net",
+      "cat-bounce.com",
+      "archive-it.org",
+      "www.openstreetmap.org",
+      "heeeeeeeey.com",
+      "web.archive.org",
+      "littlealchemy2.com",
+      "stellarium-web.org",
+      "nullhandle.org",
+      "earth.nullschool.net",
+      "netpreserve.org",
+      "onesquareminesweeper.com",
+      "longdogechallenge.com",
+      "morningreader.com",
+      "tjukanovt.github.io",
+      "color.hailpixel.com",
+      "thepigeon.org"
+    ],
+    "observations": [
+      {
+        "domain": "gameaboutsquares.com",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 900,
+          "iframeHeight": 631.609375,
+          "ratio": 0.7017881944444444
+        },
+        "snippet": "",
+        "interaction": {
+          "ok": true,
+          "proof": "click-visual-delta"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 985,
+        "screenshot": "/opt/cursor/artifacts/newcand-desktop-gameaboutsquares.com.png"
+      },
+      {
+        "domain": "puginarug.com",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 900,
+          "iframeHeight": 638.609375,
+          "ratio": 0.7095659722222222
+        },
+        "snippet": "You have been honoring the pug for 1 seconds You are a Assistant of pug WATCH ME MAKING THIS: YOUTUBE A USELESS WEB PROJECT",
+        "interaction": {
+          "ok": true,
+          "proof": "content-or-media snippet=You have been honoring the pug for 2 sec"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 3554,
+        "screenshot": "/opt/cursor/artifacts/newcand-desktop-puginarug.com.png"
+      },
+      {
+        "domain": "theremin.site",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 900,
+          "iframeHeight": 638.609375,
+          "ratio": 0.7095659722222222
+        },
+        "snippet": "VIRTUAL THEREMIN Move your cursor vertically for pitch • Move horizontally for volume 🎵 Touch to play Frequency 440 Hz Amplitude 0% Waveform Sine Square Sawtooth Triangle Reverb Effect Inspired by Leon Theremin's 1928 e",
+        "interaction": {
+          "ok": true,
+          "proof": "drag-visual-delta"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 1621,
+        "screenshot": "/opt/cursor/artifacts/newcand-desktop-theremin.site.png"
+      },
+      {
+        "domain": "jspaint.app",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 900,
+          "iframeHeight": 638.609375,
+          "ratio": 0.7095659722222222
+        },
+        "snippet": "File Edit View Image Colors Help Extras For Help, click Help Topics on the Help Menu.",
+        "interaction": {
+          "ok": true,
+          "proof": "drag-visual-delta"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 1085,
+        "screenshot": "/opt/cursor/artifacts/newcand-desktop-jspaint.app.png"
+      },
+      {
+        "domain": "lab.nationalmedals.org",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 900,
+          "iframeHeight": 638.609375,
+          "ratio": 0.7095659722222222
+        },
+        "snippet": "Gravity/ 01 EXPERIMENT > THEORY How do celestial bodies warp the fabric of space-time and interact with each other? Create an object to begin exploring. CREATE YOUR UNIVERSE National Science & Technology Medals Foundatio",
+        "interaction": {
+          "ok": true,
+          "proof": "drag-visual-delta"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 925,
+        "screenshot": "/opt/cursor/artifacts/newcand-desktop-lab.nationalmedals.org.png"
+      },
+      {
+        "domain": "projects.playables.net",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 900,
+          "iframeHeight": 638.609375,
+          "ratio": 0.7095659722222222
+        },
+        "snippet": "",
+        "interaction": {
+          "ok": true,
+          "proof": "drag-visual-delta"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 974,
+        "screenshot": "/opt/cursor/artifacts/newcand-desktop-projects.playables.net.png"
+      },
+      {
+        "domain": "cat-bounce.com",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 900,
+          "iframeHeight": 638.609375,
+          "ratio": 0.7095659722222222
+        },
+        "snippet": "? MAKE IT RAIN MESSAGE FROM CAT SHARE THIS CAT BOUNCE!",
+        "interaction": {
+          "ok": true,
+          "proof": "content-or-media snippet=? MAKE IT RAIN MESSAGE FROM CAT SHARE TH"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 230,
+        "screenshot": "/opt/cursor/artifacts/newcand-desktop-cat-bounce.com.png"
+      },
+      {
+        "domain": "onesquareminesweeper.com",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 900,
+          "iframeHeight": 638.609375,
+          "ratio": 0.7095659722222222
+        },
+        "snippet": "Minesweeper A USELESS WEB PROJECT",
+        "interaction": {
+          "ok": true,
+          "proof": "click-visual-delta"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 1721,
+        "screenshot": "/opt/cursor/artifacts/newcand-desktop-onesquareminesweeper.com.png"
+      },
+      {
+        "domain": "longdogechallenge.com",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 900,
+          "iframeHeight": 638.609375,
+          "ratio": 0.7095659722222222
+        },
+        "snippet": "LONG DOGE CHALLENGE Your doge is wow long You have collected 0 wows CLICK TO PRINT! ▄ ▄ ▌▒█ ▄▀▒▌ ▌▒▒█ ▄▀▒▒▒▐ ▐▄█▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐ ▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐ ▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌ ▐▒▒▒▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▌ ▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒",
+        "interaction": {
+          "ok": true,
+          "proof": "scroll-or-content y:0->400"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 575,
+        "screenshot": "/opt/cursor/artifacts/newcand-desktop-longdogechallenge.com.png"
+      }
+    ]
+  },
+  "mobile": {
+    "mobile": true,
+    "sequence": [
+      "www.openculture.com",
+      "aidn.jp",
+      "benisland.neocities.org",
+      "morsecode.world",
+      "unpigeon.me",
+      "gameaboutsquares.com",
+      "humanbenchmark.com",
+      "stonet2000.github.io",
+      "matrix.dotglitch.dev",
+      "ramesaliyev.com",
+      "zoomquilt.org",
+      "pangram.me",
+      "puginarug.com",
+      "theremin.site",
+      "www.designernews.co",
+      "jspaint.app",
+      "igfonts.io",
+      "color.adobe.com",
+      "weavesilk.com",
+      "www.desmos.com",
+      "lab.nationalmedals.org",
+      "babadum.com",
+      "www.bellingcat.com",
+      "projects.playables.net",
+      "cat-bounce.com",
+      "archive-it.org",
+      "www.openstreetmap.org",
+      "heeeeeeeey.com",
+      "web.archive.org",
+      "littlealchemy2.com",
+      "stellarium-web.org",
+      "nullhandle.org",
+      "earth.nullschool.net",
+      "netpreserve.org",
+      "onesquareminesweeper.com",
+      "longdogechallenge.com",
+      "morningreader.com",
+      "tjukanovt.github.io",
+      "color.hailpixel.com",
+      "thepigeon.org"
+    ],
+    "uniqueDomains": [
+      "www.openculture.com",
+      "aidn.jp",
+      "benisland.neocities.org",
+      "morsecode.world",
+      "unpigeon.me",
+      "gameaboutsquares.com",
+      "humanbenchmark.com",
+      "stonet2000.github.io",
+      "matrix.dotglitch.dev",
+      "ramesaliyev.com",
+      "zoomquilt.org",
+      "pangram.me",
+      "puginarug.com",
+      "theremin.site",
+      "www.designernews.co",
+      "jspaint.app",
+      "igfonts.io",
+      "color.adobe.com",
+      "weavesilk.com",
+      "www.desmos.com",
+      "lab.nationalmedals.org",
+      "babadum.com",
+      "www.bellingcat.com",
+      "projects.playables.net",
+      "cat-bounce.com",
+      "archive-it.org",
+      "www.openstreetmap.org",
+      "heeeeeeeey.com",
+      "web.archive.org",
+      "littlealchemy2.com",
+      "stellarium-web.org",
+      "nullhandle.org",
+      "earth.nullschool.net",
+      "netpreserve.org",
+      "onesquareminesweeper.com",
+      "longdogechallenge.com",
+      "morningreader.com",
+      "tjukanovt.github.io",
+      "color.hailpixel.com",
+      "thepigeon.org"
+    ],
+    "observations": [
+      {
+        "domain": "gameaboutsquares.com",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 985,
+          "iframeHeight": 720,
+          "ratio": 0.7309644670050761
+        },
+        "snippet": "",
+        "interaction": {
+          "ok": true,
+          "proof": "click-visual-delta"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 1222,
+        "screenshot": "/opt/cursor/artifacts/newcand-mobile-gameaboutsquares.com.png"
+      },
+      {
+        "domain": "puginarug.com",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 985,
+          "iframeHeight": 736,
+          "ratio": 0.7472081218274111
+        },
+        "snippet": "You have been honoring the pug for 1 seconds You are a Assistant of pug",
+        "interaction": {
+          "ok": true,
+          "proof": "content-or-media snippet=You have been honoring the pug for 1 sec"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 1627,
+        "screenshot": "/opt/cursor/artifacts/newcand-mobile-puginarug.com.png"
+      },
+      {
+        "domain": "theremin.site",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 985,
+          "iframeHeight": 736,
+          "ratio": 0.7472081218274111
+        },
+        "snippet": "VIRTUAL THEREMIN Move your cursor vertically for pitch • Move horizontally for volume 🎵 Touch to play Frequency 440 Hz Amplitude 0% Waveform Sine Square Sawtooth Triangle Reverb Effect Inspired by Leon Theremin's 1928 e",
+        "interaction": {
+          "ok": true,
+          "proof": "drag-visual-delta"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 1991,
+        "screenshot": "/opt/cursor/artifacts/newcand-mobile-theremin.site.png"
+      },
+      {
+        "domain": "jspaint.app",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 985,
+          "iframeHeight": 736,
+          "ratio": 0.7472081218274111
+        },
+        "snippet": "File Edit View Image Colors Help Extras For Help, click Help Topics on the Help Menu.",
+        "interaction": {
+          "ok": true,
+          "proof": "drag-visual-delta"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 1241,
+        "screenshot": "/opt/cursor/artifacts/newcand-mobile-jspaint.app.png"
+      },
+      {
+        "domain": "lab.nationalmedals.org",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 985,
+          "iframeHeight": 736,
+          "ratio": 0.7472081218274111
+        },
+        "snippet": "01 Gravity/ How do celestial bodies warp the fabric of space-time and interact with each other? Create an object to begin exploring. CREATE YOUR UNIVERSE OBSERVATIONS 01 Gravity/ How do celestial bodies warp the fabric o",
+        "interaction": {
+          "ok": true,
+          "proof": "drag-visual-delta"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 1179,
+        "screenshot": "/opt/cursor/artifacts/newcand-mobile-lab.nationalmedals.org.png"
+      },
+      {
+        "domain": "projects.playables.net",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 985,
+          "iframeHeight": 736,
+          "ratio": 0.7472081218274111
+        },
+        "snippet": "",
+        "interaction": {
+          "ok": false,
+          "proof": "drag-no-visual-delta"
+        },
+        "loadQualified": false,
+        "interactionQualified": false,
+        "elapsedMs": 1185,
+        "screenshot": "/opt/cursor/artifacts/newcand-mobile-projects.playables.net.png"
+      },
+      {
+        "domain": "cat-bounce.com",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 985,
+          "iframeHeight": 736,
+          "ratio": 0.7472081218274111
+        },
+        "snippet": "? MAKE IT RAIN MESSAGE FROM CAT",
+        "interaction": {
+          "ok": true,
+          "proof": "content-or-media snippet=? MAKE IT RAIN MESSAGE FROM CAT"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 407,
+        "screenshot": "/opt/cursor/artifacts/newcand-mobile-cat-bounce.com.png"
+      },
+      {
+        "domain": "onesquareminesweeper.com",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 985,
+          "iframeHeight": 720,
+          "ratio": 0.7309644670050761
+        },
+        "snippet": "Minesweeper A USELESS WEB PROJECT",
+        "interaction": {
+          "ok": true,
+          "proof": "click-visual-delta"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 1057,
+        "screenshot": "/opt/cursor/artifacts/newcand-mobile-onesquareminesweeper.com.png"
+      },
+      {
+        "domain": "longdogechallenge.com",
+        "blocked": false,
+        "layout": {
+          "viewportHeight": 985,
+          "iframeHeight": 720,
+          "ratio": 0.7309644670050761
+        },
+        "snippet": "LONG DOGE CHALLENGE Your doge is wow long You have collected 0 wows CLICK TO PRINT! ▄ ▄ ▌▒█ ▄▀▒▌ ▌▒▒█ ▄▀▒▒▒▐ ▐▄█▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐ ▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐ ▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌ ▐▒▒▒▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▌ ▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒",
+        "interaction": {
+          "ok": true,
+          "proof": "scroll-or-content y:0->400"
+        },
+        "loadQualified": true,
+        "interactionQualified": true,
+        "elapsedMs": 579,
+        "screenshot": "/opt/cursor/artifacts/newcand-mobile-longdogechallenge.com.png"
+      }
+    ]
+  },
+  "counts": {
+    "harvestedTargetsConfigured": 12,
+    "uniqueObservedDesktop": 9,
+    "uniqueObservedMobile": 9,
+    "loadQualified": 9,
+    "interactionQualified": 9,
+    "blocked": 0
+  },
+  "pass": true
+}

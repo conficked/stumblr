@@ -1,0 +1,154 @@
+{
+  "generated_at": "2026-11-08T14:09:32Z",
+  "source_count": 14,
+  "discovered_count": 61,
+  "screened_count": 61,
+  "selected_count": 50,
+  "rejected_count": 447,
+  "distinct_discovered_domains": 47,
+  "distinct_selected_domains": 50,
+  "selected_topic_counts": {
+    "games": 24,
+    "science": 1,
+    "maps": 2,
+    "art": 1,
+    "archives": 1,
+    "education": 1
+  },
+  "source_yields": {
+    "useless-web-sites-index": {
+      "kind": "feed",
+      "source_url": "https://theuselessweb.com/sites/index.xml",
+      "raw_links_seen": 12,
+      "accepted_candidates": 0,
+      "rejected_candidates": 12,
+      "errors": 0
+    },
+    "useless-web-sites-page": {
+      "kind": "html",
+      "source_url": "https://theuselessweb.com/sites/",
+      "raw_links_seen": 30,
+      "accepted_candidates": 9,
+      "rejected_candidates": 21,
+      "errors": 0
+    },
+    "bored-button-random": {
+      "kind": "random_html",
+      "source_url": "https://www.boredbutton.com/random",
+      "raw_links_seen": 107,
+      "accepted_candidates": 30,
+      "rejected_candidates": 36,
+      "errors": 0
+    },
+    "open-culture-rss": {
+      "kind": "feed",
+      "source_url": "https://www.openculture.com/feed",
+      "raw_links_seen": 15,
+      "accepted_candidates": 0,
+      "rejected_candidates": 15,
+      "errors": 0
+    },
+    "nasa-breaking-rss": {
+      "kind": "feed",
+      "source_url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+      "raw_links_seen": 10,
+      "accepted_candidates": 4,
+      "rejected_candidates": 6,
+      "errors": 0
+    },
+    "public-domain-review-rss": {
+      "kind": "feed",
+      "source_url": "https://publicdomainreview.org/feed/",
+      "raw_links_seen": 100,
+      "accepted_candidates": 0,
+      "rejected_candidates": 45,
+      "errors": 0
+    },
+    "wikimedia-glam-rss": {
+      "kind": "feed",
+      "source_url": "https://diff.wikimedia.org/feed/",
+      "raw_links_seen": 10,
+      "accepted_candidates": 0,
+      "rejected_candidates": 10,
+      "errors": 0
+    },
+    "awesome-canvas": {
+      "kind": "markdown",
+      "source_url": "https://raw.githubusercontent.com/raphamorim/awesome-canvas/master/README.md",
+      "raw_links_seen": 143,
+      "accepted_candidates": 0,
+      "rejected_candidates": 45,
+      "errors": 0
+    },
+    "awesome-web-design": {
+      "kind": "markdown",
+      "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+      "raw_links_seen": 95,
+      "accepted_candidates": 3,
+      "rejected_candidates": 42,
+      "errors": 0
+    },
+    "must-watch-css": {
+      "kind": "markdown",
+      "source_url": "https://raw.githubusercontent.com/AllThingsSmitty/must-watch-css/master/README.md",
+      "raw_links_seen": 72,
+      "accepted_candidates": 4,
+      "rejected_candidates": 41,
+      "errors": 0
+    },
+    "awesome-archives": {
+      "kind": "markdown",
+      "source_url": "https://raw.githubusercontent.com/iipc/awesome-web-archiving/master/README.md",
+      "raw_links_seen": 235,
+      "accepted_candidates": 2,
+      "rejected_candidates": 43,
+      "errors": 0
+    },
+    "awesome-index": {
+      "kind": "markdown",
+      "source_url": "https://raw.githubusercontent.com/sindresorhus/awesome/master/readme.md",
+      "raw_links_seen": 677,
+      "accepted_candidates": 0,
+      "rejected_candidates": 45,
+      "errors": 0
+    },
+    "build-your-own-x": {
+      "kind": "markdown",
+      "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+      "raw_links_seen": 367,
+      "accepted_candidates": 9,
+      "rejected_candidates": 36,
+      "errors": 0
+    },
+    "awesome-computer-vision": {
+      "kind": "markdown",
+      "source_url": "https://raw.githubusercontent.com/jbhuang0604/awesome-computer-vision/master/README.md",
+      "raw_links_seen": 524,
+      "accepted_candidates": 0,
+      "rejected_candidates": 45,
+      "errors": 0
+    }
+  },
+  "merged_with_prior_selected": true,
+  "prior_selected_count": 22,
+  "latest_selected_count": 30,
+  "denominator_notes": {
+    "discovered_count": "Unique accepted candidate URLs after canonicalize/dedupe against run-seen set (not source list size).",
+    "screened_count": "Subset of discovered that received availability/header screening this run.",
+    "selected_count": "Editorial shortlist domains after merge of prior+latest selected artifacts (may exceed latest-run selected alone).",
+    "rejected_count": "Rejection LOG ROW count across the run (includes source self-links, already-in-catalogue, disallowed hosts, per-link rejects). NOT unique latest screened failures and NOT 447 unique bad sites.",
+    "rejected_unique_url_or_raw_keys": 397,
+    "rejected_reason_counts": {
+      "source_self_link": 99,
+      "disallowed_host_class": 213,
+      "unsupported_or_invalid_url": 77,
+      "already_in_catalogue": 46,
+      "asset_or_badge_link": 6,
+      "dns_error:[Errno -2] Name or service not known": 1,
+      "editorial_reject_commercial_or_low_fit": 5
+    },
+    "latest_run_discovered_domains": 47,
+    "selected_merged_domains": 50,
+    "candidate_urls_this_run": 61
+  }
+}

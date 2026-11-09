@@ -1,0 +1,644 @@
+# Bounded zero-AI collection; reviewed publication is a separate manual workflow.
+# Every mode is review-only: it never approves, generates catalogue code,
+# commits, pushes, or deploys. Bootstrap requires explicit manual dispatch.
+
+name: discovery-manual-review
+
+"on":
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Review-only discovery mode
+        type: choice
+        required: true
+        default: maintenance
+        options:
+          - maintenance
+          - bootstrap
+  schedule:
+    # Together these disjoint schedules still collect every hour at minute 17.
+    # Use the triggering cron to preserve recheck cadence even if a run is delayed.
+    - cron: "17 */6 * * *"
+    - cron: "17 1-5,7-11,13-17,19-23 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: stumblr-discovery-manual-review
+  cancel-in-progress: false
+
+jobs:
+  plan-discovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      families: ${{ steps.plan.outputs.families }}
+      mode: ${{ steps.plan.outputs.mode }}
+      ceiling: ${{ steps.plan.outputs.ceiling }}
+      recheck: ${{ steps.plan.outputs.recheck }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Plan maintenance or explicit manual bootstrap shards
+        id: plan
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          REQUESTED_MODE: ${{ inputs.mode }}
+          SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          python3 - <<'PYPLAN'
+          import json
+          import os
+          from scripts.discover_catalogue_candidates import SOURCE_CONFIG
+
+          mode = "maintenance"
+          if os.environ["EVENT_NAME"] == "workflow_dispatch":
+              mode = os.environ["REQUESTED_MODE"] or "maintenance"
+          if mode not in {"maintenance", "bootstrap"}:
+              raise SystemExit("invalid discovery mode")
+          families = sorted({source["source_family"] for source in SOURCE_CONFIG}) if mode == "bootstrap" else ["all"]
+          recheck = mode == "maintenance" and (
+              os.environ["EVENT_NAME"] == "workflow_dispatch"
+              or os.environ.get("SCHEDULE") == "17 */6 * * *"
+          )
+          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
+              output.write(f"mode={mode}\nceiling={220 if mode == 'bootstrap' else 24}\n")
+              output.write(f"families={json.dumps(families)}\n")
+              output.write(f"recheck={str(recheck).lower()}\n")
+          PYPLAN
+
+  load-runtime-health-targets:
+    needs: plan-discovery
+    if: ${{ needs.plan-discovery.outputs.recheck == 'true' }}
+    permissions:
+      id-token: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Load bounded authenticated established-entry health targets
+        uses: actions/github-script@v7
+        env:
+          TARGETS_PATH: ${{ runner.temp }}/runtime-health-targets.json
+        with:
+          script: |
+            const token = await core.getIDToken('https://stumblr.dev/catalogue-collect');
+            const response = await fetch('https://stumblr.dev/api/catalogue/evidence?runtime_health_targets=1', {headers:{Authorization:`Bearer ${token}`},redirect:'error',signal:AbortSignal.timeout(20_000)});
+            if (!response.ok) throw new Error(`Runtime health target list unavailable: ${response.status}`);
+            const {targets} = await response.json();
+            if (!Array.isArray(targets) || targets.length > 24 || targets.some(row => typeof row?.id !== 'string' || row.id.length > 200 || typeof row?.canonicalUrl !== 'string' || row.canonicalUrl.length > 16384)) throw new Error('Invalid runtime health targets');
+            require('fs').writeFileSync(process.env.TARGETS_PATH, JSON.stringify(targets));
+            core.info(`Established runtime health targets: ${targets.length}`);
+
+      - name: Upload runtime health targets for this attempt
+        uses: actions/upload-artifact@v4
+        with:
+          name: runtime-health-targets-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 3
+          if-no-files-found: error
+          path: ${{ runner.temp }}/runtime-health-targets.json
+
+  observe-runtime-health:
+    needs: load-runtime-health-targets
+    # This runner reaches untrusted destinations. It cannot mint an OIDC token.
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    outputs:
+      http: ${{ steps.http.outputs.artifact-id }}
+      browser: ${{ steps.browser.outputs.artifact-id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Download runtime targets for this attempt
+        uses: actions/download-artifact@v4
+        with:
+          name: runtime-health-targets-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}
+      - name: Recheck up to 24 runtime destinations with the same SSRF and robots guards
+        run: python3 scripts/recheck_runtime_catalogue.py "${{ runner.temp }}/runtime-health-targets.json" "${{ runner.temp }}/runtime-rechecks.json"
+      - name: Upload bounded HTTP observations
+        id: http
+        uses: actions/upload-artifact@v4
+        with:
+          name: runtime-health-http-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 3
+          if-no-files-found: error
+          path: ${{ runner.temp }}/runtime-rechecks.json
+      - name: Observe established entries in the frame sandbox
+        run: |
+          npm ci --ignore-scripts
+          npx playwright install --with-deps chromium
+          node scripts/qualify_review_candidates.mjs \
+            "${{ runner.temp }}/runtime-browser-inputs.json" \
+            "${{ runner.temp }}/runtime-browser-evidence.json" \
+            --max-candidates 24 --budget-ms 120000
+      - name: Upload bounded browser observations
+        id: browser
+        uses: actions/upload-artifact@v4
+        with:
+          name: runtime-health-browser-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 3
+          if-no-files-found: error
+          path: ${{ runner.temp }}/runtime-browser-evidence.json
+
+  persist-runtime-health:
+    needs: [load-runtime-health-targets, observe-runtime-health]
+    if: ${{ !cancelled() && needs.load-runtime-health-targets.result == 'success' && needs.observe-runtime-health.outputs.http != '' }}
+    permissions:
+      id-token: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Download original runtime targets for this attempt
+        uses: actions/download-artifact@v4
+        with:
+          name: runtime-health-targets-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/runtime-targets
+      - name: Download HTTP observations for this attempt
+        uses: actions/download-artifact@v4
+        with:
+          name: runtime-health-http-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/runtime-http
+      - name: Download browser observations for this attempt
+        if: ${{ needs.observe-runtime-health.outputs.browser != '' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: runtime-health-browser-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/runtime-browser
+      - name: Persist runtime HTTP and paired browser evidence with collector authority
+        uses: actions/github-script@v7
+        env:
+          TARGETS_PATH: ${{ runner.temp }}/runtime-targets/runtime-health-targets.json
+          RECHECK_PATH: ${{ runner.temp }}/runtime-http/runtime-rechecks.json
+          BROWSER_PATH: ${{ runner.temp }}/runtime-browser/runtime-browser-evidence.json
+          BROWSER_READY: ${{ needs.observe-runtime-health.outputs.browser != '' }}
+        with:
+          script: |
+            const fs = require('node:fs');
+            const boundedRows = (path, maxBytes, limit) => {
+              if (fs.statSync(path).size > maxBytes) throw new Error('Runtime artifact exceeds byte budget');
+              const rows = JSON.parse(fs.readFileSync(path, 'utf8'));
+              if (!Array.isArray(rows) || rows.length > limit) throw new Error('Runtime artifact exceeds row budget');
+              return rows;
+            };
+            const targets = boundedRows(process.env.TARGETS_PATH, 512 * 1024, 24);
+            const byUrl = new Map(targets.map(row => [row.canonicalUrl, row.id]));
+            const httpRows = boundedRows(process.env.RECHECK_PATH, 512 * 1024, 24);
+            const framingById = new Map();
+            const runtime_http = httpRows.map(row => {
+              if (byUrl.get(row?.canonical_url) !== row?.id || typeof row?.id !== 'string' || framingById.has(row.id)) {
+                throw new Error('Unexpected runtime HTTP target');
+              }
+              const { xfo_present, csp_present, csp_frame_ancestors, denied } = row.framing;
+              framingById.set(row.id, { xfo_present, csp_frame_ancestors, denied });
+              return { id: row.id, availability_status: row.availability_status, framing: { xfo_present, csp_present, csp_frame_ancestors, denied } };
+            });
+            const persist = async body => {
+              const payload = JSON.stringify(body);
+              if (Buffer.byteLength(payload) > 1024 * 1024) throw new Error('Runtime evidence exceeds request budget');
+              const token = await core.getIDToken('https://stumblr.dev/catalogue-collect');
+              const response = await fetch('https://stumblr.dev/api/catalogue/evidence', {
+                method:'POST', redirect:'error', signal:AbortSignal.timeout(20_000),
+                headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'}, body:payload,
+              });
+              if (!response.ok) throw new Error(`Runtime evidence rejected: ${response.status}`);
+              core.info(JSON.stringify(await response.json()));
+            };
+            await persist({ runtime_http });
+            if (process.env.BROWSER_READY !== 'true') return;
+            const browser = boundedRows(process.env.BROWSER_PATH, 2 * 1024 * 1024, 48);
+            const grouped = new Map();
+            for (const row of browser) {
+              const candidate_id = byUrl.get(row?.canonical_url);
+              const { device, render_result, functionality_result, document_http_status, frame_failure_reasons, network_failure_reasons } = row;
+              if (!candidate_id || !framingById.has(candidate_id) || !['desktop', 'mobile'].includes(device)) {
+                throw new Error('Unexpected runtime browser target or device');
+              }
+              if (!grouped.has(candidate_id)) grouped.set(candidate_id, {
+                run_id: process.env.GITHUB_RUN_ID, run_attempt: Number(process.env.GITHUB_RUN_ATTEMPT),
+                qualifier_version: 'browser-qualification-v1', http_framing: framingById.get(candidate_id),
+              });
+              const pair = grouped.get(candidate_id);
+              if (pair[device]) throw new Error('Duplicate runtime browser device');
+              pair[device] = { device, render_result, functionality_result, document_http_status, frame_failure_reasons, network_failure_reasons };
+            }
+            const runtime_health = [...grouped].filter(([, pair]) => pair.desktop && pair.mobile)
+              .map(([candidate_id, observation_pair]) => ({ candidate_id, observation_pair }));
+            await persist({ runtime_health });
+
+  bounded-discovery:
+    needs: plan-discovery
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        family: ${{ fromJSON(needs.plan-discovery.outputs.families) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out the requested revision without stored credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js 22 for screened destination identities
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Load authenticated known URLs for cross-run deduplication
+        uses: actions/github-script@v7
+        env:
+          KNOWN_PATH: ${{ runner.temp }}/known-urls.json
+        with:
+          script: |
+            const token = await core.getIDToken('https://stumblr.dev/catalogue-collect');
+            const response = await fetch('https://stumblr.dev/api/catalogue/candidates', {headers:{Authorization:`Bearer ${token}`}});
+            if (!response.ok) throw new Error(`Known queue unavailable: ${response.status}`);
+            const data = await response.json();
+            require('fs').writeFileSync(process.env.KNOWN_PATH, JSON.stringify(data.known_urls));
+            core.info(`Known URL dedupe keys: ${data.known_urls.length}`);
+
+      - name: Run bounded review-only discovery
+        env:
+          # Consumed only by the GitHub provider; queue requests use OIDC.
+          GITHUB_TOKEN: ${{ github.token }}
+          DISCOVERY_OUTPUT_DIR: ${{ runner.temp }}/discovery-output
+          STUMBLR_DB_PATH: ${{ runner.temp }}/discovery-runtime.sqlite
+          SOURCE_FAMILY: ${{ matrix.family }}
+          CANDIDATE_CEILING: ${{ needs.plan-discovery.outputs.ceiling }}
+          KNOWN_PATH: ${{ runner.temp }}/known-urls.json
+        run: |
+          python3 - <<'PYCOLLECT'
+          import os
+          import sys
+          from scripts import discover_catalogue_candidates as collector
+
+          family = os.environ["SOURCE_FAMILY"]
+          if family != "all":
+              collector.SOURCE_CONFIG = [source for source in collector.SOURCE_CONFIG if source["source_family"] == family]
+              if not collector.SOURCE_CONFIG:
+                  raise SystemExit("unknown source family")
+          sys.argv = ["discover_catalogue_candidates",
+              "--db-path", os.environ["STUMBLR_DB_PATH"],
+              "--max-candidates", os.environ["CANDIDATE_CEILING"],
+              "--known-urls", os.environ["KNOWN_PATH"],
+              "--owner", f"gha-{os.environ['GITHUB_RUN_ID']}-{os.environ['GITHUB_RUN_ATTEMPT']}-{family}",
+              "--output-dir", os.environ["DISCOVERY_OUTPUT_DIR"]]
+          raise SystemExit(collector.main())
+          PYCOLLECT
+
+      - name: Persist repository attribution for existing destinations only
+        uses: actions/github-script@v7
+        env:
+          ASSOCIATIONS_PATH: ${{ runner.temp }}/discovery-output/discovery_associations.json
+        with:
+          script: |
+            const { pathToFileURL } = require('url');
+            const moduleUrl = pathToFileURL(require('path').resolve('scripts/import_repository_associations.mjs')).href;
+            const { persistRepositoryAssociations } = await import(moduleUrl);
+            const result = await persistRepositoryAssociations(process.env.ASSOCIATIONS_PATH, {
+              getToken: () => core.getIDToken('https://stumblr.dev/catalogue-collect'),
+            });
+            core.info(JSON.stringify(result));
+
+      - name: Record zero yield and isolate the review database
+        id: review_yield
+        env:
+          DISCOVERY_OUTPUT_DIR: ${{ runner.temp }}/discovery-output
+          STUMBLR_DB_PATH: ${{ runner.temp }}/discovery-runtime.sqlite
+          REVIEW_DB_PATH: ${{ runner.temp }}/discovery-review.sqlite
+        run: |
+          python3 - <<'PY'
+          import collections
+          import json
+          import os
+          import sqlite3
+          import sys
+          from pathlib import Path
+
+          sys.path.insert(0, "scripts")
+          from discovery_batch_report import report_selection
+
+          output_dir = Path(os.environ["DISCOVERY_OUTPUT_DIR"])
+          selected = json.loads((output_dir / "discovery_selected.json").read_text())
+          selection_report = report_selection(selected)
+          (output_dir / "review_yield.json").write_text(json.dumps(selection_report, indent=2) + "\n")
+          summary = json.loads((output_dir / "discovery_summary.json").read_text())
+          rejected = json.loads((output_dir / "discovery_rejected.json").read_text())
+
+          source_causes = []
+          for source_id, row in summary.get("source_yields", {}).items():
+              if row.get("accepted_candidates", 0) == 0:
+                  source_causes.append(
+                      {
+                          "source_id": source_id,
+                          "skipped_reason": row.get("skipped_reason"),
+                          "robots": row.get("robots"),
+                          "errors": row.get("errors", 0),
+                          "raw_links_seen": row.get("raw_links_seen", 0),
+                          "rejected_candidates": row.get("rejected_candidates", 0),
+                      }
+                  )
+          diagnostics = {
+              "discovered_count": summary.get("discovered_count", 0),
+              "selected_count": summary.get("selected_count", 0),
+              "telemetry": summary.get("telemetry", {}),
+              "zero_acceptance_source_causes": source_causes,
+              "rejection_reason_counts": dict(
+                  collections.Counter(row.get("reason", "missing_reason") for row in rejected)
+              ),
+          }
+
+          runtime_db = sqlite3.connect(os.environ["STUMBLR_DB_PATH"])
+          submission_count = runtime_db.execute(
+              "SELECT COUNT(*) FROM community_suggestions"
+          ).fetchone()[0]
+          if submission_count != 0:
+              raise SystemExit(
+                  f"refusing review DB artifact: community_suggestions_count={submission_count}"
+              )
+          review_db = sqlite3.connect(os.environ["REVIEW_DB_PATH"])
+          runtime_db.backup(review_db)
+          review_db.execute("DROP TABLE community_suggestions")
+          review_db.commit()
+          review_db.execute("VACUUM")
+          review_db.close()
+          runtime_db.close()
+
+          has_candidates = not (
+              diagnostics["discovered_count"] == 0
+              or selection_report["pending_review_count"] == 0
+          )
+          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
+              output.write(f"has_candidates={'true' if has_candidates else 'false'}\n")
+
+          if not has_candidates:
+              diagnostic_path = output_dir / "zero_yield_diagnostics.json"
+              diagnostic_path.write_text(json.dumps(diagnostics, indent=2) + "\n")
+              print("ZERO_YIELD_QUARANTINED", file=sys.stderr)
+              print(json.dumps(diagnostics, indent=2), file=sys.stderr)
+              raise SystemExit(0)
+
+          print(
+              json.dumps(
+                  {
+                      **selection_report,
+                      "review_only": True,
+                      "discovered_count": diagnostics["discovered_count"],
+                      "selected_count": diagnostics["selected_count"],
+                  }
+              )
+          )
+          PY
+
+      - name: Chunk selected candidates into bounded import lists
+        if: ${{ steps.review_yield.outputs.has_candidates == 'true' }}
+        env:
+          CANDIDATE_CEILING: ${{ needs.plan-discovery.outputs.ceiling }}
+        run: |
+          python3 scripts/chunk_candidate_batch.py \
+            "${{ runner.temp }}/discovery-output/discovery_selected.json" \
+            "${{ runner.temp }}/discovery-output/import-chunks" \
+            --ceiling "$CANDIDATE_CEILING"
+
+      - name: Persist untrusted candidates to the shared review queue only
+        if: ${{ steps.review_yield.outputs.has_candidates == 'true' }}
+        uses: actions/github-script@v7
+        env:
+          CHUNKS_PATH: ${{ runner.temp }}/discovery-output/import-chunks
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const manifest = JSON.parse(fs.readFileSync(path.join(process.env.CHUNKS_PATH, 'manifest.json'), 'utf8'));
+            for (const chunk of manifest) {
+              const body = fs.readFileSync(path.join(process.env.CHUNKS_PATH, chunk.file), 'utf8');
+              const token = await core.getIDToken('https://stumblr.dev/catalogue-collect');
+              const response = await fetch('https://stumblr.dev/api/catalogue/candidates', {method:'POST',headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},body});
+              const result = await response.json();
+              if (!response.ok || !result.ok) throw new Error(`Queue import rejected: ${response.status}`);
+              // Queue identity dedupe makes replays safe; this key identifies the exact chunk.
+              core.info(JSON.stringify({replay_key:chunk.replay_key,...result}));
+            }
+
+      - name: Load confirmed queue URLs awaiting browser evidence
+        id: qualification-input
+        uses: actions/github-script@v7
+        env:
+          SOURCE_FAMILY: ${{ matrix.family }}
+          QUALIFICATION_PATH: ${{ runner.temp }}/discovery-output/qualification-candidates.json
+        with:
+          script: |
+            // Recover interrupted ingestion even when this discovery shard finds nothing new.
+            const endpoint = new URL('https://stumblr.dev/api/catalogue/evidence');
+            if (process.env.SOURCE_FAMILY !== 'all') endpoint.searchParams.set('source_family', process.env.SOURCE_FAMILY);
+            const token = await core.getIDToken('https://stumblr.dev/catalogue-collect');
+            const response = await fetch(endpoint, {headers: {Authorization: `Bearer ${token}`}, redirect: 'error'});
+            if (!response.ok) throw new Error(`Qualification queue unavailable: ${response.status}`);
+            const { candidates } = await response.json();
+            if (!Array.isArray(candidates) || candidates.length > 24 ||
+                candidates.some(row => typeof row?.canonical_url !== 'string')) throw new Error('Invalid qualification queue');
+            if (candidates.length) require('node:fs').writeFileSync(process.env.QUALIFICATION_PATH, JSON.stringify(candidates));
+            core.info(`Queue candidates awaiting browser evidence: ${candidates.length}`);
+
+      - name: Upload private review artifacts
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-manual-review-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.family }}
+          retention-days: 3
+          if-no-files-found: warn
+          path: |
+            ${{ runner.temp }}/discovery-output/discovery_summary.json
+            ${{ runner.temp }}/discovery-output/discovery_selected.json
+            ${{ runner.temp }}/discovery-output/discovery_associations.json
+            ${{ runner.temp }}/discovery-output/discovery_rejected.json
+            ${{ runner.temp }}/discovery-output/review_yield.json
+            ${{ runner.temp }}/discovery-output/zero_yield_diagnostics.json
+            ${{ runner.temp }}/discovery-output/import-chunks/
+            ${{ runner.temp }}/discovery-output/qualification-candidates.json
+            ${{ runner.temp }}/discovery-review.sqlite
+
+  qualify-review-candidates:
+    needs: [plan-discovery, bounded-discovery]
+    # A failed discovery sibling must not suppress successful shards. The queue
+    # backlog can supply qualification input even on zero-yield discovery runs.
+    # Cancellation and planning failures still stop qualification entirely.
+    if: ${{ !cancelled() && needs.plan-discovery.result == 'success' }}
+    # Browser qualification has no OIDC or queue/publication authority.
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        family: ${{ fromJSON(needs.plan-discovery.outputs.families) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Download the private candidate artifact for this shard
+        # A missing artifact fails only this matrix shard (fail-fast is false).
+        uses: actions/download-artifact@v4
+        with:
+          name: discovery-manual-review-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.family }}
+          path: ${{ runner.temp }}/qualification-input
+      - name: Check this shard has confirmed queue URLs
+        id: eligibility
+        env:
+          INPUT_DIR: ${{ runner.temp }}/qualification-input
+        run: |
+          if [ -s "$INPUT_DIR/discovery-output/qualification-candidates.json" ]; then
+            echo "eligible=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "eligible=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping browser qualification: no confirmed queue URLs await evidence."
+          fi
+      - uses: actions/checkout@v4
+        if: ${{ steps.eligibility.outputs.eligible == 'true' }}
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        if: ${{ steps.eligibility.outputs.eligible == 'true' }}
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+        if: ${{ steps.eligibility.outputs.eligible == 'true' }}
+      - run: npx playwright install --with-deps chromium
+        if: ${{ steps.eligibility.outputs.eligible == 'true' }}
+      - name: Observe a bounded sample in the Stumblr frame sandbox
+        if: ${{ steps.eligibility.outputs.eligible == 'true' }}
+        # No GitHub or collection tokens are passed to the browser process.
+        # Both modes sample at most 24 candidates, with a two-minute run budget.
+        run: |
+          node scripts/qualify_review_candidates.mjs \
+            "${{ runner.temp }}/qualification-input/discovery-output/qualification-candidates.json" \
+            "${{ runner.temp }}/browser-qualification.json" \
+            --max-candidates 24 --budget-ms 120000
+      - name: Upload private browser evidence only
+        if: ${{ success() && steps.eligibility.outputs.eligible == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-browser-evidence-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.family }}
+          retention-days: 3
+          if-no-files-found: error
+          path: ${{ runner.temp }}/browser-qualification.json
+
+  persist-qualification-evidence:
+    needs: [plan-discovery, qualify-review-candidates]
+    # Uploads only come from successful browser shards. Keep those shards
+    # eligible for ingestion even when another shard failed.
+    if: ${{ !cancelled() && needs.plan-discovery.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: read
+      id-token: write
+    steps:
+      - name: Download successful browser evidence from this run attempt
+        uses: actions/download-artifact@v4
+        with:
+          pattern: discovery-browser-evidence-${{ github.run_id }}-${{ github.run_attempt }}-*
+          path: ${{ runner.temp }}/qualification-evidence
+
+      - name: Persist browser evidence with collector authority
+        uses: actions/github-script@v7
+        env:
+          EVIDENCE_DIR: ${{ runner.temp }}/qualification-evidence
+          QUALIFIER_VERSION: browser-qualification-v3
+        with:
+          script: |
+            const fs = require('node:fs');
+            const path = require('node:path');
+            const directory = process.env.EVIDENCE_DIR;
+            const shards = fs.existsSync(directory) ? fs.readdirSync(directory, {withFileTypes: true}) : [];
+            const identity = {
+              run_id: process.env.GITHUB_RUN_ID,
+              run_attempt: Number(process.env.GITHUB_RUN_ATTEMPT),
+              qualifier_version: process.env.QUALIFIER_VERSION,
+            };
+            const maxBytes = 1024 * 1024;
+            const serialize = observations => JSON.stringify({...identity, observations});
+            function packPairs(observations) {
+              if (!Array.isArray(observations) || observations.length > 48 || observations.length % 2) {
+                throw new Error('invalid artifact batch');
+              }
+              const bodies = [];
+              const seen = new Set();
+              let batch = [];
+              for (let offset = 0; offset < observations.length; offset += 2) {
+                const [desktop, mobile] = observations.slice(offset, offset + 2);
+                if (desktop?.device !== 'desktop' || mobile?.device !== 'mobile' ||
+                    typeof desktop.canonical_url !== 'string' || desktop.canonical_url !== mobile.canonical_url ||
+                    seen.has(desktop.canonical_url)) throw new Error('invalid observation pair');
+                seen.add(desktop.canonical_url);
+                const pair = [desktop, mobile];
+                const next = [...batch, ...pair];
+                if (Buffer.byteLength(serialize(next)) <= maxBytes) {
+                  batch = next;
+                  continue;
+                }
+                if (Buffer.byteLength(serialize(pair)) > maxBytes) throw new Error('oversized observation pair');
+                bodies.push(serialize(batch));
+                batch = pair;
+              }
+              if (batch.length) bodies.push(serialize(batch));
+              return bodies;
+            }
+            async function post(body) {
+              const token = await core.getIDToken('https://stumblr.dev/catalogue-collect');
+              const response = await fetch('https://stumblr.dev/api/catalogue/evidence', {
+                method: 'POST',
+                headers: {Authorization: `Bearer ${token}`, 'Content-Type': 'application/json'},
+                redirect: 'error',
+                body,
+              });
+              if (!response.ok) throw new Error('evidence request rejected');
+              const result = await response.json();
+              if (!result.ok || !Number.isInteger(result.inserted) || !Number.isInteger(result.existing)) throw new Error('invalid evidence result');
+              return result;
+            }
+            let inserted = 0;
+            let existing = 0;
+            let failed = 0;
+            for (const shard of shards) {
+              try {
+                if (!shard.isDirectory()) throw new Error('invalid artifact path');
+                const artifact = path.join(directory, shard.name, 'browser-qualification.json');
+                // Pretty-printed rows can contain 48 long URLs and escaped diagnostics.
+                if (fs.statSync(artifact).size > 8 * 1024 * 1024) throw new Error('oversized artifact');
+                const observations = JSON.parse(fs.readFileSync(artifact, 'utf8'));
+                for (const body of packPairs(observations)) {
+                  const result = await post(body);
+                  inserted += result.inserted;
+                  existing += result.existing;
+                }
+              } catch {
+                // Never log remote diagnostics or raw artifact data.
+                failed++;
+              }
+            }
+            core.info(JSON.stringify({evidence_persisted: inserted, evidence_replayed: existing, failed_shards: failed}));
+            if (failed) throw new Error('Some browser evidence shards could not be persisted. Dispatch maintenance to requalify queued gaps.');

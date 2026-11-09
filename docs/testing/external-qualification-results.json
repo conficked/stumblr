@@ -1,0 +1,889 @@
+{
+  "checkedAt": "2026-11-08T14:33:58.087Z",
+  "desktop": {
+    "mobile": false,
+    "observations": [
+      {
+        "domain": "weavesilk.com",
+        "blocked": false,
+        "frameAreaRatio": 1,
+        "frameHostBox": {
+          "x": 17,
+          "y": 215.390625,
+          "width": 1332,
+          "height": 638.609375
+        },
+        "iframeBox": {
+          "x": 17,
+          "y": 215.390625,
+          "width": 1332,
+          "height": 638.609375
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 900
+        },
+        "visibleTextSnippet": "New Share Pinterest Email Fullscreen Save Picture Controls Undo To save, right click the thumbnail and choose Save Image As.... Drag colors to blend. No rotational symmetry Mirror across center On Spiral towards center O",
+        "interactionVerified": true,
+        "interaction": "interaction-verified",
+        "interactionProof": "drag-gesture-executed",
+        "interactionError": null,
+        "visualChanged": true,
+        "beforeScreenshot": "/opt/cursor/artifacts/external-desktop-weavesilk.com-before.png",
+        "afterScreenshot": "/opt/cursor/artifacts/external-desktop-weavesilk.com-after.png",
+        "screenshot": "/opt/cursor/artifacts/external-desktop-weavesilk.com-host.png"
+      },
+      {
+        "domain": "www.desmos.com",
+        "blocked": false,
+        "frameAreaRatio": 1,
+        "frameHostBox": {
+          "x": 17,
+          "y": 215.390625,
+          "width": 1332,
+          "height": 638.609375
+        },
+        "iframeBox": {
+          "x": 17,
+          "y": 215.390625,
+          "width": 1332,
+          "height": 638.609375
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 900
+        },
+        "visibleTextSnippet": "Untitled Graph Save Log In Sign Up Expression 1: 1 2 Log in or sign up to save your beautiful math! powered by \"x\" x \"y\" y \"a\" squared a2 \"a\" Superscript, \"b\" , Baseline ab 7 7 8 8 9 9 divided by ÷ functions ( ( ) ) less",
+        "interactionVerified": true,
+        "interaction": "interaction-verified",
+        "interactionProof": "typed-expression-x^2+1-visible",
+        "interactionError": null,
+        "visualChanged": true,
+        "beforeScreenshot": "/opt/cursor/artifacts/external-desktop-www.desmos.com-before.png",
+        "afterScreenshot": "/opt/cursor/artifacts/external-desktop-www.desmos.com-after.png",
+        "screenshot": "/opt/cursor/artifacts/external-desktop-www.desmos.com-host.png"
+      },
+      {
+        "domain": "stellarium-web.org",
+        "blocked": false,
+        "frameAreaRatio": 1,
+        "frameHostBox": {
+          "x": 17,
+          "y": 215.390625,
+          "width": 1332,
+          "height": 638.609375
+        },
+        "iframeBox": {
+          "x": 17,
+          "y": 215.390625,
+          "width": 1332,
+          "height": 638.609375
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 900
+        },
+        "visibleTextSnippet": "StellariumWeb Sign in Tonight My observations Calendar View settings Data credits Products About Blog Support Privacy Terms Search... Get the app milkyway Near Loudoun County 23:01:39 2026-11-08",
+        "interactionVerified": true,
+        "interaction": "interaction-verified",
+        "interactionProof": "search-term-input-value-mars",
+        "interactionError": null,
+        "visualChanged": true,
+        "beforeScreenshot": "/opt/cursor/artifacts/external-desktop-stellarium-web.org-before.png",
+        "afterScreenshot": "/opt/cursor/artifacts/external-desktop-stellarium-web.org-after.png",
+        "screenshot": "/opt/cursor/artifacts/external-desktop-stellarium-web.org-host.png"
+      }
+    ],
+    "destinationSequence": [
+      "www.openculture.com",
+      "cat-bounce.com",
+      "everysiteknows.ferrucc.io",
+      "stonet2000.github.io",
+      "jspaint.app",
+      "longdogechallenge.com",
+      "matrix.dotglitch.dev",
+      "ramesaliyev.com",
+      "zoomquilt.org",
+      "tjukanovt.github.io",
+      "color.adobe.com",
+      "onesquareminesweeper.com",
+      "mondrianandme.com",
+      "kit.exposingtheinvisible.org",
+      "weavesilk.com",
+      "www.desmos.com",
+      "pangram.me",
+      "checkboxrace.com",
+      "www.bellingcat.com",
+      "unpigeon.me",
+      "gameaboutsquares.com",
+      "netpreserveblog.wordpress.com",
+      "www.openstreetmap.org",
+      "lab.nationalmedals.org",
+      "web.archive.org",
+      "littlealchemy2.com",
+      "stellarium-web.org"
+    ],
+    "acceptance": {
+      "requiredDomains": [
+        "weavesilk.com",
+        "www.desmos.com",
+        "stellarium-web.org"
+      ],
+      "seenRequiredDomains": [
+        "weavesilk.com",
+        "www.desmos.com",
+        "stellarium-web.org"
+      ],
+      "missingRequiredDomains": [],
+      "clicksUsed": 27,
+      "maxNextClicks": 64,
+      "verifiedCount": 3,
+      "passed": true
+    },
+    "consoleEvents": [
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'."
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "warning",
+        "text": " is not a valid value for uspDnsText"
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: unload is not allowed in this document."
+      },
+      {
+        "type": "warning",
+        "text": "CMP pop-up will not be shown as storage is not accessible"
+      },
+      {
+        "type": "warning",
+        "text": "Google basic consent is not applicable."
+      },
+      {
+        "type": "warning",
+        "text": "No available adapters."
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "requestStorageAccess: Refused to execute request. The document is sandboxed, and the 'allow-storage-access-by-user-activation' keyword is not set."
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 403 ()"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 403 ()"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 403 ()"
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: accelerometer is not allowed in this document."
+      },
+      {
+        "type": "warning",
+        "text": "The deviceorientation events are blocked by permissions policy. See https://github.com/w3c/webappsec-permissions-policy/blob/master/features.md#sensor-features"
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: accelerometer is not allowed in this document."
+      },
+      {
+        "type": "warning",
+        "text": "The devicemotion events are blocked by permissions policy. See https://github.com/w3c/webappsec-permissions-policy/blob/master/features.md#sensor-features"
+      },
+      {
+        "type": "warning",
+        "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+      },
+      {
+        "type": "warning",
+        "text": "[.WebGL-0x8a4003c1c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+      },
+      {
+        "type": "warning",
+        "text": "[.WebGL-0x8a4003c1c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+      },
+      {
+        "type": "warning",
+        "text": "[.WebGL-0x8a4003c1c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+      },
+      {
+        "type": "warning",
+        "text": "[.WebGL-0x8a4003c1c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 403 ()"
+      },
+      {
+        "type": "warning",
+        "text": "No available adapters."
+      },
+      {
+        "type": "warning",
+        "text": "No available adapters."
+      },
+      {
+        "type": "warning",
+        "text": "No available adapters."
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 403 ()"
+      },
+      {
+        "type": "error",
+        "text": "There was an error setting cookie `_pk_ref.51.c827`. Please check domain and path."
+      },
+      {
+        "type": "error",
+        "text": "There was an error setting cookie `_pk_id.51.c827`. Please check domain and path."
+      },
+      {
+        "type": "error",
+        "text": "There was an error setting cookie `_pk_ses.51.c827`. Please check domain and path."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'shared-storage'."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'shared-storage-select-url'."
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: focus-without-user-activation is not allowed in this document."
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: focus-without-user-activation is not allowed in this document."
+      },
+      {
+        "type": "warning",
+        "text": "Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://www.desmos.com') does not match the recipient window's origin ('http://127.0.0.1:43124')."
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: focus-without-user-activation is not allowed in this document."
+      },
+      {
+        "type": "error",
+        "text": "Mixed Content: The page at 'https://pangram.me/en' was loaded over HTTPS, but requested an insecure frame 'http://developers.google.com/#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefre"
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: unload is not allowed in this document."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'shared-storage'."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'shared-storage-select-url'."
+      },
+      {
+        "type": "error",
+        "text": "Framing 'https://www.bellingcat.com/' violates the following report-only Content Security Policy directive: \"frame-ancestors 'none'\". The violation has been logged, but no further action has been taken.\n"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: accelerometer is not allowed in this document."
+      },
+      {
+        "type": "warning",
+        "text": "The deviceorientation events are blocked by permissions policy. See https://github.com/w3c/webappsec-permissions-policy/blob/master/features.md#sensor-features"
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: unload is not allowed in this document."
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: focus-without-user-activation is not allowed in this document."
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: Geolocation access has been blocked because of a permissions policy applied to the current document. See https://crbug.com/414348233 for more details."
+      }
+    ]
+  },
+  "mobile": {
+    "mobile": true,
+    "observations": [
+      {
+        "domain": "weavesilk.com",
+        "blocked": false,
+        "frameAreaRatio": 1,
+        "frameHostBox": {
+          "x": 9,
+          "y": 103,
+          "width": 382,
+          "height": 736
+        },
+        "iframeBox": {
+          "x": 9,
+          "y": 103,
+          "width": 382,
+          "height": 736
+        },
+        "viewport": {
+          "width": 400,
+          "height": 985
+        },
+        "visibleTextSnippet": "New Share To save, right click the thumbnail and choose Save Image As.... Drag colors to blend. No rotational symmetry Mirror across center On Spiral towards center Off ? Silk was made by Yuri Vishnevsky, with music and ",
+        "interactionVerified": true,
+        "interaction": "interaction-verified",
+        "interactionProof": "drag-gesture-executed",
+        "interactionError": null,
+        "visualChanged": true,
+        "beforeScreenshot": "/opt/cursor/artifacts/external-mobile-weavesilk.com-before.png",
+        "afterScreenshot": "/opt/cursor/artifacts/external-mobile-weavesilk.com-after.png",
+        "screenshot": "/opt/cursor/artifacts/external-mobile-weavesilk.com-host.png"
+      },
+      {
+        "domain": "www.desmos.com",
+        "blocked": false,
+        "frameAreaRatio": 1,
+        "frameHostBox": {
+          "x": 9,
+          "y": 103,
+          "width": 382,
+          "height": 736
+        },
+        "iframeBox": {
+          "x": 9,
+          "y": 103,
+          "width": 382,
+          "height": 736
+        },
+        "viewport": {
+          "width": 400,
+          "height": 985
+        },
+        "visibleTextSnippet": "Untitled Graph Save Expression 1: 1 2 \"x\" x \"y\" y \"a\" squared a2 \"a\" Superscript, \"b\" , Baseline ab 7 7 8 8 9 9 divided by ÷ funcs ( ( ) ) less than < greater than > 4 4 5 5 6 6 times × | \"a\" | |a| , , less than or equal",
+        "interactionVerified": true,
+        "interaction": "interaction-verified",
+        "interactionProof": "typed-expression-x^2+1-visible",
+        "interactionError": null,
+        "visualChanged": true,
+        "beforeScreenshot": "/opt/cursor/artifacts/external-mobile-www.desmos.com-before.png",
+        "afterScreenshot": "/opt/cursor/artifacts/external-mobile-www.desmos.com-after.png",
+        "screenshot": "/opt/cursor/artifacts/external-mobile-www.desmos.com-host.png"
+      },
+      {
+        "domain": "stellarium-web.org",
+        "blocked": false,
+        "frameAreaRatio": 1,
+        "frameHostBox": {
+          "x": 9,
+          "y": 103,
+          "width": 382,
+          "height": 736
+        },
+        "iframeBox": {
+          "x": 9,
+          "y": 103,
+          "width": 382,
+          "height": 736
+        },
+        "viewport": {
+          "width": 400,
+          "height": 985
+        },
+        "visibleTextSnippet": "StellariumWeb Sign in Tonight My observations Calendar View settings Data credits Products About Blog Support Privacy Terms Search... App milkyway Landscape",
+        "interactionVerified": true,
+        "interaction": "interaction-verified",
+        "interactionProof": "search-term-input-value-mars",
+        "interactionError": null,
+        "visualChanged": true,
+        "beforeScreenshot": "/opt/cursor/artifacts/external-mobile-stellarium-web.org-before.png",
+        "afterScreenshot": "/opt/cursor/artifacts/external-mobile-stellarium-web.org-after.png",
+        "screenshot": "/opt/cursor/artifacts/external-mobile-stellarium-web.org-host.png"
+      }
+    ],
+    "destinationSequence": [
+      "www.openculture.com",
+      "cat-bounce.com",
+      "everysiteknows.ferrucc.io",
+      "stonet2000.github.io",
+      "jspaint.app",
+      "longdogechallenge.com",
+      "matrix.dotglitch.dev",
+      "ramesaliyev.com",
+      "zoomquilt.org",
+      "tjukanovt.github.io",
+      "color.adobe.com",
+      "onesquareminesweeper.com",
+      "mondrianandme.com",
+      "kit.exposingtheinvisible.org",
+      "weavesilk.com",
+      "www.desmos.com",
+      "pangram.me",
+      "checkboxrace.com",
+      "www.bellingcat.com",
+      "unpigeon.me",
+      "gameaboutsquares.com",
+      "netpreserveblog.wordpress.com",
+      "www.openstreetmap.org",
+      "lab.nationalmedals.org",
+      "web.archive.org",
+      "littlealchemy2.com",
+      "stellarium-web.org"
+    ],
+    "acceptance": {
+      "requiredDomains": [
+        "weavesilk.com",
+        "www.desmos.com",
+        "stellarium-web.org"
+      ],
+      "seenRequiredDomains": [
+        "weavesilk.com",
+        "www.desmos.com",
+        "stellarium-web.org"
+      ],
+      "missingRequiredDomains": [],
+      "clicksUsed": 27,
+      "maxNextClicks": 64,
+      "verifiedCount": 3,
+      "passed": true
+    },
+    "consoleEvents": [
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'."
+      },
+      {
+        "type": "warning",
+        "text": " is not a valid value for uspDnsText"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "warning",
+        "text": "CMP pop-up will not be shown as storage is not accessible"
+      },
+      {
+        "type": "warning",
+        "text": "Google basic consent is not applicable."
+      },
+      {
+        "type": "warning",
+        "text": "No available adapters."
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "requestStorageAccess: Refused to execute request. The document is sandboxed, and the 'allow-storage-access-by-user-activation' keyword is not set."
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 403 ()"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 403 ()"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 400 ()"
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: accelerometer is not allowed in this document."
+      },
+      {
+        "type": "warning",
+        "text": "The deviceorientation events are blocked by permissions policy. See https://github.com/w3c/webappsec-permissions-policy/blob/master/features.md#sensor-features"
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: accelerometer is not allowed in this document."
+      },
+      {
+        "type": "warning",
+        "text": "The devicemotion events are blocked by permissions policy. See https://github.com/w3c/webappsec-permissions-policy/blob/master/features.md#sensor-features"
+      },
+      {
+        "type": "warning",
+        "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+      },
+      {
+        "type": "warning",
+        "text": "[.WebGL-0x3d6400ac2400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+      },
+      {
+        "type": "warning",
+        "text": "[.WebGL-0x3d6400ac2400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+      },
+      {
+        "type": "warning",
+        "text": "[.WebGL-0x3d6400ac2400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+      },
+      {
+        "type": "warning",
+        "text": "[.WebGL-0x3d6400ac2400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 403 ()"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()"
+      },
+      {
+        "type": "warning",
+        "text": "No available adapters."
+      },
+      {
+        "type": "warning",
+        "text": "No available adapters."
+      },
+      {
+        "type": "warning",
+        "text": "No available adapters."
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 403 ()"
+      },
+      {
+        "type": "error",
+        "text": "There was an error setting cookie `_pk_ref.51.c827`. Please check domain and path."
+      },
+      {
+        "type": "error",
+        "text": "There was an error setting cookie `_pk_id.51.c827`. Please check domain and path."
+      },
+      {
+        "type": "error",
+        "text": "There was an error setting cookie `_pk_ses.51.c827`. Please check domain and path."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'shared-storage'."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'shared-storage-select-url'."
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: focus-without-user-activation is not allowed in this document."
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: focus-without-user-activation is not allowed in this document."
+      },
+      {
+        "type": "warning",
+        "text": "Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://www.desmos.com') does not match the recipient window's origin ('http://127.0.0.1:43124')."
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: focus-without-user-activation is not allowed in this document."
+      },
+      {
+        "type": "error",
+        "text": "Mixed Content: The page at 'https://pangram.me/en' was loaded over HTTPS, but requested an insecure frame 'http://developers.google.com/#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefre"
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: unload is not allowed in this document."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'shared-storage'."
+      },
+      {
+        "type": "warning",
+        "text": "Error with Permissions-Policy header: Unrecognized feature: 'shared-storage-select-url'."
+      },
+      {
+        "type": "error",
+        "text": "Framing 'https://www.bellingcat.com/' violates the following report-only Content Security Policy directive: \"frame-ancestors 'none'\". The violation has been logged, but no further action has been taken.\n"
+      },
+      {
+        "type": "warning",
+        "text": "Unrecognized feature: 'web-share'."
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Framing 'https://ukraine.bellingcat.com/' violates the following report-only Content Security Policy directive: \"frame-ancestors 'none'\". The violation has been logged, but no further action has been taken.\n"
+      },
+      {
+        "type": "error",
+        "text": "Framing 'https://ukraine.bellingcat.com/' violates the following report-only Content Security Policy directive: \"frame-ancestors 'none'\". The violation has been logged, but no further action has been taken.\n"
+      },
+      {
+        "type": "error",
+        "text": "Error: <svg> attribute height: Expected length, \"auto\"."
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+      },
+      {
+        "type": "warning",
+        "text": "No available adapters."
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: accelerometer is not allowed in this document."
+      },
+      {
+        "type": "warning",
+        "text": "The deviceorientation events are blocked by permissions policy. See https://github.com/w3c/webappsec-permissions-policy/blob/master/features.md#sensor-features"
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: unload is not allowed in this document."
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: focus-without-user-activation is not allowed in this document."
+      },
+      {
+        "type": "error",
+        "text": "Permissions policy violation: Geolocation access has been blocked because of a permissions policy applied to the current document. See https://crbug.com/414348233 for more details."
+      }
+    ]
+  }
+}

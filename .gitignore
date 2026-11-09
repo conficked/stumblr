@@ -1,0 +1,45 @@
+
+/build
+/coverage
+/data/community-suggestions.json
+/data/*.sqlite*
+# debug
+# dependencies
+.DS_Store
+.env*
+# env files (can opt-in for committing if needed)
+# local unpack scratch
+# misc
+/.next/
+next-env.d.ts
+# next.js
+/node_modules
+npm-debug.log*
+/out/
+*.pem
+/playwright-report
+.pnp.*
+/.pnp
+.pnpm-debug.log*
+# private VM suggestion queue (runtime durable; do not publish contents)
+# production
+__pycache__/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+/stumblr-brand-assets/
+/stumblr-brand-input/
+# testing
+/test-results
+*.tsbuildinfo
+/verification/
+render-private-prep-details.md
+render-private-prep-result.txt
+# typescript
+# vercel
+.vercel
+.yarn/*
+yarn-debug.log*
+yarn-error.log*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions

@@ -1,0 +1,1542 @@
+[
+  {
+    "id": "checkboxrace-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://checkboxrace.com/",
+    "canonical_url": "https://checkboxrace.com/",
+    "domain": "checkboxrace.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://checkboxrace.com/",
+      "elapsed_ms": 62,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Netlify",
+      "title_hint": "Checkbox Race!",
+      "error": null
+    }
+  },
+  {
+    "id": "onesquareminesweeper-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://onesquareminesweeper.com/",
+    "canonical_url": "https://onesquareminesweeper.com/",
+    "domain": "onesquareminesweeper.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://onesquareminesweeper.com/",
+      "elapsed_ms": 22,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Netlify",
+      "title_hint": "One Square Minesweeper",
+      "error": null
+    }
+  },
+  {
+    "id": "puginarug-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://puginarug.com/",
+    "canonical_url": "https://puginarug.com/",
+    "domain": "puginarug.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://puginarug.com/",
+      "elapsed_ms": 70,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Netlify",
+      "title_hint": "The Pug In A Rug",
+      "error": null
+    }
+  },
+  {
+    "id": "longdogechallenge-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://longdogechallenge.com/",
+    "canonical_url": "https://longdogechallenge.com/",
+    "domain": "longdogechallenge.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://longdogechallenge.com/",
+      "elapsed_ms": 64,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Netlify",
+      "title_hint": "The Long Doge Challenge",
+      "error": null
+    }
+  },
+  {
+    "id": "mondrianandme-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://mondrianandme.com/",
+    "canonical_url": "https://mondrianandme.com/",
+    "domain": "mondrianandme.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://mondrianandme.com/",
+      "elapsed_ms": 69,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Netlify",
+      "title_hint": "Mondrian And Me",
+      "error": null
+    }
+  },
+  {
+    "id": "potatoortomato-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://potatoortomato.com/",
+    "canonical_url": "https://potatoortomato.com/",
+    "domain": "potatoortomato.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://potatoortomato.com/",
+      "elapsed_ms": 65,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": "Potato or Tomato",
+      "error": null
+    }
+  },
+  {
+    "id": "heeeeeeeey-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://heeeeeeeey.com/",
+    "canonical_url": "https://heeeeeeeey.com/",
+    "domain": "heeeeeeeey.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://heeeeeeeey.com/",
+      "elapsed_ms": 20,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": null,
+      "title_hint": "HEEEEEEEEEEEEEEY!",
+      "error": null
+    }
+  },
+  {
+    "id": "thepigeon-org-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://thepigeon.org/",
+    "canonical_url": "https://thepigeon.org/",
+    "domain": "thepigeon.org",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "maps",
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://thepigeon.org/",
+      "elapsed_ms": 20,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": null,
+      "title_hint": null,
+      "error": null
+    }
+  },
+  {
+    "id": "cat-bounce-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://cat-bounce.com/",
+    "canonical_url": "https://cat-bounce.com/",
+    "domain": "cat-bounce.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://cat-bounce.com/",
+      "elapsed_ms": 39,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Apache",
+      "title_hint": "CAT BOUNCE!",
+      "error": null
+    }
+  },
+  {
+    "id": "www-rainymood-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://www.rainymood.com",
+    "canonical_url": "https://www.rainymood.com/",
+    "domain": "www.rainymood.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://www.rainymood.com/",
+      "elapsed_ms": 175,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": "Rainy Mood &#8226; #1 Rain Sounds &#8226; Sleep &amp; Study",
+      "error": null
+    }
+  },
+  {
+    "id": "css3-mediaqueries-js-googlecode-com-embedded-url",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js",
+    "canonical_url": "https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js",
+    "domain": "css3-mediaqueries-js.googlecode.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": false,
+      "status": 404,
+      "final_url": "https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js",
+      "elapsed_ms": 114,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": null,
+      "title_hint": null,
+      "error": "http_error:404"
+    }
+  },
+  {
+    "id": "sliding-toys-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://sliding.toys/mystic-square/8-puzzle/",
+    "canonical_url": "https://sliding.toys/mystic-square/8-puzzle",
+    "domain": "sliding.toys",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://sliding.toys/mystic-square/8-puzzle/",
+      "elapsed_ms": 83,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Netlify",
+      "title_hint": "8 puzzle | Sliding Toys",
+      "error": null
+    }
+  },
+  {
+    "id": "pangram-me-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://pangram.me/en",
+    "canonical_url": "https://pangram.me/en",
+    "domain": "pangram.me",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://pangram.me/en",
+      "elapsed_ms": 362,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Apache",
+      "title_hint": "Pangram.me",
+      "error": null
+    }
+  },
+  {
+    "id": "projects-playables-net-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://projects.playables.net/pointer/",
+    "canonical_url": "https://projects.playables.net/pointer",
+    "domain": "projects.playables.net",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://pointer.playables.net/",
+      "elapsed_ms": 733,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": null,
+      "title_hint": "Pointer",
+      "error": null
+    }
+  },
+  {
+    "id": "aidn-jp-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://aidn.jp/wowa/",
+    "canonical_url": "https://aidn.jp/wowa",
+    "domain": "aidn.jp",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://a.aidn.jp/wowa/",
+      "elapsed_ms": 724,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "nginx",
+      "title_hint": "Wonder of Wonder Art",
+      "error": null
+    }
+  },
+  {
+    "id": "everysiteknows-ferrucc-io-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://everysiteknows.ferrucc.io",
+    "canonical_url": "https://everysiteknows.ferrucc.io/",
+    "domain": "everysiteknows.ferrucc.io",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://everysiteknows.ferrucc.io/",
+      "elapsed_ms": 85,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": "What Every Site Knows About You",
+      "error": null
+    }
+  },
+  {
+    "id": "lab-nationalmedals-org-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://lab.nationalmedals.org/gravity/",
+    "canonical_url": "https://lab.nationalmedals.org/gravity",
+    "domain": "lab.nationalmedals.org",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "science",
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://lab.nationalmedals.org/gravity.php",
+      "elapsed_ms": 187,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": "NSTMF Gravity",
+      "error": null
+    }
+  },
+  {
+    "id": "igfonts-io-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://igfonts.io",
+    "canonical_url": "https://igfonts.io/",
+    "domain": "igfonts.io",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://igfonts.io/",
+      "elapsed_ms": 40,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": "Instagram Fonts Generator (\ud835\udcec\ud835\udcf8\ud835\udcf9\ud835\udd02 \ud835\udd52\ud835\udd5f\ud835\udd55 \ud835\udcc5\ud835\udcb6\ud835\udcc8\ud835\udcc9\ud835\udc52) \u2015 IGFonts.io",
+      "error": null
+    }
+  },
+  {
+    "id": "www-freesunalsorises-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://www.freesunalsorises.com",
+    "canonical_url": "https://www.freesunalsorises.com/",
+    "domain": "www.freesunalsorises.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://www.freesunalsorises.com/",
+      "elapsed_ms": 206,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": "The Sun Also Rises - Free",
+      "error": null
+    }
+  },
+  {
+    "id": "benisland-neocities-org-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://benisland.neocities.org/petpet/",
+    "canonical_url": "https://benisland.neocities.org/petpet",
+    "domain": "benisland.neocities.org",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://benisland.neocities.org/petpet/",
+      "elapsed_ms": 69,
+      "x_frame_options": null,
+      "content_security_policy": "upgrade-insecure-requests; default-src 'unsafe-inline' 'unsafe-eval' 'self' data: blob: *",
+      "server": "neocities",
+      "title_hint": "petpet",
+      "error": null
+    }
+  },
+  {
+    "id": "tjukanovt-github-io-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://tjukanovt.github.io/notable-people",
+    "canonical_url": "https://tjukanovt.github.io/notable-people",
+    "domain": "tjukanovt.github.io",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://tjukanovt.github.io/notable-people",
+      "elapsed_ms": 38,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "GitHub.com",
+      "title_hint": "Notable people",
+      "error": null
+    }
+  },
+  {
+    "id": "demo-marpi-pl-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://demo.marpi.pl/eyes/",
+    "canonical_url": "https://demo.marpi.pl/eyes",
+    "domain": "demo.marpi.pl",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://demo.marpi.pl/eyes/",
+      "elapsed_ms": 431,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Apache",
+      "title_hint": "eyes",
+      "error": null
+    }
+  },
+  {
+    "id": "unpigeon-me-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://unpigeon.me/",
+    "canonical_url": "https://unpigeon.me/",
+    "domain": "unpigeon.me",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "maps",
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://unpigeon.me/",
+      "elapsed_ms": 345,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": "Discover your new ambition",
+      "error": null
+    }
+  },
+  {
+    "id": "whataretheodds-vercel-app-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://whataretheodds.vercel.app/",
+    "canonical_url": "https://whataretheodds.vercel.app/",
+    "domain": "whataretheodds.vercel.app",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://whataretheodds.vercel.app/",
+      "elapsed_ms": 34,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Vercel",
+      "title_hint": "What are the odds? Play the guessing game!",
+      "error": null
+    }
+  },
+  {
+    "id": "www-mondays-child-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://www.mondays-child.com",
+    "canonical_url": "https://www.mondays-child.com/",
+    "domain": "www.mondays-child.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://www.mondays-child.com/",
+      "elapsed_ms": 214,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": "What Day of the Week Was I Born On? - Monday\u2019s Child",
+      "error": null
+    }
+  },
+  {
+    "id": "vole-wtf-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://vole.wtf/penga/",
+    "canonical_url": "https://vole.wtf/penga",
+    "domain": "vole.wtf",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://vole.wtf/penga/",
+      "elapsed_ms": 169,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": "Penga \ud83d\udc27\ud83e\uddca penguin physics game",
+      "error": null
+    }
+  },
+  {
+    "id": "stonet2000-github-io-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://stonet2000.github.io/Cut-Bread/",
+    "canonical_url": "https://stonet2000.github.io/Cut-Bread",
+    "domain": "stonet2000.github.io",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://stonet2000.github.io/Cut-Bread/",
+      "elapsed_ms": 86,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "GitHub.com",
+      "title_hint": "Cut Bread!",
+      "error": null
+    }
+  },
+  {
+    "id": "jspaint-app-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://jspaint.app",
+    "canonical_url": "https://jspaint.app/",
+    "domain": "jspaint.app",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://jspaint.app/",
+      "elapsed_ms": 77,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "GitHub.com",
+      "title_hint": "JS Paint",
+      "error": null
+    }
+  },
+  {
+    "id": "www-guessthepin-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://www.guessthepin.com",
+    "canonical_url": "https://www.guessthepin.com/",
+    "domain": "www.guessthepin.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://www.guessthepin.com/",
+      "elapsed_ms": 486,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": "Guess the PIN",
+      "error": null
+    }
+  },
+  {
+    "id": "babadum-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://babadum.com",
+    "canonical_url": "https://babadum.com/",
+    "domain": "babadum.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://babadum.com/",
+      "elapsed_ms": 434,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "IdeaWebServer/6.4.2",
+      "title_hint": "Ba Ba Dum",
+      "error": null
+    }
+  },
+  {
+    "id": "neal-fun-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://neal.fun/lets-settle-this/",
+    "canonical_url": "https://neal.fun/lets-settle-this",
+    "domain": "neal.fun",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": false,
+      "status": 403,
+      "final_url": "https://neal.fun/lets-settle-this",
+      "elapsed_ms": 48,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": "default-src 'none'; script-src 'nonce-m2lz48Dig1PGLPF12Nzjb8' 'unsafe-eval' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; img-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com blob:; child-src 'self' https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri 'self'",
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": "http_error:403"
+    }
+  },
+  {
+    "id": "projects-playables-net-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://projects.playables.net/ooo/",
+    "canonical_url": "https://projects.playables.net/ooo",
+    "domain": "projects.playables.net",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://ooo.playables.net/",
+      "elapsed_ms": 726,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": null,
+      "title_hint": "Out Of Order",
+      "error": null
+    }
+  },
+  {
+    "id": "gameaboutsquares-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://gameaboutsquares.com",
+    "canonical_url": "https://gameaboutsquares.com/",
+    "domain": "gameaboutsquares.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://gameaboutsquares.com/",
+      "elapsed_ms": 434,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "nginx/1.22.1",
+      "title_hint": "Game about Squares",
+      "error": null
+    }
+  },
+  {
+    "id": "neal-fun-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://neal.fun/space-elevator/",
+    "canonical_url": "https://neal.fun/space-elevator",
+    "domain": "neal.fun",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": false,
+      "status": 403,
+      "final_url": "https://neal.fun/space-elevator",
+      "elapsed_ms": 37,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": "default-src 'none'; script-src 'nonce-FBbQpnNVfnCeNNp6tfsKYv' 'unsafe-eval' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; img-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com blob:; child-src 'self' https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri 'self'",
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": "http_error:403"
+    }
+  },
+  {
+    "id": "wordwarp-netlify-app-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://wordwarp.netlify.app/",
+    "canonical_url": "https://wordwarp.netlify.app/",
+    "domain": "wordwarp.netlify.app",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://wordwarp.netlify.app/",
+      "elapsed_ms": 456,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Netlify",
+      "title_hint": "WordWarp",
+      "error": null
+    }
+  },
+  {
+    "id": "theremin-site-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://theremin.site",
+    "canonical_url": "https://theremin.site/",
+    "domain": "theremin.site",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://theremin.site/",
+      "elapsed_ms": 112,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Netlify",
+      "title_hint": "Interactive Virtual Theremin",
+      "error": null
+    }
+  },
+  {
+    "id": "morsecode-world-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://morsecode.world/international/translator.html",
+    "canonical_url": "https://morsecode.world/international/translator.html",
+    "domain": "morsecode.world",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://morsecode.world/international/translator.html",
+      "elapsed_ms": 72,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": "Morse Code Translator | Morse Code World",
+      "error": null
+    }
+  },
+  {
+    "id": "whereisthesloth-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://whereisthesloth.com",
+    "canonical_url": "https://whereisthesloth.com/",
+    "domain": "whereisthesloth.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://whereisthesloth.com/",
+      "elapsed_ms": 309,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "nginx/1.10.3 (Ubuntu)",
+      "title_hint": "Where is the Sloth?",
+      "error": null
+    }
+  },
+  {
+    "id": "humanbenchmark-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://humanbenchmark.com/",
+    "canonical_url": "https://humanbenchmark.com/",
+    "domain": "humanbenchmark.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://humanbenchmark.com/",
+      "elapsed_ms": 20,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Netlify",
+      "title_hint": "Human Benchmark",
+      "error": null
+    }
+  },
+  {
+    "id": "science-nasa-gov-apod-2026-november-7-de-gerlache-kocher-massif",
+    "source_id": "nasa-breaking-rss",
+    "source_url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "APOD: 2026 November 7 \u2013 De Gerlache-Kocher Massif",
+    "raw_url": "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif/",
+    "canonical_url": "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif",
+    "domain": "science.nasa.gov",
+    "topic_hint": "science",
+    "inferred_topics": [
+      "art",
+      "science"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif/",
+      "elapsed_ms": 46,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": null,
+      "server": "nginx",
+      "title_hint": "APOD: 2026 November 7 \u2013 De Gerlache-Kocher Massif - NASA Science",
+      "error": null
+    }
+  },
+  {
+    "id": "science-nasa-gov-supercomputing-tech-demo-schedule",
+    "source_id": "nasa-breaking-rss",
+    "source_url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Supercomputing Tech Demo Schedule",
+    "raw_url": "https://science.nasa.gov/earth/supercomputing-tech-demo-schedule/",
+    "canonical_url": "https://science.nasa.gov/earth/supercomputing-tech-demo-schedule",
+    "domain": "science.nasa.gov",
+    "topic_hint": "science",
+    "inferred_topics": [
+      "art",
+      "science",
+      "maps"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://science.nasa.gov/earth/supercomputing-tech-demo-schedule/",
+      "elapsed_ms": 36,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": null,
+      "server": "nginx",
+      "title_hint": "Supercomputing Tech Demo Schedule - NASA Science",
+      "error": null
+    }
+  },
+  {
+    "id": "science-nasa-gov-apod-2026-november-6-a-farewell-to-swift",
+    "source_id": "nasa-breaking-rss",
+    "source_url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "APOD: 2026 November 6 \u2013 A Farewell to Swift",
+    "raw_url": "https://science.nasa.gov/image-article/apod-2026-november-6-a-farewell-to-swift/",
+    "canonical_url": "https://science.nasa.gov/image-article/apod-2026-november-6-a-farewell-to-swift",
+    "domain": "science.nasa.gov",
+    "topic_hint": "science",
+    "inferred_topics": [
+      "art",
+      "science"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://science.nasa.gov/image-article/apod-2026-november-6-a-farewell-to-swift/",
+      "elapsed_ms": 36,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": null,
+      "server": "nginx",
+      "title_hint": "APOD: 2026 November 6 - A Farewell to Swift - NASA Science",
+      "error": null
+    }
+  },
+  {
+    "id": "science-nasa-gov-taking-a-gander-at-utah-s-goosenecks",
+    "source_id": "nasa-breaking-rss",
+    "source_url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Taking a Gander at Utah\u2019s Goosenecks",
+    "raw_url": "https://science.nasa.gov/earth/earth-observatory/taking-a-gander-at-utahs-goosenecks/",
+    "canonical_url": "https://science.nasa.gov/earth/earth-observatory/taking-a-gander-at-utahs-goosenecks",
+    "domain": "science.nasa.gov",
+    "topic_hint": "science",
+    "inferred_topics": [
+      "art",
+      "science",
+      "maps"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://science.nasa.gov/earth/earth-observatory/taking-a-gander-at-utahs-goosenecks/",
+      "elapsed_ms": 33,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": null,
+      "server": "nginx",
+      "title_hint": "Taking a Gander at Utah\u2019s Goosenecks - NASA Science",
+      "error": null
+    }
+  },
+  {
+    "id": "medium-com-medium",
+    "source_id": "awesome-web-design",
+    "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Medium",
+    "raw_url": "https://medium.com/tag/web-design",
+    "canonical_url": "https://medium.com/tag/web-design",
+    "domain": "medium.com",
+    "topic_hint": "culture",
+    "inferred_topics": [
+      "art",
+      "culture"
+    ],
+    "screening": {
+      "available": false,
+      "status": 403,
+      "final_url": "https://medium.com/tag/web-design",
+      "elapsed_ms": 22,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": "default-src 'none'; script-src 'nonce-U773rdaupKUJ6xDtXU4Mk4' 'unsafe-eval' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; img-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com blob:; child-src 'self' https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri 'self'",
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": "http_error:403"
+    }
+  },
+  {
+    "id": "www-reddit-com-reddit-web-design",
+    "source_id": "awesome-web-design",
+    "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Reddit Web Design",
+    "raw_url": "https://www.reddit.com/r/web_design/",
+    "canonical_url": "https://www.reddit.com/r/web_design",
+    "domain": "www.reddit.com",
+    "topic_hint": "culture",
+    "inferred_topics": [
+      "art",
+      "culture"
+    ],
+    "screening": {
+      "available": false,
+      "status": 403,
+      "final_url": "https://www.reddit.com/r/web_design",
+      "elapsed_ms": 48,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": null,
+      "server": "snooserv",
+      "title_hint": null,
+      "error": "http_error:403"
+    }
+  },
+  {
+    "id": "typeanything-io-type-anything",
+    "source_id": "awesome-web-design",
+    "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Type Anything",
+    "raw_url": "https://typeanything.io/",
+    "canonical_url": "https://typeanything.io/",
+    "domain": "typeanything.io",
+    "topic_hint": "culture",
+    "inferred_topics": [
+      "art",
+      "culture"
+    ],
+    "screening": {
+      "available": false,
+      "status": 401,
+      "final_url": "https://typeanything.io/",
+      "elapsed_ms": 523,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": null,
+      "title_hint": null,
+      "error": "http_error:401"
+    }
+  },
+  {
+    "id": "vimeo-com-css-for-software-engineers-for-css-developers",
+    "source_id": "must-watch-css",
+    "source_url": "https://raw.githubusercontent.com/AllThingsSmitty/must-watch-css/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**CSS for Software Engineers for CSS Developers**",
+    "raw_url": "https://vimeo.com/140641366",
+    "canonical_url": "https://vimeo.com/140641366",
+    "domain": "vimeo.com",
+    "topic_hint": "art",
+    "inferred_topics": [
+      "art"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://vimeo.com/140641366",
+      "elapsed_ms": 241,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": "SmashingConf Freiburg: CSS For Software Engineers For CSS Developers",
+      "error": null
+    }
+  },
+  {
+    "id": "vimeo-com-what-is-a-css-framework-anyway",
+    "source_id": "must-watch-css",
+    "source_url": "https://raw.githubusercontent.com/AllThingsSmitty/must-watch-css/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**What Is a CSS Framework Anyway?**",
+    "raw_url": "https://vimeo.com/95734680",
+    "canonical_url": "https://vimeo.com/95734680",
+    "domain": "vimeo.com",
+    "topic_hint": "art",
+    "inferred_topics": [
+      "art"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://vimeo.com/95734680",
+      "elapsed_ms": 183,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": null
+    }
+  },
+  {
+    "id": "vimeo-com-css-is-a-mess",
+    "source_id": "must-watch-css",
+    "source_url": "https://raw.githubusercontent.com/AllThingsSmitty/must-watch-css/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**CSS Is a Mess**",
+    "raw_url": "https://vimeo.com/99877232",
+    "canonical_url": "https://vimeo.com/99877232",
+    "domain": "vimeo.com",
+    "topic_hint": "art",
+    "inferred_topics": [
+      "art"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://vimeo.com/99877232",
+      "elapsed_ms": 210,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": null
+    }
+  },
+  {
+    "id": "vimeo-com-slaying-the-dragon-how-to-refactor-css-for-maintainability",
+    "source_id": "must-watch-css",
+    "source_url": "https://raw.githubusercontent.com/AllThingsSmitty/must-watch-css/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Slaying the Dragon: How to Refactor CSS for Maintainability**",
+    "raw_url": "https://vimeo.com/100501790",
+    "canonical_url": "https://vimeo.com/100501790",
+    "domain": "vimeo.com",
+    "topic_hint": "art",
+    "inferred_topics": [
+      "art"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://vimeo.com/100501790",
+      "elapsed_ms": 167,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": null
+    }
+  },
+  {
+    "id": "support-archive-it-org-glossary-of-archive-it-and-web-archiving-terms",
+    "source_id": "awesome-archives",
+    "source_url": "https://raw.githubusercontent.com/iipc/awesome-web-archiving/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Glossary of Archive-It and Web Archiving Terms",
+    "raw_url": "https://support.archive-it.org/hc/en-us/articles/208111686-Glossary-of-Archive-It-and-Web-Archiving-Terms",
+    "canonical_url": "https://support.archive-it.org/hc/en-us/articles/208111686-Glossary-of-Archive-It-and-Web-Archiving-Terms",
+    "domain": "support.archive-it.org",
+    "topic_hint": "archives",
+    "inferred_topics": [
+      "art",
+      "archives"
+    ],
+    "screening": {
+      "available": false,
+      "status": 403,
+      "final_url": "https://support.archive-it.org/hc/en-us/articles/208111686-Glossary-of-Archive-It-and-Web-Archiving-Terms",
+      "elapsed_ms": 130,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": "default-src 'none'; script-src 'nonce-vpweA1iUtwr4agiwZauxAt' 'unsafe-eval' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; img-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com blob:; child-src 'self' https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri 'self'",
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": "http_error:403"
+    }
+  },
+  {
+    "id": "web-archive-org-archived-version-from-the-stanford-libraries",
+    "source_id": "awesome-archives",
+    "source_url": "https://raw.githubusercontent.com/iipc/awesome-web-archiving/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Archived version from the Stanford Libraries",
+    "raw_url": "https://web.archive.org/web/20230728211501/https://library.stanford.edu/projects/web-archiving/archivability",
+    "canonical_url": "https://web.archive.org/web/20230728211501/https://library.stanford.edu/projects/web-archiving/archivability",
+    "domain": "web.archive.org",
+    "topic_hint": "archives",
+    "inferred_topics": [
+      "archives"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://web.archive.org/web/20230728211501/https://library.stanford.edu/projects/web-archiving/archivability",
+      "elapsed_ms": 1024,
+      "x_frame_options": null,
+      "content_security_policy": "default-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob: archive.org web.archive.org web-static.archive.org wayback-api.archive.org athena.archive.org analytics.archive.org pragma.archivelab.org wwwb-events.archive.org",
+      "server": "nginx",
+      "title_hint": "Archivability | Stanford Libraries",
+      "error": null
+    }
+  },
+  {
+    "id": "www-scratchapixel-com-c-rasterization-a-practical-implementation",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**C++**: _Rasterization: a Practical Implementation_",
+    "raw_url": "https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/overview-rasterization-algorithm",
+    "canonical_url": "https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/overview-rasterization-algorithm",
+    "domain": "www.scratchapixel.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "http://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/overview-rasterization-algorithm.html",
+      "elapsed_ms": 243,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": null,
+      "server": "openresty/1.31.1.1",
+      "title_hint": "An Overview of the Rasterization Algorithm",
+      "error": null
+    }
+  },
+  {
+    "id": "beta-observablehq-com-ats-functional-blockchain",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**ATS**: _Functional Blockchain_",
+    "raw_url": "https://beta.observablehq.com/@galletti94/functional-blockchain",
+    "canonical_url": "https://beta.observablehq.com/@galletti94/functional-blockchain",
+    "domain": "beta.observablehq.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ],
+    "screening": {
+      "available": false,
+      "status": 429,
+      "final_url": "https://beta.observablehq.com/@galletti94/functional-blockchain",
+      "elapsed_ms": 118,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "Vercel",
+      "title_hint": null,
+      "error": "http_error:429"
+    }
+  },
+  {
+    "id": "medium-com-crystal-write-your-own-blockchain-and-pow-algorithm-using-crystal",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Crystal**: _Write your own blockchain and PoW algorithm using Crystal_",
+    "raw_url": "https://medium.com/@bradford_hamilton/write-your-own-blockchain-and-pow-algorithm-using-crystal-d53d5d9d0c52",
+    "canonical_url": "https://medium.com/@bradford_hamilton/write-your-own-blockchain-and-pow-algorithm-using-crystal-d53d5d9d0c52",
+    "domain": "medium.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ],
+    "screening": {
+      "available": false,
+      "status": 403,
+      "final_url": "https://medium.com/@bradford_hamilton/write-your-own-blockchain-and-pow-algorithm-using-crystal-d53d5d9d0c52",
+      "elapsed_ms": 29,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": "default-src 'none'; script-src 'nonce-RjObw1JPDKgscOVnsB7TP5' 'unsafe-eval' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; img-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com blob:; child-src 'self' https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri 'self'",
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": "http_error:403"
+    }
+  },
+  {
+    "id": "medium-com-go-code-your-own-blockchain-in-less-than-200-lines-of-go",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Go**: _Code your own blockchain in less than 200 lines of Go_",
+    "raw_url": "https://medium.com/@mycoralhealth/code-your-own-blockchain-in-less-than-200-lines-of-go-e296282bcffc",
+    "canonical_url": "https://medium.com/@mycoralhealth/code-your-own-blockchain-in-less-than-200-lines-of-go-e296282bcffc",
+    "domain": "medium.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ],
+    "screening": {
+      "available": false,
+      "status": 403,
+      "final_url": "https://medium.com/@mycoralhealth/code-your-own-blockchain-in-less-than-200-lines-of-go-e296282bcffc",
+      "elapsed_ms": 31,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": "default-src 'none'; script-src 'nonce-v770gm4I3xnNUZgpp7ox2N' 'unsafe-eval' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; img-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com blob:; child-src 'self' https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri 'self'",
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": "http_error:403"
+    }
+  },
+  {
+    "id": "medium-com-java-creating-your-first-blockchain-with-java",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Java**: _Creating Your First Blockchain with Java_",
+    "raw_url": "https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa",
+    "canonical_url": "https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa",
+    "domain": "medium.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ],
+    "screening": {
+      "available": false,
+      "status": 403,
+      "final_url": "https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa",
+      "elapsed_ms": 30,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": "default-src 'none'; script-src 'nonce-prde9vEnUNOg1BXA1xc1PV' 'unsafe-eval' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; img-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com blob:; child-src 'self' https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri 'self'",
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": "http_error:403"
+    }
+  },
+  {
+    "id": "medium-com-javascript-learn-build-a-javascript-blockchain",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**JavaScript**: _Learn & Build a JavaScript Blockchain_",
+    "raw_url": "https://medium.com/digital-alchemy-holdings/learn-build-a-javascript-blockchain-part-1-ca61c285821e",
+    "canonical_url": "https://medium.com/digital-alchemy-holdings/learn-build-a-javascript-blockchain-part-1-ca61c285821e",
+    "domain": "medium.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "art",
+      "education"
+    ],
+    "screening": {
+      "available": false,
+      "status": 403,
+      "final_url": "https://medium.com/digital-alchemy-holdings/learn-build-a-javascript-blockchain-part-1-ca61c285821e",
+      "elapsed_ms": 31,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": "default-src 'none'; script-src 'nonce-Ib82G6vLfEDxAz5Rg2J8v9' 'unsafe-eval' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; img-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com blob:; child-src 'self' https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri 'self'",
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": "http_error:403"
+    }
+  },
+  {
+    "id": "medium-com-kotlin-let-s-implement-a-cryptocurrency-in-kotlin",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Kotlin**: _Let\u2019s implement a cryptocurrency in Kotlin_",
+    "raw_url": "https://medium.com/@vasilyf/lets-implement-a-cryptocurrency-in-kotlin-part-1-blockchain-8704069f8580",
+    "canonical_url": "https://medium.com/@vasilyf/lets-implement-a-cryptocurrency-in-kotlin-part-1-blockchain-8704069f8580",
+    "domain": "medium.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "art",
+      "education"
+    ],
+    "screening": {
+      "available": false,
+      "status": 403,
+      "final_url": "https://medium.com/@vasilyf/lets-implement-a-cryptocurrency-in-kotlin-part-1-blockchain-8704069f8580",
+      "elapsed_ms": 24,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": "default-src 'none'; script-src 'nonce-NgTwBA44t5LCQqYUxHFVqp' 'unsafe-eval' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; img-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com blob:; child-src 'self' https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri 'self'",
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": "http_error:403"
+    }
+  },
+  {
+    "id": "hackernoon-com-python-learn-blockchains-by-building-one",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Python**: _Learn Blockchains by Building One_",
+    "raw_url": "https://hackernoon.com/learn-blockchains-by-building-one-117428612f46",
+    "canonical_url": "https://hackernoon.com/learn-blockchains-by-building-one-117428612f46",
+    "domain": "hackernoon.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ],
+    "screening": {
+      "available": true,
+      "status": 200,
+      "final_url": "https://hackernoon.com/learn-blockchains-by-building-one-117428612f46",
+      "elapsed_ms": 294,
+      "x_frame_options": null,
+      "content_security_policy": null,
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": null
+    }
+  },
+  {
+    "id": "medium-com-python-let-s-build-the-tiniest-blockchain",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Python**: _Let\u2019s Build the Tiniest Blockchain_",
+    "raw_url": "https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b",
+    "canonical_url": "https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b",
+    "domain": "medium.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ],
+    "screening": {
+      "available": false,
+      "status": 403,
+      "final_url": "https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b",
+      "elapsed_ms": 26,
+      "x_frame_options": "SAMEORIGIN",
+      "content_security_policy": "default-src 'none'; script-src 'nonce-zxz5x6BcJzqMDpcuHXTPEG' 'unsafe-eval' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; img-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com blob:; child-src 'self' https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri 'self'",
+      "server": "cloudflare",
+      "title_hint": null,
+      "error": "http_error:403"
+    }
+  }
+]

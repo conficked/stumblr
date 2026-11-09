@@ -1,0 +1,31 @@
+{
+  "roundel_silhouette_iou": 0.9961754225345791,
+  "white_monogram_iou": 0.9960366629194122,
+  "wordmark_silhouette_iou": 0.9840371186922421,
+  "source_symbol": [
+    1254,
+    1254
+  ],
+  "source_wordmark": [
+    1455,
+    724
+  ],
+  "symbol_viewbox": [
+    6.5,
+    10.0,
+    1225,
+    1225
+  ],
+  "wordmark_viewbox": [
+    8,
+    253,
+    1419,
+    204
+  ],
+  "orange": "#e6350b",
+  "source_wordmark_dot_median": [
+    217,
+    74,
+    39
+  ]
+}

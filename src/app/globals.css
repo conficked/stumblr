@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ebecef;
+  --foreground: #1e1f22;
+  --toolbar-bg: #2c2f33;
+  --toolbar-top: #1f2124;
+  --surface: #f8f8f9;
+  --surface-soft: #eef0f3;
+  --surface-frame: #ffffff;
+  --ui-border: #c7ccd4;
+  --ui-muted: #5d6674;
+  --text-main: #1f2329;
+  --cta: #e85b22;
+  --cta-hover: #cf4b17;
+  --focus-ring: #2a86ff;
+  --tag-art: #7e58c2;
+  --tag-science: #2673c4;
+  --tag-maps: #178f96;
+  --tag-music: #b45a1f;
+  --tag-games: #6e9c1f;
+  --tag-culture: #aa3f73;
+  --tag-education: #47757f;
+  --tag-nature: #3c8c4c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.4;
+}
+
+* {
+  scrollbar-color: #9ea6b2 #e0e4ea;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

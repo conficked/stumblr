@@ -1,0 +1,45 @@
+[
+  {
+    "id": "useless-web-sites-index",
+    "kind": "feed",
+    "url": "https://theuselessweb.com/sites/index.xml",
+    "topic_hint": "games"
+  },
+  {
+    "id": "useless-web-sites-page",
+    "kind": "html",
+    "url": "https://theuselessweb.com/sites/",
+    "topic_hint": "games"
+  },
+  {
+    "id": "bored-button-random",
+    "kind": "random_html",
+    "url": "https://www.boredbutton.com/random",
+    "topic_hint": "games",
+    "sample_rounds": 36
+  },
+  {
+    "id": "open-culture-rss",
+    "kind": "feed",
+    "url": "https://www.openculture.com/feed",
+    "topic_hint": "culture"
+  },
+  {
+    "id": "nasa-breaking-rss",
+    "kind": "feed",
+    "url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+    "topic_hint": "science"
+  },
+  {
+    "id": "public-domain-review-rss",
+    "kind": "feed",
+    "url": "https://publicdomainreview.org/feed/",
+    "topic_hint": "archives"
+  },
+  {
+    "id": "wikimedia-glam-rss",
+    "kind": "feed",
+    "url": "https://diff.wikimedia.org/feed/",
+    "topic_hint": "archives"
+  }
+]

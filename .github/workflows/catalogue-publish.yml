@@ -1,0 +1,29 @@
+name: catalogue-publish
+"on":
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+concurrency:
+  group: stumblr-reviewed-catalogue-publish
+  cancel-in-progress: false
+jobs:
+  publish-reviewed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Publish explicitly reviewed snapshot with short-lived workflow identity
+        uses: actions/github-script@v7
+        with:
+          script: |
+            if (context.ref !== 'refs/heads/main') throw new Error('main only');
+            const fs = require('fs');
+            const body = fs.readFileSync('docs/catalogue/reviewed-runtime.json', 'utf8');
+            const token = await core.getIDToken('https://stumblr.dev/catalogue-ingest');
+            const response = await fetch('https://stumblr.dev/api/catalogue/ingest', {method:'POST',headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},body});
+            const result = await response.json();
+            if (!response.ok || !result.ok) throw new Error(`Publication rejected: ${response.status}`);
+            core.info(JSON.stringify({revision:result.revision,imported:result.imported}));

@@ -1,0 +1,139 @@
+{
+  "checkedAt": "2026-11-08T14:14:27.661Z",
+  "baseUrl": "http://127.0.0.1:43124",
+  "fixture": {
+    "desktop": {
+      "pass": true,
+      "failures": [],
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 900
+        },
+        "iframe": {
+          "top": 215.390625,
+          "bottom": 854,
+          "height": 638.609375
+        },
+        "host": {
+          "top": 215.390625,
+          "bottom": 854,
+          "height": 638.609375
+        },
+        "footer": {
+          "top": 854,
+          "bottom": 887,
+          "height": 33
+        },
+        "dockTop": 0
+      },
+      "layoutMetrics": {
+        "iframeViewportRatio": 0.71,
+        "unusedBeyondFooter": 13,
+        "unusedToDock": null
+      },
+      "screenshot": "/opt/cursor/artifacts/proof-desktop-fixture-canvas.png"
+    },
+    "mobile": {
+      "pass": true,
+      "failures": [],
+      "layout": {
+        "viewport": {
+          "width": 400,
+          "height": 985
+        },
+        "iframe": {
+          "top": 109.5,
+          "bottom": 839,
+          "height": 729.5
+        },
+        "host": {
+          "top": 109.5,
+          "bottom": 839,
+          "height": 729.5
+        },
+        "footer": {
+          "top": 839,
+          "bottom": 888,
+          "height": 49
+        },
+        "dockTop": 920
+      },
+      "layoutMetrics": {
+        "iframeViewportRatio": 0.741,
+        "unusedBeyondFooter": 97,
+        "unusedToDock": 32
+      },
+      "screenshot": "/opt/cursor/artifacts/proof-mobile-fixture-canvas.png"
+    }
+  },
+  "externalDesmos": {
+    "desktop": {
+      "pass": true,
+      "failures": [],
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 900
+        },
+        "iframe": {
+          "top": 215.390625,
+          "bottom": 854,
+          "height": 638.609375
+        },
+        "host": {
+          "top": 215.390625,
+          "bottom": 854,
+          "height": 638.609375
+        },
+        "footer": {
+          "top": 854,
+          "bottom": 887,
+          "height": 33
+        },
+        "dockTop": 0
+      },
+      "layoutMetrics": {
+        "iframeViewportRatio": 0.71,
+        "unusedBeyondFooter": 13,
+        "unusedToDock": null
+      },
+      "expressionVisible": true,
+      "screenshot": "/opt/cursor/artifacts/stumblr-working-desktop-desmos-final.png"
+    },
+    "mobile": {
+      "pass": true,
+      "failures": [],
+      "layout": {
+        "viewport": {
+          "width": 400,
+          "height": 985
+        },
+        "iframe": {
+          "top": 103,
+          "bottom": 839,
+          "height": 736
+        },
+        "host": {
+          "top": 103,
+          "bottom": 839,
+          "height": 736
+        },
+        "footer": {
+          "top": 839,
+          "bottom": 888,
+          "height": 49
+        },
+        "dockTop": 920
+      },
+      "layoutMetrics": {
+        "iframeViewportRatio": 0.747,
+        "unusedBeyondFooter": 97,
+        "unusedToDock": 32
+      },
+      "expressionVisible": true,
+      "screenshot": "/opt/cursor/artifacts/stumblr-working-mobile-desmos-final.png"
+    }
+  },
+  "pass": true
+}

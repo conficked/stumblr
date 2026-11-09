@@ -1,0 +1,54 @@
+{
+  "method": "opaque-alpha-bounds-then-compose",
+  "targetCircleToWordmarkArtRatio": 0.75,
+  "measuredCircleArtWidthPx": 480,
+  "measuredWordmarkArtWidthPx": 640,
+  "measuredRatio": 0.75,
+  "gapPx": 26,
+  "paddingPx": 51,
+  "canvas": {
+    "width": 742,
+    "height": 695
+  },
+  "placements": {
+    "circle": {
+      "x": 131,
+      "y": 51,
+      "width": 480,
+      "height": 480
+    },
+    "wordmark": {
+      "x": 51,
+      "y": 557,
+      "width": 640,
+      "height": 87
+    }
+  },
+  "sourceBounds": {
+    "symbol": {
+      "width": 492,
+      "height": 492,
+      "minX": 5,
+      "minY": 4,
+      "maxX": 484,
+      "maxY": 487,
+      "artW": 480,
+      "artH": 484
+    },
+    "wordmark": {
+      "width": 647,
+      "height": 93,
+      "minX": 3,
+      "minY": 3,
+      "maxX": 643,
+      "maxY": 89,
+      "artW": 641,
+      "artH": 87
+    }
+  },
+  "exports": [
+    "public/brand/stumblr-stacked-lockup.svg",
+    "public/brand/stumblr-stacked-lockup.png",
+    "public/brand/stumblr-stacked-lockup@2x.png"
+  ]
+}

@@ -1,0 +1,344 @@
+name: catalogue-auto-publish
+"on":
+  schedule:
+    - cron: '37 17 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Report the server preview or publish it
+        type: choice
+        options:
+          - report
+          - publish
+        default: report
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: stumblr-catalogue-auto-publish
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Initialize release reports
+        run: |
+          REPORT_DIR="$RUNNER_TEMP/auto-publication"
+          echo "REPORT_DIR=$REPORT_DIR" >> "$GITHUB_ENV"
+          mkdir -p "$REPORT_DIR"
+          for report in preview decision proof rollback; do
+            printf '{"status":"not_run"}\n' > "$REPORT_DIR/$report.json"
+          done
+      - name: Request server preview
+        id: preview
+        uses: actions/github-script@v7
+        timeout-minutes: 2
+        env:
+          MODE: ${{ inputs.mode }}
+        with:
+          script: |
+            const fs = require('node:fs');
+            const token = await core.getIDToken('https://stumblr.dev/catalogue-auto-publish');
+            const response = await fetch('https://stumblr.dev/api/catalogue/auto/preview', {
+              method: 'POST', redirect: 'error', signal: AbortSignal.timeout(30_000),
+              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify({ requestedCap: 20 }),
+            });
+            if (!response.ok) throw new Error(`Preview rejected (${response.status})`);
+            const preview = await response.json();
+            const { rolloutStage, additions, counts, recovery } = preview;
+            const caps = { report_only: 20, limited: 5, full: 20 };
+            if (!preview.ok || !Object.hasOwn(caps, rolloutStage?.stage) ||
+                rolloutStage.cap !== caps[rolloutStage.stage] || !Array.isArray(additions) ||
+                additions.length > rolloutStage.cap || !counts) throw new Error('Invalid server preview');
+            const publish = rolloutStage.stage !== 'report_only' &&
+              (context.eventName === 'schedule' || process.env.MODE === 'publish');
+            fs.writeFileSync(`${process.env.REPORT_DIR}/preview.json`, JSON.stringify(preview, null, 2));
+            fs.writeFileSync(`${process.env.REPORT_DIR}/decision.json`, JSON.stringify({
+              status: publish ? 'pending_commit' : 'report_only', rolloutStage, counts,
+            }, null, 2));
+            core.setOutput('publish', String(publish));
+            core.setOutput('has_additions', String(additions.length > 0 && (!recovery || ['pending', 'unverified'].includes(recovery.status))));
+      - uses: actions/setup-node@v4
+        if: steps.preview.outputs.publish == 'true' && steps.preview.outputs.has_additions == 'true'
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Prepare browser before publishing
+        if: steps.preview.outputs.publish == 'true' && steps.preview.outputs.has_additions == 'true'
+        timeout-minutes: 8
+        run: |
+          env -u ACTIONS_ID_TOKEN_REQUEST_TOKEN -u ACTIONS_ID_TOKEN_REQUEST_URL npm ci --ignore-scripts
+          env -u ACTIONS_ID_TOKEN_REQUEST_TOKEN -u ACTIONS_ID_TOKEN_REQUEST_URL npx playwright install --with-deps chromium
+      - name: Commit the exact preview and check the current live revision
+        id: commit
+        if: steps.preview.outputs.publish == 'true'
+        uses: actions/github-script@v7
+        timeout-minutes: 2
+        with:
+          script: |
+            const fs = require('node:fs');
+            const dir = process.env.REPORT_DIR;
+            const preview = JSON.parse(fs.readFileSync(`${dir}/preview.json`, 'utf8'));
+            const { proposalId, expectedRevision, contentHash, additions, counts, rolloutStage, recovery, proposedSnapshot } = preview;
+            let release;
+            if (recovery) {
+              release = recovery.release;
+            } else {
+              const token = await core.getIDToken('https://stumblr.dev/catalogue-auto-publish');
+              const response = await fetch('https://stumblr.dev/api/catalogue/auto/commit', {
+                method: 'POST', redirect: 'error', signal: AbortSignal.timeout(30_000),
+                headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({ proposalId, expectedRevision, contentHash }),
+              });
+              if (!response.ok) throw new Error(`Commit rejected (${response.status})`);
+              const { ok, ...committed } = await response.json();
+              if (!ok) throw new Error('Commit was not accepted');
+              release = committed;
+            }
+            const { status, revision, entryCount, addedIds } = release;
+            const wantedStatus = additions.length ? 'published' : 'no_op';
+            const wrongRevision = status === 'no_op' ? revision !== expectedRevision :
+              !recovery && revision !== `${context.sha}:${context.runId}:${process.env.GITHUB_RUN_ATTEMPT}`;
+            if (status !== wantedStatus || wrongRevision ||
+                JSON.stringify(addedIds) !== JSON.stringify(additions.map(entry => entry.id))) {
+              throw new Error('Commit response does not match the preview');
+            }
+
+            const decision = { status: status === 'no_op' ? status : 'awaiting_proof', rolloutStage, counts, release };
+            if (recovery && !['pending', 'unverified'].includes(recovery.status)) {
+              decision.status = recovery.publicCheck === 'pending' ? 'awaiting_public_check' :
+                recovery.publicCheck === 'failed' ? 'public_verification_failed' :
+                  recovery.status === 'verified' ? 'published' : recovery.status;
+              decision.publicCheck = recovery.publicCheck;
+              fs.writeFileSync(`${dir}/decision.json`, JSON.stringify(decision, null, 2));
+              fs.writeFileSync(`${dir}/proof.json`, JSON.stringify({ status: recovery.status, revision, recovered: true }, null, 2));
+              if (recovery.rollback) fs.writeFileSync(`${dir}/rollback.json`, JSON.stringify(recovery.rollback, null, 2));
+              if (recovery.publicCheck === 'pending') core.setOutput('public_check', 'true');
+              else if (decision.status !== 'published') core.setFailed(`Recovered release outcome: ${decision.status}`);
+              return;
+            }
+            fs.writeFileSync(`${dir}/decision.json`, JSON.stringify(decision, null, 2));
+            const responseLive = await fetch('https://stumblr.dev/api/catalogue', {
+              cache: 'no-store', redirect: 'error', signal: AbortSignal.timeout(15_000),
+            });
+            if (!responseLive.ok) throw new Error(`Live revision unavailable (${responseLive.status})`);
+            const live = await responseLive.json();
+            if (live.revision !== expectedRevision || !Array.isArray(live.entries)) {
+              throw new Error('Live catalogue does not match the prior revision');
+            }
+            if (status === 'no_op') {
+              const expectedIds = new Set(proposedSnapshot.entries.map(entry => entry.id));
+              const liveIds = new Set(live.entries.map(entry => entry.id));
+              if (live.entries.length !== entryCount || expectedIds.size !== entryCount || liveIds.size !== entryCount ||
+                  [...liveIds].some(id => !expectedIds.has(id))) {
+                throw new Error('Live catalogue does not match the no-op proposal');
+              }
+            }
+            core.setOutput('status', status);
+            core.setOutput('revision', revision);
+            core.setOutput('addedIds', JSON.stringify(addedIds));
+      - name: Retrieve the authenticated provisional catalogue
+        id: proof_input
+        if: steps.commit.outputs.status == 'published'
+        uses: actions/github-script@v7
+        timeout-minutes: 2
+        env:
+          RELEASE_REVISION: ${{ steps.commit.outputs.revision }}
+        with:
+          script: |
+            const fs = require('node:fs');
+            const releaseRevision = process.env.RELEASE_REVISION;
+            const token = await core.getIDToken('https://stumblr.dev/catalogue-auto-publish');
+            const response = await fetch('https://stumblr.dev/api/catalogue/auto/proof', {
+              method: 'POST', redirect: 'error', signal: AbortSignal.timeout(30_000),
+              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify({ releaseRevision, action: 'read' }),
+            });
+            if (!response.ok) throw new Error(`Provisional catalogue unavailable (${response.status})`);
+            const stage = await response.json();
+            if (!stage.ok || stage.status !== 'pending' || stage.revision !== releaseRevision) throw new Error('Invalid provisional catalogue');
+            fs.writeFileSync(`${process.env.REPORT_DIR}/proof-input.json`, JSON.stringify(stage));
+      - name: Prove the fresh additions on desktop and mobile
+        id: proof
+        if: steps.commit.outputs.status == 'published'
+        timeout-minutes: 7
+        env:
+          REVISION: ${{ steps.commit.outputs.revision }}
+          CANDIDATE_IDS: ${{ steps.commit.outputs.addedIds }}
+        run: |
+          result=0
+          env -u ACTIONS_ID_TOKEN_REQUEST_TOKEN -u ACTIONS_ID_TOKEN_REQUEST_URL \
+            STUMBLR_AUTO_PROOF_INPUT="$REPORT_DIR/proof-input.json" node scripts/verify_auto_publication.mjs --base-url https://stumblr.dev --revision "$REVISION" \
+            --candidate-ids "$CANDIDATE_IDS" --output "$REPORT_DIR/proof-observations.json" || result=$?
+          if [[ -f "$REPORT_DIR/proof-observations.json" ]]; then
+            mv "$REPORT_DIR/proof-observations.json" "$REPORT_DIR/proof.json"
+          fi
+          case "$result" in
+            0) echo 'outcome=verified' >> "$GITHUB_OUTPUT" ;;
+            2) echo 'rollback=true' >> "$GITHUB_OUTPUT" ;;
+            *) echo 'outcome=unverified' >> "$GITHUB_OUTPUT" ;;
+          esac
+      - name: Roll back only verified hard failures in this release
+        id: rollback
+        if: steps.proof.outputs.rollback == 'true'
+        uses: actions/github-script@v7
+        timeout-minutes: 2
+        with:
+          script: |
+            const fs = require('node:fs');
+            const dir = process.env.REPORT_DIR;
+            const { release } = JSON.parse(fs.readFileSync(`${dir}/decision.json`, 'utf8'));
+            const proof = JSON.parse(fs.readFileSync(`${dir}/proof.json`, 'utf8'));
+            const { rollbackPayload } = proof;
+            const { releaseRevision, failedIds } = rollbackPayload ?? {};
+            if (proof.status !== 'failed' || proof.unverifiedIds?.length !== 0 ||
+                releaseRevision !== release.revision || !Array.isArray(failedIds) || !failedIds.length ||
+                new Set(failedIds).size !== failedIds.length || failedIds.some(id => !release.addedIds.includes(id))) {
+              throw new Error('Rollback requires failing IDs from this release');
+            }
+            const token = await core.getIDToken('https://stumblr.dev/catalogue-auto-publish');
+            const response = await fetch('https://stumblr.dev/api/catalogue/auto/rollback', {
+              method: 'POST', redirect: 'error', signal: AbortSignal.timeout(30_000),
+              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify({ releaseRevision, failedIds }),
+            });
+            if (!response.ok) throw new Error(`Rollback rejected (${response.status})`);
+            const rollback = await response.json();
+            if (!rollback.ok || rollback.revision !== `${releaseRevision}:rollback` ||
+                !Array.isArray(rollback.removedIds) || failedIds.some(id => !rollback.removedIds.includes(id))) {
+              throw new Error('Invalid selective rollback result');
+            }
+            fs.writeFileSync(`${dir}/rollback.json`, JSON.stringify(rollback, null, 2));
+            core.setOutput('activated', 'true');
+      - name: Record proof outcome and activate only a verified revision
+        id: complete
+        if: always() && steps.commit.outputs.status == 'published' && steps.proof.outputs.rollback != 'true'
+        uses: actions/github-script@v7
+        timeout-minutes: 2
+        env:
+          RELEASE_REVISION: ${{ steps.commit.outputs.revision }}
+          PROOF_OUTCOME: ${{ steps.proof.outputs.outcome }}
+        with:
+          script: |
+            const fs = require('node:fs');
+            const dir = process.env.REPORT_DIR;
+            const releaseRevision = process.env.RELEASE_REVISION;
+            const action = process.env.PROOF_OUTCOME === 'verified' ? 'verified' : 'unverified';
+            const token = await core.getIDToken('https://stumblr.dev/catalogue-auto-publish');
+            const response = await fetch('https://stumblr.dev/api/catalogue/auto/proof', {
+              method: 'POST', redirect: 'error', signal: AbortSignal.timeout(30_000),
+              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify({ releaseRevision, action }),
+            });
+            if (!response.ok) throw new Error(`Proof outcome rejected (${response.status})`);
+            const result = await response.json();
+            if (!result.ok || result.revision !== releaseRevision || result.status !== action) throw new Error('Invalid proof outcome');
+            const decision = JSON.parse(fs.readFileSync(`${dir}/decision.json`, 'utf8'));
+            if (action === 'unverified') {
+              decision.status = 'unverified';
+              fs.writeFileSync(`${dir}/decision.json`, JSON.stringify(decision, null, 2));
+              core.setFailed('Production proof was incomplete. The staged release was not activated.');
+              return;
+            }
+            decision.status = 'awaiting_public_check';
+            decision.publicCheck = 'pending';
+            fs.writeFileSync(`${dir}/decision.json`, JSON.stringify(decision, null, 2));
+            core.setOutput('activated', 'true');
+      - name: Verify the exact activated catalogue through the public API
+        id: public_check
+        if: always() && (steps.complete.outputs.activated == 'true' || steps.rollback.outputs.activated == 'true' || steps.commit.outputs.public_check == 'true')
+        uses: actions/github-script@v7
+        timeout-minutes: 2
+        with:
+          script: |
+            const fs = require('node:fs');
+            const dir = process.env.REPORT_DIR;
+            const decision = JSON.parse(fs.readFileSync(`${dir}/decision.json`, 'utf8'));
+            const { release } = decision;
+            const { proposedSnapshot, decisions } = JSON.parse(fs.readFileSync(`${dir}/preview.json`, 'utf8'));
+            const rollback = JSON.parse(fs.readFileSync(`${dir}/rollback.json`, 'utf8'));
+            const removedIds = rollback.removedIds ?? [];
+            const selective = removedIds.length > 0;
+            const expected = selective ? rollback : release;
+            const expectedIds = new Set(proposedSnapshot.entries.map(entry => entry.id).filter(id => !removedIds.includes(id)));
+            const writeDecision = (status, publicCheck) => {
+              fs.writeFileSync(`${dir}/decision.json`, JSON.stringify({
+                ...decision, status, publicCheck, activatedRevision: expected.revision,
+              }, null, 2));
+            };
+
+            let action = 'reject_public';
+            try {
+              const response = await fetch('https://stumblr.dev/api/catalogue', {
+                cache: 'no-store', redirect: 'error', signal: AbortSignal.timeout(15_000),
+              });
+              if (!response.ok) throw new Error('Public catalogue unavailable');
+              const live = await response.json();
+              if (live.revision !== expected.revision || !Array.isArray(live.entries) ||
+                  live.entries.length !== expected.entryCount || live.entries.length !== expectedIds.size ||
+                  new Set(live.entries.map(entry => entry.id)).size !== expectedIds.size ||
+                  live.entries.some(entry => !expectedIds.has(entry.id))) {
+                throw new Error('Public catalogue does not match the activated snapshot');
+              }
+              action = 'confirm_public';
+            } catch {
+              writeDecision('public_correction_pending', 'pending');
+            }
+
+            const token = await core.getIDToken('https://stumblr.dev/catalogue-auto-publish');
+            const settle = action => fetch('https://stumblr.dev/api/catalogue/auto/proof', {
+              method: 'POST', redirect: 'error', signal: AbortSignal.timeout(20_000),
+              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify({ releaseRevision: release.revision, action }),
+            });
+            let response = await settle(action);
+            if (action === 'confirm_public' && response.status === 409) {
+              action = 'reject_public';
+              writeDecision('public_correction_pending', 'pending');
+              response = await settle(action);
+            }
+            if (!response.ok) throw new Error(`Public verification settlement rejected (${response.status})`);
+            const result = await response.json();
+            const publicCheck = action === 'confirm_public' ? 'confirmed' : 'failed';
+            if (!result.ok || result.revision !== expected.revision || result.publicCheck !== publicCheck) {
+              throw new Error('Invalid public verification result');
+            }
+            if (publicCheck === 'failed') {
+              writeDecision('public_verification_failed', publicCheck);
+              core.setFailed('Public verification failed. The release was deactivated.');
+              return;
+            }
+
+            const publishedByFamily = Object.create(null);
+            const publishedByTopic = Object.create(null);
+            for (const entry of decisions.admitted) {
+              if (!expectedIds.has(entry.candidateId)) continue;
+              publishedByFamily[entry.sourceFamily] = (publishedByFamily[entry.sourceFamily] ?? 0) + 1;
+              publishedByTopic[entry.topics[0]] = (publishedByTopic[entry.topics[0]] ?? 0) + 1;
+            }
+            fs.writeFileSync(`${dir}/decision.json`, JSON.stringify({
+              ...decision, status: selective ? 'rolled_back' : 'published', publicCheck,
+              activatedRevision: expected.revision, publishedByFamily, publishedByTopic,
+            }, null, 2));
+            if (selective) core.setFailed(`Fresh production proof failed for ${removedIds.length} addition(s); selective rollback publicly verified.`);
+      - name: Retain release reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auto-publication-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 3
+          path: |
+            ${{ runner.temp }}/auto-publication/preview.json
+            ${{ runner.temp }}/auto-publication/decision.json
+            ${{ runner.temp }}/auto-publication/proof.json
+            ${{ runner.temp }}/auto-publication/rollback.json

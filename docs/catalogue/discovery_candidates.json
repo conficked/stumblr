@@ -1,0 +1,871 @@
+[
+  {
+    "id": "checkboxrace-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://checkboxrace.com/",
+    "canonical_url": "https://checkboxrace.com/",
+    "domain": "checkboxrace.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "onesquareminesweeper-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://onesquareminesweeper.com/",
+    "canonical_url": "https://onesquareminesweeper.com/",
+    "domain": "onesquareminesweeper.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "puginarug-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://puginarug.com/",
+    "canonical_url": "https://puginarug.com/",
+    "domain": "puginarug.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "longdogechallenge-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://longdogechallenge.com/",
+    "canonical_url": "https://longdogechallenge.com/",
+    "domain": "longdogechallenge.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "mondrianandme-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://mondrianandme.com/",
+    "canonical_url": "https://mondrianandme.com/",
+    "domain": "mondrianandme.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "potatoortomato-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://potatoortomato.com/",
+    "canonical_url": "https://potatoortomato.com/",
+    "domain": "potatoortomato.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "heeeeeeeey-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://heeeeeeeey.com/",
+    "canonical_url": "https://heeeeeeeey.com/",
+    "domain": "heeeeeeeey.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "thepigeon-org-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://thepigeon.org/",
+    "canonical_url": "https://thepigeon.org/",
+    "domain": "thepigeon.org",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "maps",
+      "games"
+    ]
+  },
+  {
+    "id": "cat-bounce-com-embedded-url",
+    "source_id": "useless-web-sites-page",
+    "source_url": "https://theuselessweb.com/sites/",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://cat-bounce.com/",
+    "canonical_url": "https://cat-bounce.com/",
+    "domain": "cat-bounce.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "www-rainymood-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://www.rainymood.com",
+    "canonical_url": "https://www.rainymood.com/",
+    "domain": "www.rainymood.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "css3-mediaqueries-js-googlecode-com-embedded-url",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "embedded-url",
+    "raw_url": "https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js",
+    "canonical_url": "https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js",
+    "domain": "css3-mediaqueries-js.googlecode.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "sliding-toys-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://sliding.toys/mystic-square/8-puzzle/",
+    "canonical_url": "https://sliding.toys/mystic-square/8-puzzle",
+    "domain": "sliding.toys",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "pangram-me-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://pangram.me/en",
+    "canonical_url": "https://pangram.me/en",
+    "domain": "pangram.me",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "projects-playables-net-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://projects.playables.net/pointer/",
+    "canonical_url": "https://projects.playables.net/pointer",
+    "domain": "projects.playables.net",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "aidn-jp-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://aidn.jp/wowa/",
+    "canonical_url": "https://aidn.jp/wowa",
+    "domain": "aidn.jp",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "everysiteknows-ferrucc-io-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://everysiteknows.ferrucc.io",
+    "canonical_url": "https://everysiteknows.ferrucc.io/",
+    "domain": "everysiteknows.ferrucc.io",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "lab-nationalmedals-org-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://lab.nationalmedals.org/gravity/",
+    "canonical_url": "https://lab.nationalmedals.org/gravity",
+    "domain": "lab.nationalmedals.org",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "science",
+      "games"
+    ]
+  },
+  {
+    "id": "igfonts-io-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://igfonts.io",
+    "canonical_url": "https://igfonts.io/",
+    "domain": "igfonts.io",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "www-freesunalsorises-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://www.freesunalsorises.com",
+    "canonical_url": "https://www.freesunalsorises.com/",
+    "domain": "www.freesunalsorises.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "benisland-neocities-org-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://benisland.neocities.org/petpet/",
+    "canonical_url": "https://benisland.neocities.org/petpet",
+    "domain": "benisland.neocities.org",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "tjukanovt-github-io-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://tjukanovt.github.io/notable-people",
+    "canonical_url": "https://tjukanovt.github.io/notable-people",
+    "domain": "tjukanovt.github.io",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "demo-marpi-pl-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://demo.marpi.pl/eyes/",
+    "canonical_url": "https://demo.marpi.pl/eyes",
+    "domain": "demo.marpi.pl",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "unpigeon-me-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://unpigeon.me/",
+    "canonical_url": "https://unpigeon.me/",
+    "domain": "unpigeon.me",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "maps",
+      "games"
+    ]
+  },
+  {
+    "id": "whataretheodds-vercel-app-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://whataretheodds.vercel.app/",
+    "canonical_url": "https://whataretheodds.vercel.app/",
+    "domain": "whataretheodds.vercel.app",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "www-mondays-child-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://www.mondays-child.com",
+    "canonical_url": "https://www.mondays-child.com/",
+    "domain": "www.mondays-child.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "vole-wtf-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://vole.wtf/penga/",
+    "canonical_url": "https://vole.wtf/penga",
+    "domain": "vole.wtf",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "stonet2000-github-io-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://stonet2000.github.io/Cut-Bread/",
+    "canonical_url": "https://stonet2000.github.io/Cut-Bread",
+    "domain": "stonet2000.github.io",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "jspaint-app-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://jspaint.app",
+    "canonical_url": "https://jspaint.app/",
+    "domain": "jspaint.app",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "www-guessthepin-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://www.guessthepin.com",
+    "canonical_url": "https://www.guessthepin.com/",
+    "domain": "www.guessthepin.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "babadum-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://babadum.com",
+    "canonical_url": "https://babadum.com/",
+    "domain": "babadum.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "neal-fun-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://neal.fun/lets-settle-this/",
+    "canonical_url": "https://neal.fun/lets-settle-this",
+    "domain": "neal.fun",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "projects-playables-net-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://projects.playables.net/ooo/",
+    "canonical_url": "https://projects.playables.net/ooo",
+    "domain": "projects.playables.net",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "gameaboutsquares-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://gameaboutsquares.com",
+    "canonical_url": "https://gameaboutsquares.com/",
+    "domain": "gameaboutsquares.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "neal-fun-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://neal.fun/space-elevator/",
+    "canonical_url": "https://neal.fun/space-elevator",
+    "domain": "neal.fun",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "wordwarp-netlify-app-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://wordwarp.netlify.app/",
+    "canonical_url": "https://wordwarp.netlify.app/",
+    "domain": "wordwarp.netlify.app",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "theremin-site-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://theremin.site",
+    "canonical_url": "https://theremin.site/",
+    "domain": "theremin.site",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "morsecode-world-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://morsecode.world/international/translator.html",
+    "canonical_url": "https://morsecode.world/international/translator.html",
+    "domain": "morsecode.world",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "whereisthesloth-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://whereisthesloth.com",
+    "canonical_url": "https://whereisthesloth.com/",
+    "domain": "whereisthesloth.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "humanbenchmark-com-remove-frame",
+    "source_id": "bored-button-random",
+    "source_url": "https://www.boredbutton.com/random",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Remove Frame",
+    "raw_url": "https://humanbenchmark.com/",
+    "canonical_url": "https://humanbenchmark.com/",
+    "domain": "humanbenchmark.com",
+    "topic_hint": "games",
+    "inferred_topics": [
+      "games"
+    ]
+  },
+  {
+    "id": "science-nasa-gov-apod-2026-november-7-de-gerlache-kocher-massif",
+    "source_id": "nasa-breaking-rss",
+    "source_url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "APOD: 2026 November 7 \u2013 De Gerlache-Kocher Massif",
+    "raw_url": "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif/",
+    "canonical_url": "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif",
+    "domain": "science.nasa.gov",
+    "topic_hint": "science",
+    "inferred_topics": [
+      "art",
+      "science"
+    ]
+  },
+  {
+    "id": "science-nasa-gov-supercomputing-tech-demo-schedule",
+    "source_id": "nasa-breaking-rss",
+    "source_url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Supercomputing Tech Demo Schedule",
+    "raw_url": "https://science.nasa.gov/earth/supercomputing-tech-demo-schedule/",
+    "canonical_url": "https://science.nasa.gov/earth/supercomputing-tech-demo-schedule",
+    "domain": "science.nasa.gov",
+    "topic_hint": "science",
+    "inferred_topics": [
+      "art",
+      "science",
+      "maps"
+    ]
+  },
+  {
+    "id": "science-nasa-gov-apod-2026-november-6-a-farewell-to-swift",
+    "source_id": "nasa-breaking-rss",
+    "source_url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "APOD: 2026 November 6 \u2013 A Farewell to Swift",
+    "raw_url": "https://science.nasa.gov/image-article/apod-2026-november-6-a-farewell-to-swift/",
+    "canonical_url": "https://science.nasa.gov/image-article/apod-2026-november-6-a-farewell-to-swift",
+    "domain": "science.nasa.gov",
+    "topic_hint": "science",
+    "inferred_topics": [
+      "art",
+      "science"
+    ]
+  },
+  {
+    "id": "science-nasa-gov-taking-a-gander-at-utah-s-goosenecks",
+    "source_id": "nasa-breaking-rss",
+    "source_url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Taking a Gander at Utah\u2019s Goosenecks",
+    "raw_url": "https://science.nasa.gov/earth/earth-observatory/taking-a-gander-at-utahs-goosenecks/",
+    "canonical_url": "https://science.nasa.gov/earth/earth-observatory/taking-a-gander-at-utahs-goosenecks",
+    "domain": "science.nasa.gov",
+    "topic_hint": "science",
+    "inferred_topics": [
+      "art",
+      "science",
+      "maps"
+    ]
+  },
+  {
+    "id": "medium-com-medium",
+    "source_id": "awesome-web-design",
+    "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Medium",
+    "raw_url": "https://medium.com/tag/web-design",
+    "canonical_url": "https://medium.com/tag/web-design",
+    "domain": "medium.com",
+    "topic_hint": "culture",
+    "inferred_topics": [
+      "art",
+      "culture"
+    ]
+  },
+  {
+    "id": "www-reddit-com-reddit-web-design",
+    "source_id": "awesome-web-design",
+    "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Reddit Web Design",
+    "raw_url": "https://www.reddit.com/r/web_design/",
+    "canonical_url": "https://www.reddit.com/r/web_design",
+    "domain": "www.reddit.com",
+    "topic_hint": "culture",
+    "inferred_topics": [
+      "art",
+      "culture"
+    ]
+  },
+  {
+    "id": "typeanything-io-type-anything",
+    "source_id": "awesome-web-design",
+    "source_url": "https://raw.githubusercontent.com/nicolesaidy/awesome-web-design/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Type Anything",
+    "raw_url": "https://typeanything.io/",
+    "canonical_url": "https://typeanything.io/",
+    "domain": "typeanything.io",
+    "topic_hint": "culture",
+    "inferred_topics": [
+      "art",
+      "culture"
+    ]
+  },
+  {
+    "id": "vimeo-com-css-for-software-engineers-for-css-developers",
+    "source_id": "must-watch-css",
+    "source_url": "https://raw.githubusercontent.com/AllThingsSmitty/must-watch-css/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**CSS for Software Engineers for CSS Developers**",
+    "raw_url": "https://vimeo.com/140641366",
+    "canonical_url": "https://vimeo.com/140641366",
+    "domain": "vimeo.com",
+    "topic_hint": "art",
+    "inferred_topics": [
+      "art"
+    ]
+  },
+  {
+    "id": "vimeo-com-what-is-a-css-framework-anyway",
+    "source_id": "must-watch-css",
+    "source_url": "https://raw.githubusercontent.com/AllThingsSmitty/must-watch-css/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**What Is a CSS Framework Anyway?**",
+    "raw_url": "https://vimeo.com/95734680",
+    "canonical_url": "https://vimeo.com/95734680",
+    "domain": "vimeo.com",
+    "topic_hint": "art",
+    "inferred_topics": [
+      "art"
+    ]
+  },
+  {
+    "id": "vimeo-com-css-is-a-mess",
+    "source_id": "must-watch-css",
+    "source_url": "https://raw.githubusercontent.com/AllThingsSmitty/must-watch-css/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**CSS Is a Mess**",
+    "raw_url": "https://vimeo.com/99877232",
+    "canonical_url": "https://vimeo.com/99877232",
+    "domain": "vimeo.com",
+    "topic_hint": "art",
+    "inferred_topics": [
+      "art"
+    ]
+  },
+  {
+    "id": "vimeo-com-slaying-the-dragon-how-to-refactor-css-for-maintainability",
+    "source_id": "must-watch-css",
+    "source_url": "https://raw.githubusercontent.com/AllThingsSmitty/must-watch-css/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Slaying the Dragon: How to Refactor CSS for Maintainability**",
+    "raw_url": "https://vimeo.com/100501790",
+    "canonical_url": "https://vimeo.com/100501790",
+    "domain": "vimeo.com",
+    "topic_hint": "art",
+    "inferred_topics": [
+      "art"
+    ]
+  },
+  {
+    "id": "support-archive-it-org-glossary-of-archive-it-and-web-archiving-terms",
+    "source_id": "awesome-archives",
+    "source_url": "https://raw.githubusercontent.com/iipc/awesome-web-archiving/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Glossary of Archive-It and Web Archiving Terms",
+    "raw_url": "https://support.archive-it.org/hc/en-us/articles/208111686-Glossary-of-Archive-It-and-Web-Archiving-Terms",
+    "canonical_url": "https://support.archive-it.org/hc/en-us/articles/208111686-Glossary-of-Archive-It-and-Web-Archiving-Terms",
+    "domain": "support.archive-it.org",
+    "topic_hint": "archives",
+    "inferred_topics": [
+      "art",
+      "archives"
+    ]
+  },
+  {
+    "id": "web-archive-org-archived-version-from-the-stanford-libraries",
+    "source_id": "awesome-archives",
+    "source_url": "https://raw.githubusercontent.com/iipc/awesome-web-archiving/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "Archived version from the Stanford Libraries",
+    "raw_url": "https://web.archive.org/web/20230728211501/https://library.stanford.edu/projects/web-archiving/archivability",
+    "canonical_url": "https://web.archive.org/web/20230728211501/https://library.stanford.edu/projects/web-archiving/archivability",
+    "domain": "web.archive.org",
+    "topic_hint": "archives",
+    "inferred_topics": [
+      "archives"
+    ]
+  },
+  {
+    "id": "www-scratchapixel-com-c-rasterization-a-practical-implementation",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**C++**: _Rasterization: a Practical Implementation_",
+    "raw_url": "https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/overview-rasterization-algorithm",
+    "canonical_url": "https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/overview-rasterization-algorithm",
+    "domain": "www.scratchapixel.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ]
+  },
+  {
+    "id": "beta-observablehq-com-ats-functional-blockchain",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**ATS**: _Functional Blockchain_",
+    "raw_url": "https://beta.observablehq.com/@galletti94/functional-blockchain",
+    "canonical_url": "https://beta.observablehq.com/@galletti94/functional-blockchain",
+    "domain": "beta.observablehq.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ]
+  },
+  {
+    "id": "medium-com-crystal-write-your-own-blockchain-and-pow-algorithm-using-crystal",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Crystal**: _Write your own blockchain and PoW algorithm using Crystal_",
+    "raw_url": "https://medium.com/@bradford_hamilton/write-your-own-blockchain-and-pow-algorithm-using-crystal-d53d5d9d0c52",
+    "canonical_url": "https://medium.com/@bradford_hamilton/write-your-own-blockchain-and-pow-algorithm-using-crystal-d53d5d9d0c52",
+    "domain": "medium.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ]
+  },
+  {
+    "id": "medium-com-go-code-your-own-blockchain-in-less-than-200-lines-of-go",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Go**: _Code your own blockchain in less than 200 lines of Go_",
+    "raw_url": "https://medium.com/@mycoralhealth/code-your-own-blockchain-in-less-than-200-lines-of-go-e296282bcffc",
+    "canonical_url": "https://medium.com/@mycoralhealth/code-your-own-blockchain-in-less-than-200-lines-of-go-e296282bcffc",
+    "domain": "medium.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ]
+  },
+  {
+    "id": "medium-com-java-creating-your-first-blockchain-with-java",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Java**: _Creating Your First Blockchain with Java_",
+    "raw_url": "https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa",
+    "canonical_url": "https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa",
+    "domain": "medium.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ]
+  },
+  {
+    "id": "medium-com-javascript-learn-build-a-javascript-blockchain",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**JavaScript**: _Learn & Build a JavaScript Blockchain_",
+    "raw_url": "https://medium.com/digital-alchemy-holdings/learn-build-a-javascript-blockchain-part-1-ca61c285821e",
+    "canonical_url": "https://medium.com/digital-alchemy-holdings/learn-build-a-javascript-blockchain-part-1-ca61c285821e",
+    "domain": "medium.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "art",
+      "education"
+    ]
+  },
+  {
+    "id": "medium-com-kotlin-let-s-implement-a-cryptocurrency-in-kotlin",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Kotlin**: _Let\u2019s implement a cryptocurrency in Kotlin_",
+    "raw_url": "https://medium.com/@vasilyf/lets-implement-a-cryptocurrency-in-kotlin-part-1-blockchain-8704069f8580",
+    "canonical_url": "https://medium.com/@vasilyf/lets-implement-a-cryptocurrency-in-kotlin-part-1-blockchain-8704069f8580",
+    "domain": "medium.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "art",
+      "education"
+    ]
+  },
+  {
+    "id": "hackernoon-com-python-learn-blockchains-by-building-one",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Python**: _Learn Blockchains by Building One_",
+    "raw_url": "https://hackernoon.com/learn-blockchains-by-building-one-117428612f46",
+    "canonical_url": "https://hackernoon.com/learn-blockchains-by-building-one-117428612f46",
+    "domain": "hackernoon.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ]
+  },
+  {
+    "id": "medium-com-python-let-s-build-the-tiniest-blockchain",
+    "source_id": "build-your-own-x",
+    "source_url": "https://raw.githubusercontent.com/danistefanovic/build-your-own-x/master/README.md",
+    "discovered_at": "2026-11-08T14:09:32Z",
+    "link_text": "**Python**: _Let\u2019s Build the Tiniest Blockchain_",
+    "raw_url": "https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b",
+    "canonical_url": "https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b",
+    "domain": "medium.com",
+    "topic_hint": "education",
+    "inferred_topics": [
+      "education"
+    ]
+  }
+]
