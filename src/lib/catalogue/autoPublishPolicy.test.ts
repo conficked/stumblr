@@ -118,6 +118,13 @@ describe("universal publication gates", () => {
     expect(evaluateAutoPublishCandidate(input)).toMatchObject({ eligible: true });
   });
 
+  it("matches a repository demo whose stored URL differs from the page only by a trailing slash", () => {
+    const input = github();
+    retarget(input, "https://experimental.example/chromatic-memory/");
+    input.repositories[0].demoUrl = "https://experimental.example/chromatic-memory";
+    expect(evaluateAutoPublishCandidate(input).reasons).not.toContain("repository_identity_invalid");
+  });
+
   it("accepts a screened redirect only when both devices match its exact terminal URL", () => {
     const input = fixture();
     const screenedFinalUrl = "https://thoughts.example/essays/chromatic-memory";

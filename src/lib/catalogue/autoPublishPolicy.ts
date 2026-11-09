@@ -277,7 +277,11 @@ function validRepositoryIdentity(repository: AutoPublishRepository) {
 
 function repositoryDemoMatches(repository: AutoPublishRepository, documentDigests: ReadonlySet<string>) {
   const demo = publicHttpsUrl(repository.demoUrl);
-  return demo !== null && documentDigests.has(getQualificationUrlIdentity(demo.href).final_url_sha256);
+  if (demo === null) return false;
+  // Collector URLs drop a trailing slash; the screened page often keeps it.
+  const alternate = new URL(demo.href);
+  alternate.pathname = alternate.pathname.endsWith("/") ? alternate.pathname.replace(/\/+$/, "") || "/" : `${alternate.pathname}/`;
+  return [demo.href, alternate.href].some(href => documentDigests.has(getQualificationUrlIdentity(href).final_url_sha256));
 }
 
 export function evaluateAutoPublishCandidate(input: AutoPublishInput): AutoPublishDecision {
