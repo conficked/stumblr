@@ -7342,6 +7342,399 @@
         "observedAt": "2026-11-09T23:01:57.847Z",
         "device": "desktop"
       }
+    },
+    {
+      "id": "0-draft-github-io-28e47781ab19",
+      "title": "Ransomware entry in Japan: VPN appliances, 61 of 92 cases",
+      "canonicalUrl": "https://0-draft.github.io/vpn-is-the-door/",
+      "domain": "0-draft.github.io",
+      "topics": [
+        "art"
+      ],
+      "description": "An interactive web demo with a verified GitHub repository.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source github-live-demo.",
+        "reviewer": "stumblr-auto-policy/6 run/42721334279",
+        "reviewedAt": "2026-11-09T23:33:03.030Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:27:24.486Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "abscond-org-a6f58cfc9ef8",
+      "title": "James Darling",
+      "canonicalUrl": "https://abscond.org/posts/",
+      "domain": "abscond.org",
+      "topics": [
+        "culture"
+      ],
+      "description": "An article from a curated reading source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source ooh-directory.",
+        "reviewer": "stumblr-auto-policy/6 run/42721334279",
+        "reviewedAt": "2026-11-09T23:33:03.030Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:27:11.668Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "deepcuts-blog-fd0bf677ee25",
+      "title": "Posts – Deep Cuts in a Lovecraftian Vein",
+      "canonicalUrl": "https://deepcuts.blog/posts/",
+      "domain": "deepcuts.blog",
+      "topics": [
+        "culture"
+      ],
+      "description": "An article from a curated reading source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source ooh-directory.",
+        "reviewer": "stumblr-auto-policy/6 run/42721334279",
+        "reviewedAt": "2026-11-09T23:33:03.030Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:27:18.654Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "dysonlogos-blog-2671e1d48dda",
+      "title": "Dyson's Dodecahedron | Award Winning Dungeon Design",
+      "canonicalUrl": "https://dysonlogos.blog/",
+      "domain": "dysonlogos.blog",
+      "topics": [
+        "culture"
+      ],
+      "description": "An article from a curated reading source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source ooh-directory.",
+        "reviewer": "stumblr-auto-policy/6 run/42721334279",
+        "reviewedAt": "2026-11-09T23:33:03.030Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:27:19.498Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "marcschuster-com-0c68864f0f44",
+      "title": "Abominations – Marc Schuster's Abominations",
+      "canonicalUrl": "https://marcschuster.com/blog/",
+      "domain": "marcschuster.com",
+      "topics": [
+        "culture"
+      ],
+      "description": "An article from a curated reading source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source ooh-directory.",
+        "reviewer": "stumblr-auto-policy/6 run/42721334279",
+        "reviewedAt": "2026-11-09T23:33:03.030Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:27:20.297Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "netwars-pelicancrossing-net-7fade9ca6fbf",
+      "title": "net.wars - computers, freedom, and privacy",
+      "canonicalUrl": "https://netwars.pelicancrossing.net/",
+      "domain": "netwars.pelicancrossing.net",
+      "topics": [
+        "culture"
+      ],
+      "description": "An article from a curated reading source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source ooh-directory.",
+        "reviewer": "stumblr-auto-policy/6 run/42721334279",
+        "reviewedAt": "2026-11-09T23:33:03.030Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:27:21.362Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "retroarcadia-blog-8fe1a20d6a37",
+      "title": "Retro Arcadia – The games that made us. All the way back to the 1970s.",
+      "canonicalUrl": "https://retroarcadia.blog/",
+      "domain": "retroarcadia.blog",
+      "topics": [
+        "culture"
+      ],
+      "description": "An article from a curated reading source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source ooh-directory.",
+        "reviewer": "stumblr-auto-policy/6 run/42721334279",
+        "reviewedAt": "2026-11-09T23:33:03.030Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:27:23.352Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "ascii-rest-be7eec2b4b1b",
+      "title": "ascii.rest: animated ascii art for web pages, by @bas3line",
+      "canonicalUrl": "https://ascii.rest/",
+      "domain": "ascii.rest",
+      "topics": [
+        "art"
+      ],
+      "description": "An interactive web demo with a verified GitHub repository.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source github-live-demo.",
+        "reviewer": "stumblr-auto-policy/6 run/42909184449",
+        "reviewedAt": "2026-11-10T21:52:22.423Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-10T04:43:37.315Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "mandelbrot-site-5b171f2bd3cd",
+      "title": "Mandelbrot Set Explorer",
+      "canonicalUrl": "https://mandelbrot.site/",
+      "domain": "mandelbrot.site",
+      "topics": [
+        "art"
+      ],
+      "description": "An interactive web demo with a verified GitHub repository.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source github-live-demo.",
+        "reviewer": "stumblr-auto-policy/6 run/42909184449",
+        "reviewedAt": "2026-11-10T21:52:22.423Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-10T07:25:05.516Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "elwinloomis-github-io-0ba4b741beb3",
+      "title": "Mini-Zine Imposition Tool",
+      "canonicalUrl": "https://elwinloomis.github.io/zine-maker/",
+      "domain": "elwinloomis.github.io",
+      "topics": [
+        "tech",
+        "art"
+      ],
+      "description": "An interactive web demo with a verified GitHub repository.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source github-live-demo.",
+        "reviewer": "stumblr-auto-policy/6 run/42909184449",
+        "reviewedAt": "2026-11-10T21:52:22.423Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-10T13:32:32.782Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "artificia1-github-io-ae73c1771b9b",
+      "title": "Recto — Open Source Desktop Publishing Studio",
+      "canonicalUrl": "https://artificia1.github.io/recto-studio/",
+      "domain": "artificia1.github.io",
+      "topics": [
+        "art",
+        "tech"
+      ],
+      "description": "An interactive web demo with a verified GitHub repository.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source github-live-demo.",
+        "reviewer": "stumblr-auto-policy/6 run/42909184449",
+        "reviewedAt": "2026-11-10T21:52:22.423Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-10T13:32:28.325Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "buchh-org-763cb8c670e6",
+      "title": "Jonathan Buchholz",
+      "canonicalUrl": "https://buchh.org/",
+      "domain": "buchh.org",
+      "topics": [
+        "culture"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source one-mb-club.",
+        "reviewer": "stumblr-auto-policy/6 run/42909184449",
+        "reviewedAt": "2026-11-10T21:52:22.423Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:29:15.814Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "diego-dev-814357864200",
+      "title": "Diego Siqueira",
+      "canonicalUrl": "https://diego.dev/",
+      "domain": "diego.dev",
+      "topics": [
+        "culture"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source one-mb-club.",
+        "reviewer": "stumblr-auto-policy/6 run/42909184449",
+        "reviewedAt": "2026-11-10T21:52:22.423Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:29:16.687Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "m-chrzan-xyz-0dc8bb229d12",
+      "title": "Martin Chrzanowski.",
+      "canonicalUrl": "https://m-chrzan.xyz/",
+      "domain": "m-chrzan.xyz",
+      "topics": [
+        "culture"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source one-mb-club.",
+        "reviewer": "stumblr-auto-policy/6 run/42909184449",
+        "reviewedAt": "2026-11-10T21:52:22.423Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:29:20.727Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "motherfuckingwebsite-com-37f19fafaf56",
+      "title": "Motherfucking Website",
+      "canonicalUrl": "https://motherfuckingwebsite.com/",
+      "domain": "motherfuckingwebsite.com",
+      "topics": [
+        "culture"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source one-mb-club.",
+        "reviewer": "stumblr-auto-policy/6 run/42909184449",
+        "reviewedAt": "2026-11-10T21:52:22.423Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:29:21.582Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "paritybit-ca-858d83ea1da0",
+      "title": "Welcome! - paritybit.ca",
+      "canonicalUrl": "https://www.paritybit.ca/",
+      "domain": "www.paritybit.ca",
+      "topics": [
+        "culture"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source one-mb-club.",
+        "reviewer": "stumblr-auto-policy/6 run/42909184449",
+        "reviewedAt": "2026-11-10T21:52:22.423Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:29:25.379Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "secu-pages-dev-c0e2133c16c9",
+      "title": "Top Privacy DNS Servers List | Enhance Online Security 2024",
+      "canonicalUrl": "https://secu.pages.dev/",
+      "domain": "secu.pages.dev",
+      "topics": [
+        "tech"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source one-mb-club.",
+        "reviewer": "stumblr-auto-policy/6 run/42909184449",
+        "reviewedAt": "2026-11-10T21:52:22.423Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:29:31.434Z",
+        "device": "desktop"
+      }
     }
   ]
 }
