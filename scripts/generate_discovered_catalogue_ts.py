@@ -27,6 +27,7 @@ ALLOWED_TOPICS = {
     "archives",
     "education",
     "nature",
+    "tech",
 }
 
 

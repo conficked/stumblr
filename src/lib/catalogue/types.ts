@@ -13,7 +13,8 @@ export type Topic =
   | "culture"
   | "archives"
   | "education"
-  | "nature";
+  | "nature"
+  | "tech";
 
 export type EmbedEvidence = {
   observedHeaders: string;

@@ -32,6 +32,7 @@ function cleanTopicList(value: unknown): Topic[] {
     "archives",
     "education",
     "nature",
+    "tech",
   ]);
   const cleaned = value
     .map((item) => (typeof item === "string" ? item.trim().toLowerCase() : ""))

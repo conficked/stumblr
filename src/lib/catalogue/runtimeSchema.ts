@@ -1,5 +1,5 @@
 import { z } from "zod";
-const topics = z.enum(["art", "science", "maps", "music", "games", "culture", "archives", "education", "nature"]);
+const topics = z.enum(["art", "science", "maps", "music", "games", "culture", "archives", "education", "nature", "tech"]);
 export const reviewedEntrySchema = z.object({
   id: z.string().min(1).max(200), title: z.string().min(1).max(200),
   canonicalUrl: z.url().refine(value => { const u = new URL(value); return u.protocol === "https:" && !u.username && !u.password && !u.port && /\.[a-z]{2,}$/i.test(u.hostname); }),

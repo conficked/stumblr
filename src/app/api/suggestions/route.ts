@@ -46,6 +46,7 @@ export async function POST(req: NextRequest) {
     "archives",
     "education",
     "nature",
+    "tech",
   ]);
   const url = typeof payload.url === "string" ? payload.url : "";
   const topics =

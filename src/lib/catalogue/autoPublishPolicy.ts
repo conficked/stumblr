@@ -14,7 +14,7 @@ const FAMILY_CAP = 8;
 const TOPIC_CAP = 6;
 
 const TOPICS: ReadonlySet<string> = new Set<Topic>([
-  "art", "science", "maps", "music", "games", "culture", "archives", "education", "nature",
+  "art", "science", "maps", "music", "games", "culture", "archives", "education", "nature", "tech",
 ]);
 
 export type AutoPublishSourceClass = "github" | "interactive" | "article" | "archive" | "education" | "independent";

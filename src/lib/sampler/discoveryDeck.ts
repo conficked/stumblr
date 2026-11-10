@@ -30,7 +30,7 @@ const adjacentTopicMap: Record<Topic, Topic[]> = {
   art: ["culture", "music"], science: ["nature", "education", "maps"],
   maps: ["science", "culture"], music: ["art", "culture"], games: ["education", "art"],
   culture: ["art", "maps", "music", "archives"], archives: ["culture", "education", "science"],
-  education: ["science", "games", "archives"], nature: ["science", "maps"],
+  education: ["science", "games", "archives"], nature: ["science", "maps"], tech: ["science", "education", "games"],
 };
 
 export function normalizeDeckScope(options: DeckScopeOptions): string {

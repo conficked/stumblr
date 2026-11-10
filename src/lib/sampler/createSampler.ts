@@ -58,6 +58,7 @@ const adjacentTopicMap: Record<Topic, Topic[]> = {
   archives: ["culture", "education", "science"],
   education: ["science", "games", "archives"],
   nature: ["science", "maps"],
+  tech: ["science", "education", "games"],
 };
 
 export function mulberry32(seed: number) {

@@ -219,6 +219,7 @@ TOPIC_KEYWORDS = {
     "culture": ["culture", "music", "radio", "story", "language", "poetry"],
     "games": ["game", "play", "toy", "puzzle", "interactive"],
     "education": ["learn", "course", "education", "lesson", "teaching", "tutorial"],
+    "tech": ["llm", "agent", "mcp", "self-host", "osint", "security", "cli", "terminal", "developer", "open source", "open-source", "machine learning", "neural", "emulator", "compiler", "programming", "linux", "hacker"],
 }
 
 DISALLOWED_HOST_SNIPPETS = [

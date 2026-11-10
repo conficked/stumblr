@@ -18,6 +18,7 @@ const TOPICS: Topic[] = [
   "archives",
   "education",
   "nature",
+  "tech",
 ];
 
 type SuggestionResult = {

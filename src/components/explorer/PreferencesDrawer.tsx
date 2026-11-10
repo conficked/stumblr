@@ -8,7 +8,7 @@ type PreferencesDrawerProps = {
   onClearTopics: () => void;
 };
 
-const TOPIC_OPTIONS: Topic[] = ["art", "science", "maps", "music", "games", "culture", "archives", "education", "nature"];
+const TOPIC_OPTIONS: Topic[] = ["art", "science", "maps", "music", "games", "culture", "archives", "education", "nature", "tech"];
 
 export function PreferencesDrawer({ topics, onToggleTopic, onClearTopics }: PreferencesDrawerProps) {
   return (
