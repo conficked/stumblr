@@ -14,7 +14,7 @@ async function pickSingleTopic(page: Page, topic: string) {
   } else {
     await page.locator("button[aria-label='Open utility menu']:visible").first().click();
     const menuDialog = page.locator("[role='dialog']").last();
-    await menuDialog.getByRole("heading", { name: "Preferences" }).waitFor();
+    await menuDialog.getByRole("tab", { name: "Topics" }).click();
     scope = menuDialog;
   }
   await scope.getByRole("button", { name: "topic" }).first().click();
@@ -71,8 +71,9 @@ test("[fixture] filtered cycles, persistence, and menu access", async ({ page },
   await page.reload();
   if (testInfo.project.name.includes("mobile")) {
     await page.locator("button[aria-label='Open utility menu']:visible").first().click();
-    await expect(page.getByRole("heading", { name: "History" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Preferences" })).toBeVisible();
+    for (const tab of ["Topics", "Liked", "History", "Suggest", "Report"]) {
+      await expect(page.getByRole("tab", { name: tab })).toBeVisible();
+    }
     return;
   }
   await page.locator("button[aria-label='Open preferences']:visible").first().click();
@@ -89,10 +90,10 @@ test("[fixture] filtered cycles, persistence, and menu access", async ({ page },
   await page.getByRole("button", { name: "nature" }).click();
   await page.keyboard.press("Escape");
   await clickNext(page);
-  await page.locator("button[aria-label='Save']:visible").first().click();
+  await page.locator("button[aria-label='Like']:visible").first().click();
   await page.reload();
-  await page.locator("button[aria-label='Open saves']:visible").first().click();
-  await expect(page.getByRole("button", { name: "Open in frame" }).first()).toBeVisible();
+  await page.locator("button[aria-label='Open liked']:visible").first().click();
+  await expect(page.getByRole("dialog").last().getByRole("button", { name: /^Open / }).first()).toBeVisible();
 });
 
 test("[fixture] frame consumes destination area and avoids viewport overflow", async ({ page }) => {
@@ -103,7 +104,7 @@ test("[fixture] frame consumes destination area and avoids viewport overflow", a
     await desktopPrefs.click();
   } else {
     await page.locator("button[aria-label='Open utility menu']:visible").first().click();
-    await page.getByRole("heading", { name: "Preferences" }).waitFor();
+    await page.getByRole("tab", { name: "Topics" }).click();
   }
   await page.getByRole("button", { name: "nature" }).first().click();
   await page.getByRole("button", { name: "topic" }).first().click();

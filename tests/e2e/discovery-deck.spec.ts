@@ -48,7 +48,7 @@ async function pickTopic(page: import("@playwright/test").Page, topic: string) {
   } else {
     await page.locator("button[aria-label='Open utility menu']:visible").first().click();
     const menuDialog = page.locator("[role='dialog']").last();
-    await menuDialog.getByRole("heading", { name: "Preferences" }).waitFor();
+    await menuDialog.getByRole("tab", { name: "Topics" }).click();
     scope = menuDialog;
   }
   await scope.getByRole("button", { name: "topic" }).first().click();
@@ -65,7 +65,7 @@ async function openHistory(page: import("@playwright/test").Page) {
   }
   await page.locator("button[aria-label='Open utility menu']:visible").first().click();
   const menu = page.getByRole("dialog").last();
-  await menu.getByRole("heading", { name: "History" }).waitFor();
+  await menu.getByRole("tab", { name: "History" }).click();
   return menu.getByRole("button", { name: "Reset discovery history" }).locator("xpath=../..");
 }
 
@@ -169,7 +169,7 @@ test("removing history preserves the deck while reset clears the visible log", a
   const history = await openHistory(page);
   const removedTitle = firstCycle[1];
   const stateBeforeRemoval = await readClientState(page);
-  await history.getByRole("listitem").filter({ hasText: removedTitle }).getByRole("button", { name: "Remove" }).click();
+  await history.getByRole("listitem").filter({ hasText: removedTitle }).getByRole("button", { name: `Remove ${removedTitle}` }).click();
   await expect(history.getByRole("listitem").filter({ hasText: removedTitle })).toHaveCount(0);
   const stateAfterRemoval = await readClientState(page);
   expect(stateAfterRemoval.discoveryDecks).toEqual(stateBeforeRemoval.discoveryDecks);
@@ -179,7 +179,7 @@ test("removing history preserves the deck while reset clears the visible log", a
   for (let index = 0; index < 3; index += 1) firstCycle.push(await clickNext(page));
   expect(new Set(firstCycle).size).toBe(6);
 
-  await page.locator("button[aria-label='Save']:visible").first().click({ force: true });
+  await page.locator("button[aria-label='Like']:visible").first().click({ force: true });
   await page.locator("button[aria-label='Not for me']:visible").first().click({ force: true });
   await pickTopic(page, "science");
 
@@ -191,6 +191,7 @@ test("removing history preserves the deck while reset clears the visible log", a
   } else {
     await page.locator("button[aria-label='Open utility menu']:visible").first().click();
     reportScope = page.getByRole("dialog").last();
+    await reportScope.getByRole("tab", { name: "Report" }).click();
   }
   await reportScope.locator("textarea#report-note").fill("Reset preservation fixture report.");
   await reportScope.getByRole("button", { name: "Save report locally" }).click();

@@ -1,5 +1,6 @@
-import { Sparkles, Bookmark, ThumbsDown, Shuffle, Tags, Link2 } from "lucide-react";
+import { ThumbsUp, ThumbsDown, Shuffle, Tags, Link2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { StumblrMark } from "./StumblrMark";
 
 type TopControlsProps = {
   isLoading: boolean;
@@ -23,10 +24,10 @@ export function TopControls({
   return (
     <div className="hidden items-center gap-1 md:flex">
       <Button variant="primary" size="md" onClick={onNext} disabled={nextDisabled} aria-label="Stumbl" title="Stumbl">
-        <Sparkles className="mr-2 h-4 w-4" /> Stumbl
+        <StumblrMark className="mr-2 h-5 w-5" /> Stumbl
       </Button>
-      <Button variant="toolbar" size="sm" onClick={onSave} aria-label="Save">
-        <Bookmark className="mr-2 h-4 w-4" /> Save
+      <Button variant="toolbar" size="sm" onClick={onSave} aria-label="Like">
+        <ThumbsUp className="mr-2 h-4 w-4" /> Like
       </Button>
       <Button variant="toolbar" size="sm" onClick={onNotForMe} aria-label="Not for me">
         <ThumbsDown className="mr-2 h-4 w-4" /> Not for me

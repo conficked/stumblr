@@ -303,7 +303,8 @@ test.describe("review candidate qualification", () => {
       expect(row.network_failure_reasons.length).toBeGreaterThan(0);
       if (row.canonical_url.endsWith("/nested-private")) expect(row.render_result, JSON.stringify(row)).toBe("text_observed");
       else if (row.canonical_url.endsWith("/subresource-private")) {
-        expect(row.render_result, JSON.stringify(row)).toBe("inconclusive");
+        // Blocked third-party subresources are recorded but no longer void a rendered page.
+        expect(row.render_result, JSON.stringify(row)).toBe("text_observed");
         expect(row.network_failure_reasons).toContain("resource: alternate transport disabled");
       }
       else expect(row.render_result, JSON.stringify(row)).toBe("network_blocked");

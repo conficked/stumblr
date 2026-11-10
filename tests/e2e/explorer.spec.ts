@@ -22,7 +22,7 @@ test("production chrome keeps its approved responsive styling and geometry", asy
   expect(toolbarStyle.bounds.y).toBe(0);
   expect(toolbarStyle.bounds.width).toBe(mobile ? 400 : 1280);
 
-  const topSave = page.locator("header button[aria-label='Save']");
+  const topSave = page.locator("header button[aria-label='Like']");
   const topControls = topSave.locator("..");
   const mobileDock = page.getByRole("navigation", { name: "Mobile controls", includeHidden: true });
   if (mobile) {
@@ -34,7 +34,8 @@ test("production chrome keeps its approved responsive styling and geometry", asy
     expect(dockBounds).toBeTruthy();
     expect(dockBounds?.width).toBe(400);
     expect(Math.round((dockBounds?.y ?? 0) + (dockBounds?.height ?? 0))).toBe(985);
-    await expect(mobileDock.getByRole("button", { name: "Save", exact: true })).toBeVisible();
+    await expect(mobileDock.getByRole("button", { name: "Like", exact: true })).toBeVisible();
+    await expect(mobileDock.getByRole("button", { name: "Open utility menu" })).toHaveCount(0);
   } else {
     expect(toolbarStyle.bounds.height).toBeGreaterThanOrEqual(120);
     expect(toolbarStyle.bounds.height).toBeLessThan(220);
@@ -101,9 +102,9 @@ test("desktop loop can load, save, and open history", async ({ page }, testInfo)
   await page.goto("/");
   await page.locator("button[aria-label='Stumbl']:visible").first().click();
   await expect(page.locator("button[aria-label='Open history']:visible").first()).toBeVisible();
-  await page.locator("button[aria-label='Save']:visible").first().click();
-  await page.locator("button[aria-label='Open saves']:visible").first().click();
-  await expect(page.getByRole("button", { name: "Open in frame" }).first()).toBeVisible();
+  await page.locator("button[aria-label='Like']:visible").first().click();
+  await page.locator("button[aria-label='Open liked']:visible").first().click();
+  await expect(page.getByRole("dialog").last().getByRole("button", { name: /^Open / }).first()).toBeVisible();
 });
 
 test("mobile dock remains reachable during next spam", async ({ page }, testInfo) => {
@@ -115,9 +116,8 @@ test("mobile dock remains reachable during next spam", async ({ page }, testInfo
   await stumblButton.click({ force: true });
   await stumblButton.click({ force: true });
   await stumblButton.click({ force: true });
-  const save = dock.getByRole("button", { name: "Save", exact: true });
+  const save = dock.getByRole("button", { name: "Like", exact: true });
   await expect(save).toBeVisible();
-  await expect(save).toContainText("Save");
   const saveBox = await save.boundingBox();
   expect(saveBox).toBeTruthy();
   expect(saveBox?.width).toBeGreaterThan(0);
@@ -125,10 +125,12 @@ test("mobile dock remains reachable during next spam", async ({ page }, testInfo
   expect(saveBox?.y).toBeGreaterThanOrEqual(0);
   expect((saveBox?.y ?? 0) + (saveBox?.height ?? 0)).toBeLessThanOrEqual(985);
 
+  await stumblButton.click();
+  await expect(page.getByTestId("active-entry-title").first()).toHaveText(/\S/);
   await save.click();
-  await dock.getByRole("button", { name: "Open utility menu" }).click();
-  await expect(page.getByRole("heading", { name: "Saves" })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Open in frame" }).first()).toBeVisible();
+  await page.locator("header button[aria-label='Open utility menu']").click();
+  await page.getByRole("tab", { name: "Liked" }).click();
+  await expect(page.getByRole("dialog").last().getByRole("button", { name: /^Open / }).first()).toBeVisible();
 });
 
 test("fresh sessions have distinct seeds and diverse no-repeat sequences", async ({ browser }, testInfo) => {
@@ -176,7 +178,7 @@ test("desktop chrome has a single utility row", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name.includes("mobile"));
   await page.goto("/");
   await expect(page.locator("button[aria-label='Open history']:visible")).toHaveCount(1);
-  await expect(page.locator("button[aria-label='Open saves']:visible")).toHaveCount(1);
+  await expect(page.locator("button[aria-label='Open liked']:visible")).toHaveCount(1);
   await expect(page.locator("button[aria-label='Open report']:visible")).toHaveCount(1);
   await expect(page.locator("button[aria-label='Open preferences']:visible")).toHaveCount(1);
 });

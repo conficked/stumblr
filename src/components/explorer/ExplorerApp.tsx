@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { Clock3, Flag, Bookmark, Settings2, Menu } from "lucide-react";
+import { Clock3, Flag, Settings2, Menu, ThumbsUp } from "lucide-react";
 import { getCatalogue } from "@/lib/catalogue";
 import { runtimeCatalogueSchema } from "@/lib/catalogue/runtimeSchema";
 import { CatalogueEntry } from "@/lib/catalogue/types";
@@ -66,6 +66,11 @@ type RuntimeCatalogue =
 
 const CATALOGUE_DEADLINE_MS = 3_000;
 
+type MenuTab = "topics" | "liked" | "history" | "suggest" | "report";
+const MENU_TABS: ReadonlyArray<readonly [MenuTab, string]> = [
+  ["topics", "Topics"], ["liked", "Liked"], ["history", "History"], ["suggest", "Suggest"], ["report", "Report"],
+];
+
 export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) {
   const [runtimeCatalogue, setRuntimeCatalogue] = useState<RuntimeCatalogue>({ kind: "pending" });
   useEffect(() => {
@@ -102,6 +107,7 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
   const [note, setNote] = useState<string | null>(null);
   const [openHistory, setOpenHistory] = useState(false);
   const [openSaves, setOpenSaves] = useState(false);
+  const [menuTab, setMenuTab] = useState<MenuTab>("topics");
   const [openReport, setOpenReport] = useState(false);
   const [openPrefs, setOpenPrefs] = useState(false);
   const [openUtility, setOpenUtility] = useState(false);
@@ -205,7 +211,7 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
     const snapshot = toSnapshot(activeEntry);
     const deduped = clientState.saves.filter((item) => item.id !== snapshot.id);
     persist({ ...clientState, saves: [...deduped, snapshot] });
-    setNote("Saved locally on this device.");
+    setNote("Added to Liked.");
   }, [activeEntry, clientState, persist]);
 
   const handleNotForMe = useCallback(() => {
@@ -248,22 +254,21 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
     >
       <header className="sticky top-0 z-20 border-b border-[color:var(--ui-border)] bg-[color:var(--toolbar-bg)] text-white shadow-sm">
         <div className="mx-auto flex items-center justify-between gap-2 px-3 py-2 md:px-4">
-          <div className="flex min-w-0 items-center gap-2">
-            <Image
-              src="/brand/stumblr-symbol.svg"
-              alt=""
-              width={28}
-              height={28}
-              className="h-7 w-7 shrink-0"
-            />
-            <div className="min-w-0">
-              <h1 className="text-lg font-semibold leading-tight text-white md:text-xl">Stumblr</h1>
-              <p data-testid="brand-tagline" className="max-w-sm text-[11px] leading-snug text-zinc-400">Explore the internet as your forefathers intended</p>
-              <p className="text-[11px] leading-none text-zinc-400 md:hidden">Use Menu for categories, saves, and reports.</p>
-              {modeLabel ? (
-                <p className="text-[11px] leading-none text-zinc-400">{modeLabel}</p>
-              ) : null}
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <Image
+                src="/brand/stumblr-symbol.svg"
+                alt=""
+                width={28}
+                height={28}
+                className="h-7 w-7 shrink-0"
+              />
+              <h1 className="text-lg font-semibold leading-none text-white md:text-xl">Stumblr</h1>
             </div>
+            <p data-testid="brand-tagline" className="mt-1 max-w-sm text-[11px] leading-snug text-zinc-400">Explore the internet as your forefathers intended</p>
+            {modeLabel ? (
+              <p className="text-[11px] leading-none text-zinc-400">{modeLabel}</p>
+            ) : null}
           </div>
           <TopControls
             isLoading={phase === "loading"}
@@ -289,8 +294,8 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
             <Button size="sm" variant="toolbar" aria-label="Open history" onClick={() => setOpenHistory(true)}>
               <Clock3 className="mr-1 h-4 w-4" /> History
             </Button>
-            <Button size="sm" variant="toolbar" aria-label="Open saves" onClick={() => setOpenSaves(true)}>
-              <Bookmark className="mr-1 h-4 w-4" /> Saves
+            <Button size="sm" variant="toolbar" aria-label="Open liked" onClick={() => setOpenSaves(true)}>
+              <ThumbsUp className="mr-1 h-4 w-4" /> Liked
             </Button>
             <Button size="sm" variant="toolbar" aria-label="Open report" onClick={() => setOpenReport(true)}>
               <Flag className="mr-1 h-4 w-4" /> Report
@@ -368,8 +373,8 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
       </Drawer>
 
       <Drawer
-        title="Saves"
-        description="Bookmarks are local and separate from preferences."
+        title="Liked"
+        description="Sites you liked, kept on this device."
         trigger={<button type="button" className="hidden" aria-hidden="true" />}
         open={openSaves}
         onOpenChange={setOpenSaves}
@@ -509,23 +514,84 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
       <BottomDock
         nextDisabled={waitingForCatalogue}
         onNext={applyNext}
-        onSave={handleSave}
+        onLike={handleSave}
         onNotForMe={handleNotForMe}
-        onUtility={() => setOpenUtility(true)}
       />
 
       <Drawer
         title="Menu"
-        description="History, saves, reports, and preferences."
+        description="Topics, liked sites, history and more."
         trigger={<button type="button" className="hidden" aria-hidden="true" />}
         open={openUtility}
         onOpenChange={setOpenUtility}
       >
-        <div className="space-y-6">
-          <section>
-            <h3 className="text-sm font-semibold">History</h3>
-            <div className="mt-2">
-              <HistoryDrawer
+        <div role="tablist" aria-label="Menu sections" className="mb-4 flex gap-1 overflow-x-auto rounded-md bg-[color:var(--surface-soft)] p-1">
+          {MENU_TABS.map(([tab, label]) => (
+            <button
+              key={tab}
+              type="button"
+              role="tab"
+              aria-selected={menuTab === tab}
+              onClick={() => setMenuTab(tab)}
+              className={`min-h-10 flex-1 whitespace-nowrap rounded px-3 text-sm font-medium ${menuTab === tab ? "bg-white text-[var(--text-main)] shadow-sm" : "text-[var(--ui-muted)]"}`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <div role="tabpanel" aria-label={MENU_TABS.find(([tab]) => tab === menuTab)?.[1]}>
+          {menuTab === "topics" ? (
+            <PreferencesDrawer
+                topics={clientState.preferences.topics}
+                mode={clientState.preferences.mode}
+                includeEvaluationPool={clientState.preferences.includeEvaluationPool}
+                onModeChange={(mode) =>
+                  persist({
+                    ...clientState,
+                    preferences: { ...clientState.preferences, mode },
+                  })
+                }
+                onToggleEvaluationPool={() =>
+                  persist({
+                    ...clientState,
+                    preferences: {
+                      ...clientState.preferences,
+                      includeEvaluationPool: !clientState.preferences.includeEvaluationPool,
+                    },
+                  })
+                }
+                onToggleTopic={(topic) => {
+                  const selected = clientState.preferences.topics.includes(topic);
+                  const topics = selected
+                    ? clientState.preferences.topics.filter((value) => value !== topic)
+                    : [...clientState.preferences.topics, topic];
+                  persist({
+                    ...clientState,
+                    preferences: { ...clientState.preferences, topics },
+                  });
+                }}
+              />
+          ) : menuTab === "liked" ? (
+            <SavesDrawer
+                saves={clientState.saves}
+                onRemove={(id) =>
+                  persist({
+                    ...clientState,
+                    saves: clientState.saves.filter((item) => item.id !== id),
+                  })
+                }
+                onRevisit={(snapshot) => {
+                  const found = entries.find((entry) => entry.id === snapshot.id);
+                  if (!found) return;
+                  const startToken = frameCycle.startLoad(found);
+                  setActiveEntry(found);
+                  setToken(startToken);
+                  setPhase("loading");
+                  setOpenUtility(false);
+                }}
+              />
+          ) : menuTab === "history" ? (
+            <HistoryDrawer
                 history={clientState.history}
                 onExport={() => {
                   const blob = new Blob([exportClientState()], { type: "application/json" });
@@ -556,86 +622,16 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
                   setOpenUtility(false);
                 }}
               />
-            </div>
-          </section>
-
-          <section>
-            <h3 className="text-sm font-semibold">Saves</h3>
-            <div className="mt-2">
-              <SavesDrawer
-                saves={clientState.saves}
-                onRemove={(id) =>
-                  persist({
-                    ...clientState,
-                    saves: clientState.saves.filter((item) => item.id !== id),
-                  })
-                }
-                onRevisit={(snapshot) => {
-                  const found = entries.find((entry) => entry.id === snapshot.id);
-                  if (!found) return;
-                  const startToken = frameCycle.startLoad(found);
-                  setActiveEntry(found);
-                  setToken(startToken);
-                  setPhase("loading");
-                  setOpenUtility(false);
-                }}
-              />
-            </div>
-          </section>
-
-          <section>
-            <h3 className="text-sm font-semibold">Report</h3>
-            <div className="mt-2">
-              <ReportDrawer reports={clientState.reports} onSubmit={handleReport} />
-            </div>
-          </section>
-
-          <section>
-            <h3 className="text-sm font-semibold">Preferences</h3>
-            <div className="mt-2">
-              <PreferencesDrawer
-                topics={clientState.preferences.topics}
-                mode={clientState.preferences.mode}
-                includeEvaluationPool={clientState.preferences.includeEvaluationPool}
-                onModeChange={(mode) =>
-                  persist({
-                    ...clientState,
-                    preferences: { ...clientState.preferences, mode },
-                  })
-                }
-                onToggleEvaluationPool={() =>
-                  persist({
-                    ...clientState,
-                    preferences: {
-                      ...clientState.preferences,
-                      includeEvaluationPool: !clientState.preferences.includeEvaluationPool,
-                    },
-                  })
-                }
-                onToggleTopic={(topic) => {
-                  const selected = clientState.preferences.topics.includes(topic);
-                  const topics = selected
-                    ? clientState.preferences.topics.filter((value) => value !== topic)
-                    : [...clientState.preferences.topics, topic];
-                  persist({
-                    ...clientState,
-                    preferences: { ...clientState.preferences, topics },
-                  });
-                }}
-              />
-            </div>
-          </section>
-          <section>
-            <h3 className="text-sm font-semibold">Suggest a site</h3>
-            <div className="mt-2">
-              <SuggestionDrawer
+          ) : menuTab === "suggest" ? (
+            <SuggestionDrawer
                 onSubmitted={() => {
                   setNote("Suggestion queued for private review.");
                   setOpenUtility(false);
                 }}
               />
-            </div>
-          </section>
+          ) : (
+            <ReportDrawer reports={clientState.reports} onSubmit={handleReport} />
+          )}
         </div>
       </Drawer>
     </main>

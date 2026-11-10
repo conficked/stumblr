@@ -19,14 +19,14 @@ afterEach(() => {
   vi.useRealTimers();
 });
 
-test("Save stores entry without marking notForMe signal", async () => {
+test("Like stores entry without marking notForMe signal", async () => {
   const user = userEvent.setup();
   render(<ExplorerApp catalogueOverride={getCatalogue({ includeEvaluation: true })} />);
 
   await user.click(screen.getAllByRole("button", { name: /^stumbl$/i })[0]);
-  await user.click(screen.getAllByRole("button", { name: /^save$/i })[0]);
+  await user.click(screen.getAllByRole("button", { name: /^like$/i })[0]);
 
-  expect(screen.getAllByText(/saved locally on this device/i).length).toBeGreaterThan(0);
+  expect(screen.getAllByText(/added to liked/i).length).toBeGreaterThan(0);
   expect(screen.queryByText(/not for me recorded/i)).not.toBeInTheDocument();
 });
 
@@ -124,7 +124,7 @@ test.each(["structural type", "source cluster"])("the next Stumbl uses recent %s
   await stumbl();
   expect(screen.getByTestId("active-entry-title")).toHaveTextContent(/^first$/);
   await user.click(screen.getByRole("button", { name: "Open history" }));
-  await user.click(screen.getByRole("button", { name: "Remove" }));
+  await user.click(screen.getByRole("button", { name: "Remove first" }));
   expect(loadClientState().history).toEqual([]);
   unmount();
 
