@@ -37,8 +37,8 @@ test("production chrome keeps its approved responsive styling and geometry", asy
     await expect(mobileDock.getByRole("button", { name: "Like", exact: true })).toBeVisible();
     await expect(mobileDock.getByRole("button", { name: "Open utility menu" })).toHaveCount(0);
   } else {
-    expect(toolbarStyle.bounds.height).toBeGreaterThanOrEqual(120);
-    expect(toolbarStyle.bounds.height).toBeLessThan(220);
+    expect(toolbarStyle.bounds.height).toBeGreaterThanOrEqual(56);
+    expect(toolbarStyle.bounds.height).toBeLessThan(100);
     await expect(topControls).toHaveCSS("display", "flex");
     const saveLayout = await topSave.evaluate((element) => {
       const style = getComputedStyle(element);
@@ -85,7 +85,7 @@ test("production chrome keeps its approved responsive styling and geometry", asy
 
 test("pool size is absent from visible, accessible, and tooltip text", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByText(/evaluation pool/i).first()).toBeAttached();
+  await expect(page.getByText(/evaluation pool/i)).toHaveCount(0);
   await expect(page.getByText(/\b\d+\s+eligible\b/i)).toHaveCount(0);
   const disclosures = await page.locator("body *").evaluateAll((nodes) =>
     nodes.flatMap((node) => [
@@ -180,15 +180,17 @@ test("desktop chrome has a single utility row", async ({ page }, testInfo) => {
   await expect(page.locator("button[aria-label='Open history']:visible")).toHaveCount(1);
   await expect(page.locator("button[aria-label='Open liked']:visible")).toHaveCount(1);
   await expect(page.locator("button[aria-label='Open report']:visible")).toHaveCount(1);
-  await expect(page.locator("button[aria-label='Open preferences']:visible")).toHaveCount(1);
+  await expect(page.locator("button[aria-label='Open topics']:visible")).toHaveCount(1);
+  await expect(page.locator("button[aria-label='Suggest a site']:visible")).toHaveCount(1);
+  await expect(page.getByRole("button", { name: /^Set discovery mode/ })).toHaveCount(0);
 });
 
-test("category controls persist preferences and support all-topics reset", async ({ page }, testInfo) => {
+test("topic choices persist and can be cleared", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name.includes("mobile"));
   await page.goto("/");
   await page.evaluate(() => window.localStorage.clear());
   await page.reload();
-  await page.getByRole("button", { name: "Discovery categories" }).click();
+  await page.getByRole("button", { name: "Open topics" }).click();
   await page.getByRole("button", { name: "nature" }).click();
   await page.keyboard.press("Escape");
   const afterPick = await page.evaluate(() => {
@@ -206,7 +208,9 @@ test("category controls persist preferences and support all-topics reset", async
   });
   expect(afterReload).toContain("nature");
 
-  await page.getByRole("button", { name: "All topics" }).click();
+  await page.getByRole("button", { name: "Open topics" }).click();
+  await page.getByRole("button", { name: "Clear topics and explore everything" }).click();
+  await page.keyboard.press("Escape");
   const afterReset = await page.evaluate(() => {
     const raw = window.localStorage.getItem("stumblr:v1");
     const parsed = raw ? (JSON.parse(raw) as { preferences?: { topics?: string[] } }) : null;

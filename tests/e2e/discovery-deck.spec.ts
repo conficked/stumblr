@@ -40,18 +40,17 @@ async function readClientState(page: import("@playwright/test").Page) {
 }
 
 async function pickTopic(page: import("@playwright/test").Page, topic: string) {
-  const desktopPreferences = page.locator("button[aria-label='Open preferences']:visible").first();
+  const desktopPreferences = page.locator("button[aria-label='Open topics']:visible").first();
   let scope: import("@playwright/test").Page | import("@playwright/test").Locator = page;
   if (await desktopPreferences.isVisible().catch(() => false)) {
     await desktopPreferences.click();
-    scope = page.locator("[role='dialog']").filter({ hasText: "Preferences" }).last();
+    scope = page.locator("[role='dialog']").filter({ hasText: "Choose what you want to stumble into." }).last();
   } else {
     await page.locator("button[aria-label='Open utility menu']:visible").first().click();
     const menuDialog = page.locator("[role='dialog']").last();
     await menuDialog.getByRole("tab", { name: "Topics" }).click();
     scope = menuDialog;
   }
-  await scope.getByRole("button", { name: "topic" }).first().click();
   await scope.getByRole("button", { name: topic }).first().click();
   await page.keyboard.press("Escape");
 }
@@ -147,14 +146,12 @@ test("selected-topic cycles stay unique and separate their boundary", async ({ p
   await expect(notice.getByText("New cycle")).toBeVisible();
   const preferencesBeforeBroadening = await readClientState(page);
   expect(preferencesBeforeBroadening.preferences.topics).toEqual(["science"]);
-  expect(preferencesBeforeBroadening.preferences.mode).toBe("topic");
   await expect(page.locator("iframe[title^='Destination:']")).toBeAttached();
 
   await notice.getByRole("button", { name: "Broaden topics" }).click();
   await expect(page.getByRole("status")).toHaveCount(0);
   const broadened = await readClientState(page);
   expect(broadened.preferences.topics).toEqual([]);
-  expect(broadened.preferences.mode).toBe("wildcard");
 
   await clickNext(page);
   const broadenedDestination = await page.getByRole("link", { name: "Open original" }).getAttribute("href");

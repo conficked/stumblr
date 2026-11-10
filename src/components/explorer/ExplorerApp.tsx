@@ -2,10 +2,10 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { Clock3, Flag, Settings2, Menu, ThumbsUp } from "lucide-react";
+import { Clock3, Flag, Link2, Menu, Tags, ThumbsUp } from "lucide-react";
 import { getCatalogue } from "@/lib/catalogue";
 import { runtimeCatalogueSchema } from "@/lib/catalogue/runtimeSchema";
-import { CatalogueEntry } from "@/lib/catalogue/types";
+import { CatalogueEntry, Topic } from "@/lib/catalogue/types";
 import {
   exportClientState,
   loadClientState,
@@ -13,7 +13,7 @@ import {
   writeClientState,
 } from "@/lib/storage/localStore";
 import { ClientState, DEFAULT_STATE, EntrySnapshot, MAX_DISCOVERY_SCOPES, MAX_HISTORY_SNAPSHOTS } from "@/lib/storage/schema";
-import { createSampler, MAX_SAMPLER_HISTORY, sourceCluster, structuralType, type SamplerState } from "@/lib/sampler/createSampler";
+import { createSampler, MAX_SAMPLER_HISTORY, sourceCluster, structuralType, type SamplerMode, type SamplerState } from "@/lib/sampler/createSampler";
 import { normalizeDeckScope } from "@/lib/sampler/discoveryDeck";
 import { Drawer } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
@@ -23,7 +23,6 @@ import { HistoryDrawer } from "./HistoryDrawer";
 import { SavesDrawer } from "./SavesDrawer";
 import { ReportDrawer } from "./ReportDrawer";
 import { PreferencesDrawer } from "./PreferencesDrawer";
-import { CategoryControls } from "./CategoryControls";
 import { SuggestionDrawer } from "./SuggestionDrawer";
 import { ExhaustedState, FrameHost } from "../frame-host/FrameHost";
 import { createFrameCycle } from "../frame-host/useFrameCycle";
@@ -65,6 +64,11 @@ type RuntimeCatalogue =
   | { kind: "ready"; entries: CatalogueEntry[] };
 
 const CATALOGUE_DEADLINE_MS = 3_000;
+
+// Chosen topics are a filter; with none chosen, everything is in play.
+function samplerModeFor(topics: readonly Topic[]): SamplerMode {
+  return topics.length > 0 ? "topic" : "wildcard";
+}
 
 type MenuTab = "topics" | "liked" | "history" | "suggest" | "report";
 const MENU_TABS: ReadonlyArray<readonly [MenuTab, string]> = [
@@ -114,7 +118,8 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
   const [openSuggest, setOpenSuggest] = useState(false);
   const [newCycleNotice, setNewCycleNotice] = useState(false);
 
-  const includeEvaluation = clientState.preferences.includeEvaluationPool;
+  // Every destination is in the reviewed evaluation pool; launch-only is empty.
+  const includeEvaluation = true;
   const usesRuntimeCatalogue = !catalogueOverride && includeEvaluation;
   const waitingForCatalogue = usesRuntimeCatalogue && runtimeCatalogue.kind === "pending";
   const preserveUnavailableIds = usesRuntimeCatalogue && runtimeCatalogue.kind === "fallback";
@@ -140,6 +145,16 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
     writeClientState(next);
   }, []);
 
+  const toggleTopic = useCallback((topic: Topic) => {
+    const { topics } = clientState.preferences;
+    const next = topics.includes(topic) ? topics.filter((value) => value !== topic) : [...topics, topic];
+    persist({ ...clientState, preferences: { ...clientState.preferences, topics: next } });
+  }, [clientState, persist]);
+
+  const clearTopics = useCallback(() => {
+    persist({ ...clientState, preferences: { ...clientState.preferences, topics: [] } });
+  }, [clientState, persist]);
+
   const applyNext = useCallback(() => {
     if (waitingForCatalogue) return;
     const explorationSeed = clientState.samplerSeed ?? createExplorationSeed();
@@ -147,14 +162,15 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
       clientState.samplerSeed == null
         ? { ...clientState, samplerSeed: explorationSeed }
         : clientState;
+    const mode = samplerModeFor(withSeed.preferences.topics);
     const scope = normalizeDeckScope({
-      mode: withSeed.preferences.mode,
+      mode,
       topics: withSeed.preferences.topics,
-      includeEvaluation: withSeed.preferences.includeEvaluationPool,
+      includeEvaluation,
     });
     const oldDeck = withSeed.discoveryDecks.scopes[scope];
     const sampler = createSampler(explorationSeed, eligibleEntries, {
-      mode: withSeed.preferences.mode,
+      mode,
       topics: withSeed.preferences.topics,
     }, {
       deck: oldDeck,
@@ -276,8 +292,6 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
             onNext={applyNext}
             onNotForMe={handleNotForMe}
             onSave={handleSave}
-            onOpenPreferences={() => setOpenPrefs(true)}
-            onOpenSuggest={() => setOpenSuggest(true)}
           />
 
           <Button
@@ -291,44 +305,22 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
           </Button>
 
           <div className="hidden items-center gap-1 md:flex">
-            <Button size="sm" variant="toolbar" aria-label="Open history" onClick={() => setOpenHistory(true)}>
-              <Clock3 className="mr-1 h-4 w-4" /> History
+            <Button size="sm" variant="toolbar" aria-label="Open topics" onClick={() => setOpenPrefs(true)}>
+              <Tags className="mr-1 h-4 w-4" /> Topics{clientState.preferences.topics.length > 0 ? ` (${clientState.preferences.topics.length})` : ""}
             </Button>
             <Button size="sm" variant="toolbar" aria-label="Open liked" onClick={() => setOpenSaves(true)}>
               <ThumbsUp className="mr-1 h-4 w-4" /> Liked
             </Button>
+            <Button size="sm" variant="toolbar" aria-label="Open history" onClick={() => setOpenHistory(true)}>
+              <Clock3 className="mr-1 h-4 w-4" /> History
+            </Button>
+            <Button size="sm" variant="toolbar" aria-label="Suggest a site" onClick={() => setOpenSuggest(true)}>
+              <Link2 className="mr-1 h-4 w-4" /> Suggest
+            </Button>
             <Button size="sm" variant="toolbar" aria-label="Open report" onClick={() => setOpenReport(true)}>
               <Flag className="mr-1 h-4 w-4" /> Report
             </Button>
-            <Button
-              size="sm"
-              variant="toolbar"
-              aria-label="Open preferences"
-              onClick={() => setOpenPrefs(true)}
-            >
-              <Settings2 className="mr-1 h-4 w-4" /> Preferences
-            </Button>
           </div>
-        </div>
-        <div className="mx-auto hidden w-full px-3 pb-2 md:block md:px-4">
-          <CategoryControls
-            selectedCount={clientState.preferences.topics.length}
-            mode={clientState.preferences.mode}
-            includeEvaluationPool={clientState.preferences.includeEvaluationPool}
-            onResetAllTopics={() =>
-              persist({
-                ...clientState,
-                preferences: { ...clientState.preferences, topics: [], mode: "wildcard" },
-              })
-            }
-            onModeChange={(mode) =>
-              persist({
-                ...clientState,
-                preferences: { ...clientState.preferences, mode },
-              })
-            }
-            onOpenPreferences={() => setOpenPrefs(true)}
-          />
         </div>
       </header>
 
@@ -410,41 +402,16 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
       </Drawer>
 
       <Drawer
-        title="Preferences"
-        description="Tune interests and discovery mode."
+        title="Topics"
+        description="Choose what you want to stumble into."
         trigger={<button type="button" className="hidden" aria-hidden="true" />}
         open={openPrefs}
         onOpenChange={setOpenPrefs}
       >
           <PreferencesDrawer
             topics={clientState.preferences.topics}
-            mode={clientState.preferences.mode}
-            includeEvaluationPool={clientState.preferences.includeEvaluationPool}
-            onModeChange={(mode) =>
-              persist({
-                ...clientState,
-                preferences: { ...clientState.preferences, mode },
-              })
-            }
-            onToggleEvaluationPool={() =>
-              persist({
-                ...clientState,
-                preferences: {
-                  ...clientState.preferences,
-                  includeEvaluationPool: !clientState.preferences.includeEvaluationPool,
-                },
-              })
-            }
-            onToggleTopic={(topic) => {
-              const selected = clientState.preferences.topics.includes(topic);
-              const topics = selected
-                ? clientState.preferences.topics.filter((value) => value !== topic)
-                : [...clientState.preferences.topics, topic];
-              persist({
-                ...clientState,
-                preferences: { ...clientState.preferences, topics },
-              });
-            }}
+            onToggleTopic={toggleTopic}
+            onClearTopics={clearTopics}
           />
       </Drawer>
 
@@ -543,33 +510,8 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
           {menuTab === "topics" ? (
             <PreferencesDrawer
                 topics={clientState.preferences.topics}
-                mode={clientState.preferences.mode}
-                includeEvaluationPool={clientState.preferences.includeEvaluationPool}
-                onModeChange={(mode) =>
-                  persist({
-                    ...clientState,
-                    preferences: { ...clientState.preferences, mode },
-                  })
-                }
-                onToggleEvaluationPool={() =>
-                  persist({
-                    ...clientState,
-                    preferences: {
-                      ...clientState.preferences,
-                      includeEvaluationPool: !clientState.preferences.includeEvaluationPool,
-                    },
-                  })
-                }
-                onToggleTopic={(topic) => {
-                  const selected = clientState.preferences.topics.includes(topic);
-                  const topics = selected
-                    ? clientState.preferences.topics.filter((value) => value !== topic)
-                    : [...clientState.preferences.topics, topic];
-                  persist({
-                    ...clientState,
-                    preferences: { ...clientState.preferences, topics },
-                  });
-                }}
+                onToggleTopic={toggleTopic}
+                onClearTopics={clearTopics}
               />
           ) : menuTab === "liked" ? (
             <SavesDrawer

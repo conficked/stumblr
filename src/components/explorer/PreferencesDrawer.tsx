@@ -1,90 +1,49 @@
+import { Check } from "lucide-react";
 import { Topic } from "@/lib/catalogue/types";
-import { SamplerMode } from "@/lib/sampler/createSampler";
 import { Button } from "@/components/ui/button";
 
 type PreferencesDrawerProps = {
   topics: Topic[];
-  mode: SamplerMode;
-  includeEvaluationPool: boolean;
   onToggleTopic: (topic: Topic) => void;
-  onModeChange: (mode: SamplerMode) => void;
-  onToggleEvaluationPool: () => void;
+  onClearTopics: () => void;
 };
 
-const TOPIC_OPTIONS: Topic[] = [
-  "art",
-  "science",
-  "maps",
-  "music",
-  "games",
-  "culture",
-  "archives",
-  "education",
-  "nature",
-];
+const TOPIC_OPTIONS: Topic[] = ["art", "science", "maps", "music", "games", "culture", "archives", "education", "nature"];
 
-export function PreferencesDrawer({
-  topics,
-  mode,
-  includeEvaluationPool,
-  onToggleTopic,
-  onModeChange,
-  onToggleEvaluationPool,
-}: PreferencesDrawerProps) {
+export function PreferencesDrawer({ topics, onToggleTopic, onClearTopics }: PreferencesDrawerProps) {
   return (
-    <div className="space-y-5">
-      <section>
-        <h3 className="text-sm font-semibold">Interests</h3>
-        <p className="mt-1 text-xs text-[var(--ui-muted)]">
-          Leave empty to sample all eligible topics. Each preference setup keeps its own discovery progress.
-        </p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {TOPIC_OPTIONS.map((topic) => {
-            const selected = topics.includes(topic);
-            return (
-              <Button
-                key={topic}
-                size="sm"
-                variant={selected ? "primary" : "ghost"}
-                onClick={() => onToggleTopic(topic)}
-              >
-                {topic}
-              </Button>
-            );
-          })}
-        </div>
-      </section>
-
-      <section>
-        <h3 className="text-sm font-semibold">Sampling mode</h3>
-        <div className="mt-2 grid grid-cols-3 gap-2">
-          {(["topic", "adjacent", "wildcard"] as SamplerMode[]).map((candidate) => (
-            <Button
-              key={candidate}
-              size="sm"
-              variant={mode === candidate ? "secondary" : "ghost"}
-              onClick={() => onModeChange(candidate)}
+    <div className="space-y-4">
+      <p className="text-sm text-[var(--ui-muted)]">
+        {topics.length === 0
+          ? "Exploring everything. Pick topics to only see those."
+          : `Only showing ${topics.length === 1 ? "this topic" : "these topics"}.`}
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {TOPIC_OPTIONS.map((topic) => {
+          const selected = topics.includes(topic);
+          return (
+            <button
+              key={topic}
+              type="button"
+              aria-pressed={selected}
+              onClick={() => onToggleTopic(topic)}
+              className={`inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-medium capitalize transition-colors ${
+                selected
+                  ? "border-[var(--cta)] bg-[var(--cta)] text-white"
+                  : "border-[color:var(--ui-border)] bg-white text-[var(--text-main)] hover:bg-[color:var(--surface-soft)]"
+              }`}
             >
-              {candidate}
-            </Button>
-          ))}
-        </div>
-      </section>
-
-      <section>
-        <h3 className="text-sm font-semibold">Pool source</h3>
-        <p className="mt-1 text-xs text-[var(--ui-muted)]">
-          No entries are launch-qualified yet; evaluation pool is enabled by default.
-        </p>
-        <Button
-          className="mt-2"
-          size="sm"
-          variant={includeEvaluationPool ? "secondary" : "ghost"}
-          onClick={onToggleEvaluationPool}
-        >
-          {includeEvaluationPool ? "Using evaluation pool" : "Using launch-only pool"}
+              {selected ? <Check className="mr-1.5 h-4 w-4" /> : null}
+              {topic}
+            </button>
+          );
+        })}
+      </div>
+      {topics.length > 0 ? (
+        <Button variant="ghost" size="sm" onClick={onClearTopics}>
+          Clear topics and explore everything
         </Button>
-      </section>
+      ) : null}
     </div>
   );
 }

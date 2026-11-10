@@ -6,18 +6,17 @@ async function clickNext(page: Page) {
 }
 
 async function pickSingleTopic(page: Page, topic: string) {
-  const desktopPrefs = page.locator("button[aria-label='Open preferences']:visible").first();
+  const desktopPrefs = page.locator("button[aria-label='Open topics']:visible").first();
   let scope: Page | Locator = page;
   if (await desktopPrefs.isVisible().catch(() => false)) {
     await desktopPrefs.click();
-    scope = page.locator("[role='dialog']").filter({ hasText: "Preferences" }).last();
+    scope = page.locator("[role='dialog']").filter({ hasText: "Choose what you want to stumble into." }).last();
   } else {
     await page.locator("button[aria-label='Open utility menu']:visible").first().click();
     const menuDialog = page.locator("[role='dialog']").last();
     await menuDialog.getByRole("tab", { name: "Topics" }).click();
     scope = menuDialog;
   }
-  await scope.getByRole("button", { name: "topic" }).first().click();
   await scope.getByRole("button", { name: topic }).first().click();
   await page.keyboard.press("Escape");
 }
@@ -76,9 +75,8 @@ test("[fixture] filtered cycles, persistence, and menu access", async ({ page },
     }
     return;
   }
-  await page.locator("button[aria-label='Open preferences']:visible").first().click();
+  await page.locator("button[aria-label='Open topics']:visible").first().click();
   await page.getByRole("button", { name: "nature" }).click();
-  await page.getByRole("button", { name: "topic" }).click();
   await page.keyboard.press("Escape");
   await clickNext(page);
   await clickNext(page);
@@ -86,7 +84,7 @@ test("[fixture] filtered cycles, persistence, and menu access", async ({ page },
   await expect(page.getByTestId("active-entry-title").first()).toHaveText(/Fixture/);
   await expect(page.locator("iframe")).toBeVisible();
 
-  await page.locator("button[aria-label='Open preferences']:visible").first().click();
+  await page.locator("button[aria-label='Open topics']:visible").first().click();
   await page.getByRole("button", { name: "nature" }).click();
   await page.keyboard.press("Escape");
   await clickNext(page);
@@ -99,7 +97,7 @@ test("[fixture] filtered cycles, persistence, and menu access", async ({ page },
 test("[fixture] frame consumes destination area and avoids viewport overflow", async ({ page }) => {
   await page.addInitScript(() => window.localStorage.clear());
   await page.goto("/fixtures-lab");
-  const desktopPrefs = page.locator("button[aria-label='Open preferences']:visible").first();
+  const desktopPrefs = page.locator("button[aria-label='Open topics']:visible").first();
   if (await desktopPrefs.isVisible().catch(() => false)) {
     await desktopPrefs.click();
   } else {
@@ -107,7 +105,6 @@ test("[fixture] frame consumes destination area and avoids viewport overflow", a
     await page.getByRole("tab", { name: "Topics" }).click();
   }
   await page.getByRole("button", { name: "nature" }).first().click();
-  await page.getByRole("button", { name: "topic" }).first().click();
   await page.keyboard.press("Escape");
   await clickNext(page);
   await expect(page.getByTestId("active-entry-domain").first()).toHaveText("fixtures.local");

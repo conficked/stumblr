@@ -45,7 +45,7 @@ test("creates the session seed on the first Stumbl interaction, not during rende
   );
 });
 
-test("does not expose pool counts while retaining evaluation disclosure", () => {
+test("does not expose pool counts or internal pool wording", () => {
   const catalogueOverride = Array.from({ length: 73 }, (_, index) => ({
     id: `private-${index}`,
     title: `Private ${index}`,
@@ -68,7 +68,7 @@ test("does not expose pool counts while retaining evaluation disclosure", () => 
 
   expect(screen.queryByText(/73\s+eligible/i)).not.toBeInTheDocument();
   expect(screen.queryByText(/pool:\s*73/i)).not.toBeInTheDocument();
-  expect(screen.getAllByText(/evaluation pool/i).length).toBeGreaterThan(0);
+  expect(screen.queryByText(/evaluation pool/i)).not.toBeInTheDocument();
 });
 
 test("uses approved tagline and removes the notice strip", () => {

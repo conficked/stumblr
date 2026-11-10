@@ -1,4 +1,4 @@
-import { ThumbsUp, ThumbsDown, Shuffle, Tags, Link2 } from "lucide-react";
+import { ThumbsUp, ThumbsDown, Shuffle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { StumblrMark } from "./StumblrMark";
 
@@ -8,19 +8,9 @@ type TopControlsProps = {
   onNext: () => void;
   onNotForMe: () => void;
   onSave: () => void;
-  onOpenPreferences: () => void;
-  onOpenSuggest: () => void;
 };
 
-export function TopControls({
-  isLoading,
-  nextDisabled,
-  onNext,
-  onNotForMe,
-  onSave,
-  onOpenPreferences,
-  onOpenSuggest,
-}: TopControlsProps) {
+export function TopControls({ isLoading, nextDisabled, onNext, onNotForMe, onSave }: TopControlsProps) {
   return (
     <div className="hidden items-center gap-1 md:flex">
       <Button variant="primary" size="md" onClick={onNext} disabled={nextDisabled} aria-label="Stumbl" title="Stumbl">
@@ -31,12 +21,6 @@ export function TopControls({
       </Button>
       <Button variant="toolbar" size="sm" onClick={onNotForMe} aria-label="Not for me">
         <ThumbsDown className="mr-2 h-4 w-4" /> Not for me
-      </Button>
-      <Button variant="toolbar" size="sm" onClick={onOpenPreferences} aria-label="Discovery categories">
-        <Tags className="mr-2 h-4 w-4" /> Categories
-      </Button>
-      <Button variant="toolbar" size="sm" onClick={onOpenSuggest} aria-label="Suggest a site">
-        <Link2 className="mr-2 h-4 w-4" /> Suggest
       </Button>
       {isLoading ? (
         <p className="inline-flex items-center px-2 text-xs text-[var(--ui-muted)]">
