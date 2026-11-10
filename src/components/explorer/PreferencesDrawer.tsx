@@ -27,9 +27,9 @@ export function PreferencesDrawer({ topics, onToggleTopic, onClearTopics }: Pref
               type="button"
               aria-pressed={selected}
               onClick={() => onToggleTopic(topic)}
-              className={`inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-medium capitalize transition-colors ${
+              className={`inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-medium capitalize transition duration-150 active:scale-[0.96] ${
                 selected
-                  ? "border-[var(--cta)] bg-[var(--cta)] text-white"
+                  ? "fx-chip border-[var(--cta)] bg-[var(--cta)] text-white"
                   : "border-[color:var(--ui-border)] bg-white text-[var(--text-main)] hover:bg-[color:var(--surface-soft)]"
               }`}
             >

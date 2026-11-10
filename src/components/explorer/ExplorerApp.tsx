@@ -222,22 +222,32 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
     setNewCycleNotice(result.newCycle && withSeed.preferences.topics.length > 0);
   }, [clientState, eligibleEntries, entries, frameCycle, persist, preserveUnavailableIds, waitingForCatalogue]);
 
+  const isLiked = !!activeEntry && clientState.saves.some((item) => item.id === activeEntry.id);
+
   const handleSave = useCallback(() => {
     if (!activeEntry) return;
     const snapshot = toSnapshot(activeEntry);
     const deduped = clientState.saves.filter((item) => item.id !== snapshot.id);
-    persist({ ...clientState, saves: [...deduped, snapshot] });
+    persist({
+      ...clientState,
+      saves: [...deduped, snapshot],
+      excludedIds: clientState.excludedIds.filter((id) => id !== snapshot.id),
+    });
     setNote("Added to Liked.");
   }, [activeEntry, clientState, persist]);
 
   const handleNotForMe = useCallback(() => {
     if (!activeEntry) return;
-    if (clientState.excludedIds.includes(activeEntry.id)) return;
+    const wasLiked = clientState.saves.some((item) => item.id === activeEntry.id);
+    if (clientState.excludedIds.includes(activeEntry.id) && !wasLiked) return;
     persist({
       ...clientState,
-      excludedIds: [...clientState.excludedIds, activeEntry.id],
+      saves: clientState.saves.filter((item) => item.id !== activeEntry.id),
+      excludedIds: clientState.excludedIds.includes(activeEntry.id)
+        ? clientState.excludedIds
+        : [...clientState.excludedIds, activeEntry.id],
     });
-    setNote("Not for me recorded locally.");
+    setNote(wasLiked ? "Removed from Liked. Not for me recorded locally." : "Not for me recorded locally.");
   }, [activeEntry, clientState, persist]);
 
   const handleReport = useCallback(
@@ -288,6 +298,7 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
           </div>
           <TopControls
             isLoading={phase === "loading"}
+            liked={isLiked}
             nextDisabled={waitingForCatalogue}
             onNext={applyNext}
             onNotForMe={handleNotForMe}
@@ -479,6 +490,7 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
       </div>
 
       <BottomDock
+        liked={isLiked}
         nextDisabled={waitingForCatalogue}
         onNext={applyNext}
         onLike={handleSave}

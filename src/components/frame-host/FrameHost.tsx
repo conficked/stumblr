@@ -99,7 +99,7 @@ export function FrameHost({
           key={token}
           src={outcome === "error" ? "http://127.0.0.1:9/unreachable" : entry.canonicalUrl}
           title={`Destination: ${entry.title}`}
-          className="w-full"
+          className={`w-full ${phase === "loading" ? "opacity-0" : phase === "ready" ? "fx-fade-in" : ""}`}
           style={{
             position: "absolute",
             inset: "0",
