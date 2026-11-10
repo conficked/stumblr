@@ -1,7 +1,7 @@
 name: catalogue-auto-publish
 "on":
   schedule:
-    - cron: '37 17 * * *'
+    - cron: '37 1,17,21 * * *'
   workflow_dispatch:
     inputs:
       mode:
