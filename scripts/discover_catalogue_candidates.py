@@ -1284,6 +1284,11 @@ def main() -> int:
             candidate.link_text = safe_domain_title(candidate.domain)
             screening["title_hint"] = None
             screening["title_signals"] = read_title_signals(screening.get("title_signals"))
+        elif screening.get("title_hint"):
+            candidate.inferred_topics = infer_topics(
+                [candidate.link_text, candidate.canonical_url, candidate.source_id, screening["title_hint"]],
+                candidate.topic_hint,
+            )
         screened.append(
             {
                 **dataclasses.asdict(candidate),

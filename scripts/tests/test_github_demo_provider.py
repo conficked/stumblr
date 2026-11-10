@@ -36,7 +36,7 @@ def response(items, total=None, incomplete=False):
     return result
 
 
-def collect_fixture(homepages, known_url=None, available=True, *, repository_start=1):
+def collect_fixture(homepages, known_url=None, available=True, *, repository_start=1, title_hint="Toy"):
     """Run the real collector with a bounded provider fixture; return its import artifacts."""
     import stumblr_db
     with tempfile.TemporaryDirectory() as tmp, contextlib.ExitStack() as stack:
@@ -58,7 +58,7 @@ def collect_fixture(homepages, known_url=None, available=True, *, repository_sta
         stack.enter_context(mock.patch.object(disc, "load_existing_catalogue_keys", return_value=({known_url} if known_url else set(), set())))
         stack.enter_context(mock.patch.object(disc, "resolve_public_ip", return_value=(True, "ok")))
         stack.enter_context(mock.patch.object(disc, "screen_url", return_value={"available": available, "status": 200,
-            "x_frame_options": None, "content_security_policy": None, "title_hint": "Toy"}))
+            "x_frame_options": None, "content_security_policy": None, "title_hint": title_hint}))
         stack.enter_context(mock.patch.object(sys, "argv", ["discover", "--db-path", str(db_path), "--output-dir", tmp]))
         stack.enter_context(contextlib.redirect_stdout(io.StringIO()))
         if disc.main() != 0:
@@ -342,6 +342,10 @@ class GitHubCollectorTests(unittest.TestCase):
                         self.assertEqual(conn.execute("SELECT status FROM discovery_candidates").fetchone()[0], "reviewed_exportable")
                 finally:
                     conn.close()
+
+    def test_screened_page_title_contributes_topics(self):
+        result = collect_fixture(["https://scanner.example/"], title_hint="Online Security Scanner")
+        self.assertIn("tech", result["selected"][0]["topics"])
 
     def test_collector_can_still_be_invoked_as_a_python_module(self):
         result = subprocess.run([sys.executable, "-m", "scripts.discover_catalogue_candidates", "--help"],
