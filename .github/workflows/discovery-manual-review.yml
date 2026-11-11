@@ -15,6 +15,15 @@ name: discovery-manual-review
         options:
           - maintenance
           - bootstrap
+      recheck:
+        # The Cloudflare scheduler passes "false" except every sixth hour.
+        description: Recheck established entries (maintenance only)
+        type: choice
+        required: false
+        default: "true"
+        options:
+          - "true"
+          - "false"
   schedule:
     # Together these disjoint schedules still collect every hour at minute 17.
     # Use the triggering cron to preserve recheck cadence even if a run is delayed.
@@ -49,6 +58,7 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
           REQUESTED_MODE: ${{ inputs.mode }}
+          REQUESTED_RECHECK: ${{ inputs.recheck }}
           SCHEDULE: ${{ github.event.schedule }}
         run: |
           python3 - <<'PYPLAN'
@@ -63,7 +73,7 @@ jobs:
               raise SystemExit("invalid discovery mode")
           families = sorted({source["source_family"] for source in SOURCE_CONFIG}) if mode == "bootstrap" else ["all"]
           recheck = mode == "maintenance" and (
-              os.environ["EVENT_NAME"] == "workflow_dispatch"
+              (os.environ["EVENT_NAME"] == "workflow_dispatch" and os.environ.get("REQUESTED_RECHECK") != "false")
               or os.environ.get("SCHEDULE") == "17 */6 * * *"
           )
           with open(os.environ["GITHUB_OUTPUT"], "a") as output:

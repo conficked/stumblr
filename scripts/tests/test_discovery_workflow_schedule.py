@@ -20,12 +20,12 @@ class DiscoveryScheduleTests(unittest.TestCase):
         ], cwd=ROOT))
         cls.plan = next(step for step in cls.workflow["jobs"]["plan-discovery"]["steps"] if step.get("id") == "plan")
 
-    def plan_run(self, event, schedule="", mode=""):
+    def plan_run(self, event, schedule="", mode="", recheck=""):
         with tempfile.TemporaryDirectory() as temporary:
             output = Path(temporary) / "output"
             result = subprocess.run(["bash", "-e", "-c", self.plan["run"]], cwd=ROOT, env={
                 **os.environ, "EVENT_NAME": event, "SCHEDULE": schedule,
-                "REQUESTED_MODE": mode, "GITHUB_OUTPUT": str(output),
+                "REQUESTED_MODE": mode, "REQUESTED_RECHECK": recheck, "GITHUB_OUTPUT": str(output),
             }, capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
             return dict(line.split("=", 1) for line in output.read_text().splitlines())
@@ -79,6 +79,12 @@ class DiscoveryScheduleTests(unittest.TestCase):
                 outputs = self.plan_run("workflow_dispatch", mode=mode)
                 self.assertEqual(outputs.get("recheck"), expected)
                 self.assertEqual(outputs["mode"], mode or "maintenance")
+
+    def test_dispatched_maintenance_can_skip_recheck_for_the_hourly_scheduler(self):
+        for recheck, expected in [("true", "true"), ("false", "false")]:
+            with self.subTest(recheck=recheck):
+                self.assertEqual(self.plan_run("workflow_dispatch", mode="maintenance", recheck=recheck)["recheck"], expected)
+        self.assertEqual(self.plan_run("workflow_dispatch", mode="bootstrap", recheck="true")["recheck"], "false")
 
     def test_runtime_observation_has_no_token_authority_and_persistence_is_bounded(self):
         jobs = self.workflow["jobs"]
