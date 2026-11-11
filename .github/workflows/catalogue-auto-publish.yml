@@ -78,7 +78,7 @@ jobs:
         timeout-minutes: 8
         run: |
           env -u ACTIONS_ID_TOKEN_REQUEST_TOKEN -u ACTIONS_ID_TOKEN_REQUEST_URL npm ci --ignore-scripts
-          env -u ACTIONS_ID_TOKEN_REQUEST_TOKEN -u ACTIONS_ID_TOKEN_REQUEST_URL npx playwright install --with-deps chromium
+          env -u ACTIONS_ID_TOKEN_REQUEST_TOKEN -u ACTIONS_ID_TOKEN_REQUEST_URL npx playwright install chromium
       - name: Commit the exact preview and check the current live revision
         id: commit
         if: steps.preview.outputs.publish == 'true'
