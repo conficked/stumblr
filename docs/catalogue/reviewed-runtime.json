@@ -7735,6 +7735,173 @@
         "observedAt": "2026-11-09T23:29:31.434Z",
         "device": "desktop"
       }
+    },
+    {
+      "id": "labwired-com-5aa6fbb2f922",
+      "title": "LabWired — Circuit Simulator, Firmware Testing & PCB Design",
+      "canonicalUrl": "https://labwired.com/",
+      "domain": "labwired.com",
+      "topics": [
+        "art",
+        "science",
+        "tech"
+      ],
+      "description": "An interactive web demo with a verified GitHub repository.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source github-live-demo.",
+        "reviewer": "stumblr-auto-policy/6 run/43046681423",
+        "reviewedAt": "2026-11-11T15:16:29.865Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-11T06:27:30.752Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "covel-cc-8c41ff4f33e2",
+      "title": "Covel · Everything is pluggable, every world is yours",
+      "canonicalUrl": "https://covel.cc/",
+      "domain": "covel.cc",
+      "topics": [
+        "games",
+        "tech",
+        "art"
+      ],
+      "description": "An interactive web demo with a verified GitHub repository.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source github-live-demo.",
+        "reviewer": "stumblr-auto-policy/6 run/43046681423",
+        "reviewedAt": "2026-11-11T15:16:29.865Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-11T01:18:37.215Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "yourchaoschris-github-io-7150f5d3fe65",
+      "title": "PaperGames – 115 free games for e-ink readers",
+      "canonicalUrl": "https://yourchaoschris.github.io/PaperGames/",
+      "domain": "yourchaoschris.github.io",
+      "topics": [
+        "culture",
+        "games",
+        "art"
+      ],
+      "description": "An interactive web demo with a verified GitHub repository.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source github-live-demo.",
+        "reviewer": "stumblr-auto-policy/6 run/43046681423",
+        "reviewedAt": "2026-11-11T15:16:29.865Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-11T07:50:32.740Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "vsta-org-f2c90ca155d6",
+      "title": "Remaining Sailings",
+      "canonicalUrl": "https://vsta.org/ferry.html",
+      "domain": "vsta.org",
+      "topics": [
+        "culture"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source one-mb-club.",
+        "reviewer": "stumblr-auto-policy/6 run/43046681423",
+        "reviewedAt": "2026-11-11T15:16:29.865Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:29:37.279Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "blog-tfiu-de-6bb349bcab5d",
+      "title": "Engelszüngeln Home",
+      "canonicalUrl": "https://blog.tfiu.de/",
+      "domain": "blog.tfiu.de",
+      "topics": [
+        "culture"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source webring-fediring.",
+        "reviewer": "stumblr-auto-policy/6 run/43046681423",
+        "reviewedAt": "2026-11-11T15:16:29.865Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:30:54.586Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "crashserver-fr-1f2c49d9ac82",
+      "title": "Crash Server - Home",
+      "canonicalUrl": "https://crashserver.fr/",
+      "domain": "crashserver.fr",
+      "topics": [
+        "culture"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source webring-fediring.",
+        "reviewer": "stumblr-auto-policy/6 run/43046681423",
+        "reviewedAt": "2026-11-11T15:16:29.865Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:31:00.343Z",
+        "device": "desktop"
+      }
+    },
+    {
+      "id": "friendring-neocities-org-5ad27d10d5ff",
+      "title": "FRIENDRING — tiny webring for personal & old-web-style sites",
+      "canonicalUrl": "https://friendring.neocities.org/",
+      "domain": "friendring.neocities.org",
+      "topics": [
+        "culture"
+      ],
+      "description": "An independent website from a curated small-web source.",
+      "status": "evaluation_only",
+      "policyBasis": null,
+      "provenance": {
+        "sourceNote": "Automatic evaluation from curated source webring-hotline.",
+        "reviewer": "stumblr-auto-policy/6 run/43046681423",
+        "reviewedAt": "2026-11-11T15:16:29.865Z"
+      },
+      "embedEvidence": {
+        "observedHeaders": "Terminal HTTP 200 with no observed browser frame denial on desktop or mobile.",
+        "observedRenderResult": "rendered",
+        "observedAt": "2026-11-09T23:31:02.011Z",
+        "device": "desktop"
+      }
     }
   ]
 }
