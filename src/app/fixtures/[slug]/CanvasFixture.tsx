@@ -51,6 +51,7 @@ export function CanvasFixture() {
     };
 
     canvas.addEventListener("pointerdown", pointerHandler);
+    canvas.dataset.ready = "true";
     return () => canvas.removeEventListener("pointerdown", pointerHandler);
   }, []);
 

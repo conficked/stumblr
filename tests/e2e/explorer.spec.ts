@@ -141,8 +141,11 @@ test("fresh sessions have distinct seeds and diverse no-repeat sequences", async
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto("/");
+    await expect(page.locator("main[aria-label='Stumblr Explorer']")).toHaveAttribute("data-ready", "true");
     const stumbl = page.locator("button[aria-label='Stumbl']:visible").first();
     for (let pickIndex = 0; pickIndex < 12; pickIndex += 1) {
+      // Stumbl stays disabled until the runtime catalogue loads; forced clicks on it are dropped.
+      await expect(stumbl).toBeEnabled();
       await stumbl.click({ force: true });
     }
     const state = await page.evaluate(() => {

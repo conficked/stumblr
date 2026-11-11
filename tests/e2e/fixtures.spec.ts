@@ -1,7 +1,15 @@
 import { expect, Locator, Page, test } from "@playwright/test";
 
 async function clickNext(page: Page) {
-  await page.locator("button[aria-label='Stumbl']:visible").first().click({ force: true });
+  const stumbl = page.locator("button[aria-label='Stumbl']:visible").first();
+  // Forced clicks skip actionability checks, so wait for the catalogue to enable Stumbl first.
+  await expect(stumbl).toBeEnabled();
+  // The Next.js dev-indicator portal overlaps the mobile dock in local dev.
+  await page.evaluate(() => {
+    const portal = document.querySelector("nextjs-portal");
+    if (portal instanceof HTMLElement) portal.style.pointerEvents = "none";
+  });
+  await stumbl.click({ force: true });
   await page.waitForTimeout(350);
 }
 
@@ -19,6 +27,8 @@ async function pickSingleTopic(page: Page, topic: string) {
   }
   await scope.getByRole("button", { name: topic }).first().click();
   await page.keyboard.press("Escape");
+  // A forced Stumbl click during the close animation lands on the dialog and is lost.
+  await expect(page.getByRole("dialog")).toHaveCount(0);
 }
 
 test("[fixture] blocked entry can be skipped and recover on next", async ({ page }) => {
@@ -123,7 +133,7 @@ test("[fixture] frame consumes destination area and avoids viewport overflow", a
   expect(frame).toBeTruthy();
   if (!frame) return;
 
-  await frame.getByTestId("fixture-canvas").waitFor();
+  await frame.locator("#fixture-canvas[data-ready='true']").waitFor();
   const beforeDrawCount = await frame.evaluate(() => {
     const canvas = document.querySelector<HTMLCanvasElement>("#fixture-canvas");
     return canvas?.dataset.drawCount ?? "0";
