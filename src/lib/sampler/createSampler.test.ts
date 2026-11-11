@@ -283,3 +283,17 @@ test("a boundary-protected bundled draw is provisional while its runtime alterna
   expect(second.deck.seenIds).toEqual([runtime.id, bundled.id]);
   expect(second.cycleNumber).toBe(3);
 });
+
+test("a fresh topic deck never redraws the on-screen entry first, but still can when it is the only one", () => {
+  const sample = getCatalogue({ includeEvaluation: true })[0] as CatalogueEntry;
+  const entry = (id: string): CatalogueEntry => ({ ...sample, id, domain: `${id}.test`, canonicalUrl: `https://${id}.test/` });
+  const pool = ["on-screen", "a", "b", "c", "d", "e", "f"].map(entry);
+  for (let seed = 1; seed <= 200; seed += 1) {
+    const sampler = createSampler(seed, pool, { mode: "wildcard", topics: [] }, { recentHistory: ["on-screen"] });
+    const pick = sampler.next(sampler.initialState());
+    expect(pick.kind === "entry" && pick.entry.id).not.toBe("on-screen");
+  }
+  const only = createSampler(7, [entry("on-screen")], { mode: "wildcard", topics: [] }, { recentHistory: ["on-screen"] });
+  const pick = only.next(only.initialState());
+  expect(pick.kind === "entry" && pick.entry.id).toBe("on-screen");
+});

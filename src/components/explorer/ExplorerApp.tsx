@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { Clock3, Flag, Link2, Menu, Tags, ThumbsUp } from "lucide-react";
 import { getCatalogue } from "@/lib/catalogue";
@@ -168,14 +168,21 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
       topics: withSeed.preferences.topics,
       includeEvaluation,
     });
-    const oldDeck = withSeed.discoveryDecks.scopes[scope];
+    const storedDeck = withSeed.discoveryDecks.scopes[scope];
+    // Each topic scope keeps its own deck, so make the site on screen that deck's most
+    // recent draw; otherwise a topic change can redraw the site the visitor is looking at.
+    const onScreen = activeEntry?.id;
+    const withOnScreen = (ids: string[]) => onScreen ? [...ids.filter((id) => id !== onScreen), onScreen] : ids;
+    const oldDeck = storedDeck && onScreen && storedDeck.recentTailIds.at(-1) !== onScreen
+      ? { ...storedDeck, recentTailIds: withOnScreen(storedDeck.recentTailIds) }
+      : storedDeck;
     const sampler = createSampler(explorationSeed, eligibleEntries, {
       mode,
       topics: withSeed.preferences.topics,
     }, {
       deck: oldDeck,
       preserveUnavailableIds,
-      recentHistory: oldDeck ? [] : withSeed.discoveryDecks.migrationRecentIds,
+      recentHistory: oldDeck ? [] : withOnScreen(withSeed.discoveryDecks.migrationRecentIds),
     });
     const entriesById = new Map(entries.map((entry) => [entry.id, entry]));
     const previousIds = oldDeck?.recentTailIds ?? withSeed.discoveryDecks.migrationRecentIds;
@@ -220,7 +227,7 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
     setPhase("loading");
     setNote(null);
     setNewCycleNotice(result.newCycle && withSeed.preferences.topics.length > 0);
-  }, [clientState, eligibleEntries, entries, frameCycle, persist, preserveUnavailableIds, waitingForCatalogue]);
+  }, [activeEntry, clientState, eligibleEntries, entries, frameCycle, persist, preserveUnavailableIds, waitingForCatalogue]);
 
   const isLiked = !!activeEntry && clientState.saves.some((item) => item.id === activeEntry.id);
 
@@ -249,6 +256,12 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
     });
     setNote(wasLiked ? "Removed from Liked. Not for me recorded locally." : "Not for me recorded locally.");
   }, [activeEntry, clientState, persist]);
+
+  const rootRef = useRef<HTMLElement | null>(null);
+  // Marks hydration complete, so end-to-end tests never click before handlers are attached.
+  useEffect(() => {
+    rootRef.current?.setAttribute("data-ready", "true");
+  }, []);
 
   const handleReport = useCallback(
     async ({ note: reportNote, type }: { note: string; type: "broken" | "report" }) => {
@@ -292,6 +305,7 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
 
   return (
     <main
+      ref={rootRef}
       aria-label="Stumblr Explorer"
       className="mx-auto flex min-h-screen w-full flex-col bg-[color:var(--background)] pb-24 md:pb-3"
     >
