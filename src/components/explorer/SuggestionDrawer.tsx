@@ -149,7 +149,7 @@ export function SuggestionDrawer({ onSubmitted }: SuggestionDrawerProps) {
         </p>
       ) : null}
       <p className="text-xs text-[var(--ui-muted)]">
-        Private draft only. This queue is durable for this VM, pending review, and not a global production backend.
+        Suggestions are checked automatically, usually within a day.
       </p>
     </div>
   );

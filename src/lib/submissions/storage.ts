@@ -30,6 +30,22 @@ export function findPendingByCanonicalOrDomain(
   return findSuggestionByCanonicalUrl(canonicalUrl) ?? findSuggestionByDomain(domain);
 }
 
+/** How discovery already judged this destination, if it screened it out. */
+export function findScreenedOutCandidate(canonicalUrl: string, domain: string): "framing_denied" | "screened_out" | null {
+  const row = openOpsDb()
+    .prepare(`SELECT status, screen_json FROM discovery_candidates WHERE canonical_url = ? OR domain = ?
+      ORDER BY (canonical_url = ?) DESC LIMIT 1`)
+    .get(canonicalUrl, domain, canonicalUrl);
+  if (!row || (row.status !== "quarantined" && row.status !== "rejected")) return null;
+  try {
+    const screen = JSON.parse(String(row.screen_json ?? "{}"));
+    if (screen?.framing?.denied === true) return "framing_denied";
+  } catch {
+    // Unreadable screening evidence still means the destination was screened out.
+  }
+  return "screened_out";
+}
+
 export function insertCommunitySuggestion(
   suggestion: CommunitySuggestion,
 ): { kind: "inserted" | "duplicate"; suggestion: CommunitySuggestion } {

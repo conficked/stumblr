@@ -3,7 +3,7 @@ import { catalogueEntries } from "@/lib/catalogue/entries";
 import { readRuntimeCatalogue } from "@/lib/catalogue/runtimeStore";
 import { Topic } from "@/lib/catalogue/types";
 import { canonicalizeHttpsUrl, resolveHostSafety } from "@/lib/url/safeUrl";
-import { findPendingByCanonicalOrDomain, insertCommunitySuggestion } from "./storage";
+import { findPendingByCanonicalOrDomain, findScreenedOutCandidate, insertCommunitySuggestion } from "./storage";
 import { CommunitySuggestion, SuggestionInput } from "./types";
 
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
@@ -114,6 +114,18 @@ export async function processSuggestion(input: SuggestionInput, submitterToken: 
       code: "already_in_catalogue",
       message: "This destination is already represented in the curated pool.",
       suggestionId: null,
+    };
+  }
+
+  const screenedOut = findScreenedOutCandidate(canonicalUrl, domain);
+  if (screenedOut) {
+    return {
+      ok: false as const,
+      status: 409,
+      code: screenedOut,
+      message: screenedOut === "framing_denied"
+        ? "This site was checked, but it blocks being shown inside other sites, so Stumblr can't display it."
+        : "This site was checked and didn't pass Stumblr's screening, so it won't be added.",
     };
   }
 

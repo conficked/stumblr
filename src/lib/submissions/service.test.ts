@@ -75,6 +75,23 @@ describe("community suggestion service", () => {
     expect(second.code).toBe("already_pending");
   });
 
+  test("explains when discovery already screened the destination out", async () => {
+    await processSuggestion({ url: "https://framed.example.org/" }, "submitter-f");
+    const db = openOpsDb();
+    const add = db.prepare(`INSERT INTO discovery_candidates (id, canonical_url, domain, source_id, source_family, source_url,
+      discovered_at, status, screen_json, updated_at) VALUES (?, ?, ?, 'community-suggestions', 'community', 'https://stumblr.dev/',
+      '2026-11-11', ?, ?, '2026-11-11')`);
+    add.run("framed", "https://framed.example.org/", "framed.example.org", "quarantined", JSON.stringify({ framing: { denied: true } }));
+    add.run("broken", "https://broken.example.org/", "broken.example.org", "quarantined", JSON.stringify({ status: 503 }));
+    add.run("waiting", "https://waiting.example.org/", "waiting.example.org", "pending_review", JSON.stringify({ framing: { denied: false } }));
+
+    expect(await processSuggestion({ url: "https://framed.example.org/" }, "submitter-f"))
+      .toMatchObject({ ok: false, status: 409, code: "framing_denied" });
+    expect(await processSuggestion({ url: "https://broken.example.org/other" }, "submitter-f"))
+      .toMatchObject({ ok: false, status: 409, code: "screened_out" });
+    expect(await processSuggestion({ url: "https://waiting.example.org/" }, "submitter-f")).toMatchObject({ ok: true });
+  });
+
   test("rejects suggestions already represented in curated catalogue", async () => {
     const result = await processSuggestion({ url: "https://weavesilk.com/" }, "submitter-d");
     expect(result.ok).toBe(true);
