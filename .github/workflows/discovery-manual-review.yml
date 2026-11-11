@@ -107,7 +107,7 @@ jobs:
     # This runner reaches untrusted destinations. It cannot mint an OIDC token.
     permissions:
       contents: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     outputs:
       http: ${{ steps.http.outputs.artifact-id }}
@@ -140,7 +140,7 @@ jobs:
       - name: Observe established entries in the frame sandbox
         run: |
           npm ci --ignore-scripts
-          npx playwright install --with-deps chromium
+          npx playwright install chromium
           node scripts/qualify_review_candidates.mjs \
             "${{ runner.temp }}/runtime-browser-inputs.json" \
             "${{ runner.temp }}/runtime-browser-evidence.json" \
@@ -504,7 +504,7 @@ jobs:
       max-parallel: 2
       matrix:
         family: ${{ fromJSON(needs.plan-discovery.outputs.families) }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 8
     steps:
       - name: Download the private candidate artifact for this shard
@@ -535,7 +535,7 @@ jobs:
           cache: npm
       - run: npm ci
         if: ${{ steps.eligibility.outputs.eligible == 'true' }}
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install chromium
         if: ${{ steps.eligibility.outputs.eligible == 'true' }}
       - name: Observe a bounded sample in the Stumblr frame sandbox
         if: ${{ steps.eligibility.outputs.eligible == 'true' }}

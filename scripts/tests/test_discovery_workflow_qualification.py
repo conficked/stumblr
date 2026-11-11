@@ -77,7 +77,7 @@ class DiscoveryQualificationWorkflowTests(unittest.TestCase):
         self.assertIn("qualification-candidates.json", browser["run"])
         self.assertNotIn("discovery_selected.json", browser["run"])
         browser_steps = [step for step in steps if step.get("run") in {
-            "npm ci", "npx playwright install --with-deps chromium",
+            "npm ci", "npx playwright install chromium",
         } or "qualify_review_candidates.mjs" in step.get("run", "")]
         self.assertEqual(len(browser_steps), 3)
         for step in browser_steps:
