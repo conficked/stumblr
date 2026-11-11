@@ -56,16 +56,18 @@ function scheduledRolloutStage(db: OpsDb, actor: AutoPublishActor): AutoPublicat
     WHERE actor_event = 'schedule' AND actor_run_id = ? AND rollout_stage IS NOT NULL ORDER BY rowid LIMIT 1`).get(actor.runId);
   if (previous) return rolloutStages[previous.rollout_stage as RolloutStage];
 
+  // Dispatched releases run the same proof and public check, so they count toward the ramp.
+  const releases = db.prepare(`SELECT COUNT(DISTINCT p.actor_run_id) AS total FROM auto_publication_proposals p
+    JOIN auto_publication_audit a ON a.proposal_id = p.proposal_id AND a.operation = 'publish'
+    WHERE p.status = 'published' AND p.proof_status = 'verified' AND p.public_check = 'confirmed'
+      AND NOT EXISTS (SELECT 1 FROM auto_publication_audit r
+        WHERE r.release_revision = a.release_revision AND r.operation = 'rollback')`).get();
+  if (Number(releases?.total) >= 3) return rolloutStages.full;
+
   const reports = db.prepare(`SELECT COUNT(DISTINCT actor_run_id) AS total FROM auto_publication_proposals
     WHERE actor_event = 'schedule' AND rollout_stage = 'report_only'`).get();
   if (Number(reports?.total) < 3) return rolloutStages.report_only;
-
-  const releases = db.prepare(`SELECT COUNT(DISTINCT p.actor_run_id) AS total FROM auto_publication_proposals p
-    JOIN auto_publication_audit a ON a.proposal_id = p.proposal_id AND a.operation = 'publish'
-    WHERE p.actor_event = 'schedule' AND p.rollout_stage = 'limited' AND p.status = 'published' AND p.proof_status = 'verified' AND p.public_check = 'confirmed'
-      AND NOT EXISTS (SELECT 1 FROM auto_publication_audit r
-        WHERE r.release_revision = a.release_revision AND r.operation = 'rollback')`).get();
-  return Number(releases?.total) < 3 ? rolloutStages.limited : rolloutStages.full;
+  return rolloutStages.limited;
 }
 
 export function getAutoPublicationRolloutStage(actor: AutoPublishActor): AutoPublicationRolloutStage {

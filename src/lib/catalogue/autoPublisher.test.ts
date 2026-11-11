@@ -559,6 +559,22 @@ test("only proof-verified and unrolled limited releases count toward the next st
   expect(api.getAutoPublicationRolloutStage(scheduled("413"))).toEqual({ stage: "full", cap: 20 });
 });
 
+test("three verified dispatched releases skip the scheduled ramp", async () => {
+  const api = await publisher();
+  const scheduled = (id: string) => ({ ...actor(id), event: "schedule" as const });
+  expect(api.getAutoPublicationRolloutStage(scheduled("500"))).toEqual({ stage: "report_only", cap: 20 });
+  for (const [id, title] of [
+    ["510", "Carving a wooden sundial"],
+    ["511", "How mammoths survived winter"],
+    ["512", "Making ink for printing presses"],
+  ]) {
+    seedCandidate(`candidate-${id}`, title);
+    const owner = actor(id);
+    expect(await confirm(owner, api.createAutoPublicationPreview(owner, 20))).toMatchObject({ status: "published" });
+  }
+  expect(api.getAutoPublicationRolloutStage(scheduled("500"))).toEqual({ stage: "full", cap: 20 });
+});
+
 test("scheduled rollout is report-only for three distinct runs and caps three unrolled releases at five", async () => {
   const api = await publisher();
   const stamp = actor().issuedAt;
