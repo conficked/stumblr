@@ -44,6 +44,7 @@ const SOURCES: ReadonlyMap<string, readonly [family: string, url: string, kind: 
   ["public-domain-review-rss", ["archives", "https://publicdomainreview.org/feed/", "archive"]],
   ["wikimedia-glam-rss", ["archives", "https://diff.wikimedia.org/feed/", "archive"]],
   ["github-live-demo", ["github-live-demo", "https://api.github.com/search/repositories", "github"]],
+  ["community-suggestions", ["community", "https://stumblr.dev/", "independent"]],
 ]);
 
 const MINIMUM_READING_TEXT = { article: 240, archive: 200, education: 200, independent: 160 };

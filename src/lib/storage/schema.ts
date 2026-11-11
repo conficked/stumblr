@@ -15,7 +15,7 @@ export type LocalReport = {
   note: string;
   type: "broken" | "report";
   createdAt: string;
-  localOnly: true;
+  localOnly: boolean;
 };
 
 export type DiscoveryCycleBoundary = {

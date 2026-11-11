@@ -4,13 +4,13 @@ import { execFileSync } from "node:child_process";
 import { afterEach, beforeEach, expect, test } from "vitest";
 import fs from "node:fs"; import os from "node:os"; import path from "node:path";
 import { openOpsDb, closeOpsDbForTests } from "@/lib/db/client";
-import { insertSuggestion } from "@/lib/db/suggestionsRepo";
+import { insertSuggestion, listUnqueuedSuggestions } from "@/lib/db/suggestionsRepo";
 import { importCandidateBatch, getCandidateIdentitySnapshot } from "./candidateQueue";
 const original = process.env.STUMBLR_DB_PATH;
 let dir: string;
 beforeEach(()=>{dir=fs.mkdtempSync(path.join(os.tmpdir(), "stumblr-queue-"));process.env.STUMBLR_DB_PATH=path.join(dir,"queue.sqlite");});
 afterEach(()=>{closeOpsDbForTests();fs.rmSync(dir,{recursive:true,force:true});if(original===undefined)delete process.env.STUMBLR_DB_PATH;else process.env.STUMBLR_DB_PATH=original;});
-test("collector and community converge on pending review without publishing or overriding a review",()=>{
+test("collector queues pending review without publishing or overriding a review; suggestions wait for screening",()=>{
  const row={id:"fixture",canonical_url:"https://example.org/",domain:"example.org",source_id:"fixture",source_family:"webring",source_url:"https://source.example/",topics:["art"],title_hint:"Fixture",selection_status:"evaluation_candidate",availability_status:200,x_frame_options:null,content_security_policy:null};
  expect(importCandidateBatch([row]).inserted).toBe(1);
  expect(importCandidateBatch([row]).existing).toBe(1);
@@ -21,8 +21,11 @@ test("collector and community converge on pending review without publishing or o
  expect(db.prepare("SELECT status FROM discovery_candidates WHERE id='fixture'").get()?.status).toBe("reviewed_exportable");
  importCandidateBatch([{...row,source_family:"runtime-recheck",selection_status:"blocked"}]);
  expect(db.prepare("SELECT status FROM discovery_candidates WHERE id='fixture'").get()?.status).toBe("quarantined");
- insertSuggestion({id:"community-fixture",canonicalUrl:"https://community.example/",domain:"community.example",submittedAt:new Date().toISOString(),status:"pending_review",source:"community",title:"Community",note:null,topics:[],submitterHash:"test-only"});
- expect(db.prepare("SELECT status FROM discovery_candidates WHERE canonical_url='https://community.example/'").get()?.status).toBe("pending_review");
+ insertSuggestion({id:"community-fixture",canonicalUrl:"https://community.example/",domain:"community.example",submittedAt:new Date().toISOString(),status:"pending_review",source:"community",title:"Community",note:"private note",topics:["games"],submitterHash:"test-only"});
+ expect(db.prepare("SELECT 1 FROM discovery_candidates WHERE canonical_url='https://community.example/'").get()).toBeUndefined();
+ expect(listUnqueuedSuggestions()).toEqual([{canonical_url:"https://community.example/",topics:["games"]}]);
+ importCandidateBatch([{...row,id:"community-screened",canonical_url:"https://community.example/",domain:"community.example",source_id:"community-suggestions",source_family:"community",source_url:"https://stumblr.dev/"}]);
+ expect(listUnqueuedSuggestions()).toEqual([]);
  expect(()=>importCandidateBatch([{...row,selection_status:"launch_approved"}])).toThrow();
 });
 

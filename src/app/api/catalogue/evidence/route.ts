@@ -2,6 +2,7 @@ import { getPendingQualificationCandidates, importQualificationEvidence } from "
 import { authenticatePublisher, type CollectionActor } from "@/lib/security/cataloguePublisher";
 import { importRuntimeHealthEvidence, importRuntimeHttpEvidence } from "@/lib/catalogue/runtimeHealth";
 import { getConfirmedRuntimeEntryIds, getConfirmedRuntimeHealthTargets } from "@/lib/catalogue/runtimeStore";
+import { markReportsRechecked, pendingBrokenReportUrls } from "@/lib/submissions/reports";
 
 const maxBodyBytes = 1024 * 1024;
 const headers = { "Cache-Control": "no-store" };
@@ -57,7 +58,11 @@ export async function GET(request: Request) {
     return rejected(401);
   }
   if (new URL(request.url).searchParams.get("runtime_health_targets") === "1") {
-    return Response.json({ targets: getConfirmedRuntimeHealthTargets(24) }, { headers });
+    const reported = pendingBrokenReportUrls();
+    const targets = getConfirmedRuntimeHealthTargets(24, true, reported);
+    const picked = targets.filter(target => reported.has(target.canonicalUrl)).map(target => target.canonicalUrl);
+    markReportsRechecked(picked);
+    return Response.json({ targets, reported: picked.length }, { headers });
   }
   const sourceFamily = new URL(request.url).searchParams.get("source_family");
   if (sourceFamily !== null && !/^[a-z0-9-]{1,100}$/.test(sourceFamily)) return rejected(400);

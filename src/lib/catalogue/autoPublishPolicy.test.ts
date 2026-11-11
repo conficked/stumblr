@@ -191,6 +191,7 @@ describe("source quality", () => {
     ["indie-directory", "personalsites-directory", "https://personalsit.es/", "independent"],
     ["small-web-directory", "one-mb-club", "https://1mb.club/", "independent"],
     ["tilde", "tildeverse", "https://tildeverse.org/", "independent"],
+    ["community", "community-suggestions", "https://stumblr.dev/", "independent"],
   ])("admits rendered %s content without a forced interaction", (sourceFamily, sourceId, sourceUrl, sourceClass) => {
     const input = fixture();
     Object.assign(input.candidate, { sourceFamily, sourceId, sourceUrl });

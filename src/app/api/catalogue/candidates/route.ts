@@ -1,6 +1,7 @@
 import { authenticatePublisher } from "@/lib/security/cataloguePublisher";
 import { openOpsDb } from "@/lib/db/client";
 import { importCandidateBatch } from "@/lib/catalogue/candidateQueue";
+import { listUnqueuedSuggestions } from "@/lib/db/suggestionsRepo";
 export async function POST(request: Request) {
   try { await authenticatePublisher(request.headers.get("authorization"), undefined, "collect"); } catch { return Response.json({ok:false},{status:401}); }
   if(!request.headers.get("content-type")?.startsWith("application/json"))return Response.json({ok:false},{status:415});
@@ -12,6 +13,7 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request) {
   try { await authenticatePublisher(request.headers.get("authorization"), undefined, "collect"); } catch { return Response.json({ok:false},{status:401}); }
+  if(new URL(request.url).searchParams.get("community")==="1")return Response.json({suggestions:listUnqueuedSuggestions()},{headers:{"Cache-Control":"no-store"}});
   const rows=openOpsDb().prepare("SELECT canonical_url FROM discovery_candidates ORDER BY canonical_url LIMIT 20000").all();
   return Response.json({known_urls:rows.map(row=>String(row.canonical_url))},{headers:{"Cache-Control":"no-store"}});
 }

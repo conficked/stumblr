@@ -89,10 +89,10 @@ jobs:
             const token = await core.getIDToken('https://stumblr.dev/catalogue-collect');
             const response = await fetch('https://stumblr.dev/api/catalogue/evidence?runtime_health_targets=1', {headers:{Authorization:`Bearer ${token}`},redirect:'error',signal:AbortSignal.timeout(20_000)});
             if (!response.ok) throw new Error(`Runtime health target list unavailable: ${response.status}`);
-            const {targets} = await response.json();
+            const {targets, reported} = await response.json();
             if (!Array.isArray(targets) || targets.length > 24 || targets.some(row => typeof row?.id !== 'string' || row.id.length > 200 || typeof row?.canonicalUrl !== 'string' || row.canonicalUrl.length > 16384)) throw new Error('Invalid runtime health targets');
             require('fs').writeFileSync(process.env.TARGETS_PATH, JSON.stringify(targets));
-            core.info(`Established runtime health targets: ${targets.length}`);
+            core.info(`Established runtime health targets: ${targets.length} (${Number(reported) || 0} reported broken by visitors)`);
 
       - name: Upload runtime health targets for this attempt
         uses: actions/upload-artifact@v4
@@ -271,6 +271,7 @@ jobs:
         uses: actions/github-script@v7
         env:
           KNOWN_PATH: ${{ runner.temp }}/known-urls.json
+          COMMUNITY_PATH: ${{ runner.temp }}/community-urls.json
         with:
           script: |
             const token = await core.getIDToken('https://stumblr.dev/catalogue-collect');
@@ -279,6 +280,12 @@ jobs:
             const data = await response.json();
             require('fs').writeFileSync(process.env.KNOWN_PATH, JSON.stringify(data.known_urls));
             core.info(`Known URL dedupe keys: ${data.known_urls.length}`);
+            const community = await fetch('https://stumblr.dev/api/catalogue/candidates?community=1', {headers:{Authorization:`Bearer ${token}`}});
+            if (!community.ok) throw new Error(`Community suggestions unavailable: ${community.status}`);
+            const { suggestions } = await community.json();
+            if (!Array.isArray(suggestions) || suggestions.length > 24) throw new Error('Invalid community suggestions');
+            require('fs').writeFileSync(process.env.COMMUNITY_PATH, JSON.stringify(suggestions));
+            core.info(`Community suggestions awaiting screening: ${suggestions.length}`);
 
       - name: Run bounded review-only discovery
         env:
@@ -289,6 +296,7 @@ jobs:
           SOURCE_FAMILY: ${{ matrix.family }}
           CANDIDATE_CEILING: ${{ needs.plan-discovery.outputs.ceiling }}
           KNOWN_PATH: ${{ runner.temp }}/known-urls.json
+          COMMUNITY_PATH: ${{ runner.temp }}/community-urls.json
         run: |
           python3 - <<'PYCOLLECT'
           import os
@@ -304,6 +312,7 @@ jobs:
               "--db-path", os.environ["STUMBLR_DB_PATH"],
               "--max-candidates", os.environ["CANDIDATE_CEILING"],
               "--known-urls", os.environ["KNOWN_PATH"],
+              "--community-urls", os.environ["COMMUNITY_PATH"],
               "--owner", f"gha-{os.environ['GITHUB_RUN_ID']}-{os.environ['GITHUB_RUN_ATTEMPT']}-{family}",
               "--output-dir", os.environ["DISCOVERY_OUTPUT_DIR"]]
           raise SystemExit(collector.main())

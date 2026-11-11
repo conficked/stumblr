@@ -90,7 +90,7 @@ export function SuggestionDrawer({ onSubmitted }: SuggestionDrawerProps) {
   return (
     <div className="space-y-4">
       <p className="text-sm text-[var(--ui-muted)]">
-        Suggest a site for curation review. Suggestions are queued privately on this VM and never auto-published.
+        Suggest a site. Each suggestion goes through the same safety and quality screening as every other source before it can appear.
       </p>
       <label className="block space-y-1">
         <span className="text-xs font-semibold text-[var(--text-main)]">URL (https)</span>

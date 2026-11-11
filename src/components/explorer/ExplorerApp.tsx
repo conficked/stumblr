@@ -251,26 +251,43 @@ export function ExplorerApp({ catalogueOverride, modeLabel }: ExplorerAppProps) 
   }, [activeEntry, clientState, persist]);
 
   const handleReport = useCallback(
-    ({ note: reportNote, type }: { note: string; type: "broken" | "report" }) => {
+    async ({ note: reportNote, type }: { note: string; type: "broken" | "report" }) => {
       const entryId = activeEntry?.id ?? "none";
-      const next = {
-        ...clientState,
-        reports: [
-          ...clientState.reports,
-          {
-            id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
-            entryId,
-            note: reportNote,
-            type,
-            createdAt: new Date().toISOString(),
-            localOnly: true as const,
-          },
-        ],
+      let sent = false;
+      let message = "Couldn't send the report. It is saved on this device.";
+      if (activeEntry) {
+        try {
+          const response = await fetch("/api/reports", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ entryId, type, note: reportNote }),
+          });
+          const result: unknown = await response.json().catch(() => null);
+          sent = response.ok;
+          if (result && typeof result === "object" && typeof (result as { message?: unknown }).message === "string") {
+            message = (result as { message: string }).message;
+          }
+        } catch {
+          // Offline or blocked; keep the local record.
+        }
+      }
+      const record = {
+        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        entryId,
+        note: reportNote,
+        type,
+        createdAt: new Date().toISOString(),
+        localOnly: !sent,
       };
-      persist(next);
-      setNote("Report saved locally.");
+      // Functional update: the request above may outlast other state changes.
+      setClientState((current) => {
+        const next = { ...current, reports: [...current.reports, record] };
+        writeClientState(next);
+        return next;
+      });
+      setNote(message);
     },
-    [activeEntry, clientState, persist],
+    [activeEntry],
   );
 
   return (

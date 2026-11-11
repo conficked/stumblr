@@ -97,3 +97,28 @@ export function insertSuggestion(
     return { kind: "duplicate", suggestion: existing };
   }
 }
+
+/** Suggestions the collector has not screened yet. Notes and submitter hashes never leave the server. */
+export function listUnqueuedSuggestions(limit = 12, db?: OpsDb): Array<{ canonical_url: string; topics: string[] }> {
+  const conn = db ?? openOpsDb();
+  const rows = conn
+    .prepare(
+      `SELECT suggestion.canonical_url, suggestion.topics_json FROM community_suggestions AS suggestion
+       WHERE NOT EXISTS (SELECT 1 FROM discovery_candidates AS candidate
+         WHERE candidate.canonical_url = suggestion.canonical_url OR candidate.domain = suggestion.domain)
+       ORDER BY suggestion.submitted_at, suggestion.id LIMIT ?`,
+    )
+    .all(limit) as Array<Record<string, unknown>>;
+  return rows.map((row) => {
+    let topics: unknown = [];
+    try {
+      topics = JSON.parse(String(row.topics_json ?? "[]"));
+    } catch {
+      topics = [];
+    }
+    return {
+      canonical_url: String(row.canonical_url),
+      topics: Array.isArray(topics) ? topics.filter((topic): topic is string => typeof topic === "string") : [],
+    };
+  });
+}

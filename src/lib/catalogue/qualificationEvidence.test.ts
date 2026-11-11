@@ -226,6 +226,7 @@ test("the collector can recover exact queued URLs on a fresh run after partial e
   const next = (["desktop", "mobile"] as const).map(device => observation(device, "2026-11-09T12:00:00.000Z"));
   expect((await POST(request(freshCollector, JSON.stringify({ ...batch(next), run_id: "9999", run_attempt: 2 })))).status).toBe(200);
   expect((await (await query(freshCollector)).json()).candidates).toEqual([
+    { canonical_url: "https://example.org/community" },
     { canonical_url: "https://example.org/next" },
     { canonical_url: "https://example.org/budget" },
     { canonical_url: "https://example.org/demo" },

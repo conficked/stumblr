@@ -120,10 +120,12 @@ export function getConfirmedRuntimeEntryIds() {
   return new Set(getConfirmedRuntimeEntries().map(entry => entry.id));
 }
 
-export function getConfirmedRuntimeHealthTargets(limit = 24, rotate = true) {
+export function getConfirmedRuntimeHealthTargets(limit = 24, rotate = true, priorityUrls: ReadonlySet<string> = new Set()) {
   if (!Number.isInteger(limit) || limit < 1 || limit > 24) throw new Error("Invalid runtime health target limit");
   const entries = getConfirmedRuntimeEntries();
   const offset = rotate ? (Math.floor(Date.now() / 21_600_000) * limit) % Math.max(1, entries.length) : 0;
-  return [...entries.slice(offset), ...entries.slice(0, offset)].slice(0, limit)
-    .map(entry => ({ id: entry.id, canonicalUrl: entry.canonicalUrl }));
+  const rotated = [...entries.slice(offset), ...entries.slice(0, offset)];
+  const prioritized = [...rotated.filter(entry => priorityUrls.has(entry.canonicalUrl)),
+    ...rotated.filter(entry => !priorityUrls.has(entry.canonicalUrl))];
+  return prioritized.slice(0, limit).map(entry => ({ id: entry.id, canonicalUrl: entry.canonicalUrl }));
 }

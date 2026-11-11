@@ -1,5 +1,6 @@
 import crypto from "node:crypto";
 import { catalogueEntries } from "@/lib/catalogue/entries";
+import { readRuntimeCatalogue } from "@/lib/catalogue/runtimeStore";
 import { Topic } from "@/lib/catalogue/types";
 import { canonicalizeHttpsUrl, resolveHostSafety } from "@/lib/url/safeUrl";
 import { findPendingByCanonicalOrDomain, insertCommunitySuggestion } from "./storage";
@@ -62,7 +63,7 @@ function normalizeText(value: unknown, maxLen: number): string | null {
 }
 
 function hasCatalogueDuplicate(canonicalUrl: string, domain: string): boolean {
-  return catalogueEntries.some(
+  return [...catalogueEntries, ...readRuntimeCatalogue().entries].some(
     (entry) => entry.canonicalUrl === canonicalUrl || entry.domain === domain,
   );
 }
@@ -159,8 +160,7 @@ export async function processSuggestion(input: SuggestionInput, submitterToken: 
     ok: true as const,
     status: 201,
     code: "queued",
-    message:
-      "Suggestion queued for private review in the local ops database. Not auto-published; local SQLite proof is not yet hosted shared durability.",
+    message: "Thanks! It will be checked in the next discovery run and added if it passes screening.",
     suggestionId: suggestion.id,
   };
 }

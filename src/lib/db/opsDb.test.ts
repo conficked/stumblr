@@ -67,7 +67,7 @@ describe("ops sqlite durability (local proof)", () => {
     const db2 = openOpsDb(dbPath);
     expect(findSuggestionByCanonicalUrl("https://example.org/restart", db2)?.title).toBe("Restart");
     expect(listSuggestions(db2)).toHaveLength(1);
-    expect(countCandidates(db2)).toBe(2); // Community suggestion now shares the review queue.
+    expect(countCandidates(db2)).toBe(1); // Suggestions wait for the collector to screen them.
   });
 
   test("privacy upgrade erases exact legacy URLs from the main database and WAL while connections remain open", () => {
@@ -261,7 +261,7 @@ describe("ops sqlite durability (local proof)", () => {
     expect(c1.kind).toBe("inserted");
     expect(c2.kind).toBe("existing");
     expect(c2.id).toBe(c1.id);
-    expect(countCandidates(db)).toBe(2); // One community URL and one independently discovered URL.
+    expect(countCandidates(db)).toBe(1); // Only the discovered URL; suggestions wait for screening.
   });
 
   test("run lease prevents overlapping workers", () => {

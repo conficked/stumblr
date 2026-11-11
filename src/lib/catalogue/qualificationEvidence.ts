@@ -192,7 +192,7 @@ export function getPendingQualificationCandidates(sourceFamily: string | null) {
       ORDER BY ${latestObservationOrder} LIMIT 1
     )
     WHERE candidate.status = 'pending_review'
-      AND candidate.source_family NOT IN ('community', 'runtime-recheck')
+      AND candidate.source_family != 'runtime-recheck'
       AND (? IS NULL OR candidate.source_family = ?)
       AND (desktop.rowid IS NULL OR mobile.rowid IS NULL OR
         desktop.run_id != mobile.run_id OR desktop.run_attempt != mobile.run_attempt OR

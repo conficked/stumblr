@@ -194,6 +194,14 @@ SOURCE_CONFIG = [
         "source_family": "archives",
     },
     {
+        # URLs submitted through the site's Suggest form; links come from --community-urls.
+        "id": "community-suggestions",
+        "kind": "community_suggestions",
+        "url": "https://stumblr.dev/",
+        "topic_hint": "culture",
+        "source_family": "community",
+    },
+    {
         "id": "github-live-demo",
         "kind": "github_repositories",
         "url": "https://api.github.com/search/repositories",
@@ -273,6 +281,23 @@ class Candidate:
     inferred_topics: list[str]
     provenance: dict = dataclasses.field(default_factory=dict)
     repository_associations: list[dict] = dataclasses.field(default_factory=list)
+
+
+SUGGESTION_TOPICS = {"art", "science", "maps", "music", "games", "culture", "archives", "education", "nature", "tech"}
+
+
+def load_community_suggestions(path: str) -> list[tuple[str, str | None]]:
+    rows = json.loads(Path(path).read_text())
+    if not isinstance(rows, list) or len(rows) > 24:
+        raise ValueError("invalid community suggestion snapshot")
+    suggestions: list[tuple[str, str | None]] = []
+    for row in rows:
+        if not isinstance(row, dict) or not isinstance(row.get("canonical_url"), str):
+            raise ValueError("invalid community suggestion snapshot")
+        topics = row.get("topics") if isinstance(row.get("topics"), list) else []
+        hint = next((topic for topic in topics if topic in SUGGESTION_TOPICS), None)
+        suggestions.append((row["canonical_url"], hint))
+    return suggestions
 
 
 def load_existing_catalogue_keys() -> tuple[set[str], set[str]]:
@@ -927,6 +952,7 @@ def main() -> int:
     )
     parser.add_argument("--db-path", default=None, help="SQLite ops DB path (STUMBLR_DB_PATH).")
     parser.add_argument("--known-urls", default=None, help="Authenticated shared review-queue URL dedupe snapshot; never fetched as targets.")
+    parser.add_argument("--community-urls", default=None, help="Authenticated snapshot of unscreened Suggest-form URLs.")
     parser.add_argument("--resume-run", default=None, help="Resume an existing discovery run id.")
     parser.add_argument("--max-candidates", type=int, default=MAX_CANDIDATES)
     parser.add_argument("--skip-db", action="store_true", help="Artifacts only; skip durable DB writes.")
@@ -1030,7 +1056,13 @@ def main() -> int:
 
         source_yields[source["id"]]["attempted"] = 1
         is_github = source["kind"] == "github_repositories"
-        robots_ok, robots_reason = (True, "github_api") if is_github else robots_allows(source["url"])
+        is_community = source["kind"] == "community_suggestions"
+        if is_github:
+            robots_ok, robots_reason = True, "github_api"
+        elif is_community:
+            robots_ok, robots_reason = True, "own_site"
+        else:
+            robots_ok, robots_reason = robots_allows(source["url"])
         source_yields[source["id"]]["robots"] = robots_reason
         if not robots_ok:
             source_yields[source["id"]]["skipped"] = 1
@@ -1047,8 +1079,17 @@ def main() -> int:
         source_host = (urllib.parse.urlparse(source["url"]).hostname or "").lower()
         links: list[tuple[str, str]] = []
         github_provenance: dict[str, dict] = {}
+        topic_hints: dict[str, str] = {}
         try:
-            if is_github:
+            if is_community:
+                suggestions = load_community_suggestions(args.community_urls) if args.community_urls else []
+                for raw_url, hint in suggestions:
+                    # Submitted titles are untrusted; the screened page supplies the title.
+                    links.append((safe_domain_title((urllib.parse.urlparse(raw_url).hostname or "").lower()), raw_url))
+                    if hint:
+                        topic_hints[raw_url] = hint
+                source_yields[source["id"]]["raw_links_seen"] = len(links)
+            elif is_github:
                 leads, github_stats = github_demo_provider.collect_github_demo_leads(
                     os.environ.get("GITHUB_TOKEN", ""), github_demo_provider.rotating_queries(), 100
                 )
@@ -1202,7 +1243,8 @@ def main() -> int:
                 )
                 continue
 
-            inferred_topics = infer_topics([link_text, canonical, source["id"]], source["topic_hint"])
+            topic_hint = topic_hints.get(raw_url, source["topic_hint"])
+            inferred_topics = infer_topics([link_text, canonical, source["id"]], topic_hint)
             candidate = Candidate(
                 # Keep discovery IDs URL-sensitive and within the shared import limit.
                 id=stumblr_db.candidate_id(canonical, sanitize_id(host)),
@@ -1214,7 +1256,7 @@ def main() -> int:
                 raw_url=raw_url,
                 canonical_url=canonical,
                 domain=host,
-                topic_hint=source["topic_hint"],
+                topic_hint=topic_hint,
                 inferred_topics=inferred_topics,
                 provenance=github_provenance.get(raw_url, {}),
             )

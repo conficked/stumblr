@@ -177,6 +177,8 @@ test("removing history preserves the deck while reset clears the visible log", a
   expect(new Set(firstCycle).size).toBe(6);
 
   await page.locator("button[aria-label='Like']:visible").first().click({ force: true });
+  // Like and Not for me cancel each other on one entry, so dislike the next one.
+  firstCycle.push(await clickNext(page));
   await page.locator("button[aria-label='Not for me']:visible").first().click({ force: true });
   await pickTopic(page, "science");
 
@@ -191,7 +193,8 @@ test("removing history preserves the deck while reset clears the visible log", a
     await reportScope.getByRole("tab", { name: "Report" }).click();
   }
   await reportScope.locator("textarea#report-note").fill("Reset preservation fixture report.");
-  await reportScope.getByRole("button", { name: "Save report locally" }).click();
+  await reportScope.getByRole("button", { name: "Send report" }).click();
+  await expect(reportScope.locator("li", { hasText: "Broken site" })).toBeVisible();
   await page.keyboard.press("Escape");
 
   const stateBeforeReset = await readClientState(page);
