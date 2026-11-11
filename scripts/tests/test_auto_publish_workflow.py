@@ -23,7 +23,7 @@ class AutoPublishWorkflowTests(unittest.TestCase):
 
     def test_daily_schedule_main_checkout_and_dedicated_authority(self):
         events = self.workflow["on"]
-        self.assertEqual(events["schedule"], [{"cron": "37 17 * * *"}])
+        self.assertEqual(events["schedule"], [{"cron": "37 1,17,21 * * *"}])
         mode = events["workflow_dispatch"]["inputs"]["mode"]
         self.assertEqual((mode["type"], mode["options"], mode["default"]), ("choice", ["report", "publish"], "report"))
         self.assertEqual(self.workflow["permissions"], {"contents": "read", "id-token": "write"})
