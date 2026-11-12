@@ -330,7 +330,7 @@ jobs:
               ...decision, status: selective ? 'rolled_back' : 'published', publicCheck,
               activatedRevision: expected.revision, publishedByFamily, publishedByTopic,
             }, null, 2));
-            if (selective) core.setFailed(`Fresh production proof failed for ${removedIds.length} addition(s); selective rollback publicly verified.`);
+            if (selective) core.warning(`Fresh production proof failed for ${removedIds.length} addition(s); selective rollback publicly verified.`);
       - name: Retain release reports
         if: always()
         uses: actions/upload-artifact@v4

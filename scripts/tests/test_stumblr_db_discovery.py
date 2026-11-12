@@ -348,6 +348,11 @@ class DiscoveryDbTests(unittest.TestCase):
         ]
         self.assertEqual(incompatible, [])
 
+    def test_forge_and_tracker_hosts_are_disallowed(self) -> None:
+        for host in ("todo.sr.ht", "git.sr.ht", "codeberg.org", "github.com"):
+            self.assertTrue(disc.host_is_disallowed(host), host)
+        self.assertFalse(disc.host_is_disallowed("example.srht.site"))
+
     def test_interleave_prevents_leading_family_monopoly_order(self) -> None:
         sources = [
             {"id": "w1", "source_family": "webring"},

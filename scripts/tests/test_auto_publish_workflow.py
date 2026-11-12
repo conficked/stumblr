@@ -64,10 +64,12 @@ class AutoPublishWorkflowTests(unittest.TestCase):
             const calls = [];
             const outputs = {};
             const failures = [];
+            const warnings = [];
             const core = {
               getIDToken: async audience => { calls.push({ audience }); return 'fixture-token'; },
               setOutput: (key, value) => { outputs[key] = value; },
               setFailed: message => { failures.push(message); },
+              warning: message => { warnings.push(message); },
             };
             const fetch = async (url, options) => {
               calls.push({ url, ...(options.body ? { body: JSON.parse(options.body) } : {}) });
@@ -78,7 +80,7 @@ class AutoPublishWorkflowTests(unittest.TestCase):
               return { ok: status < 300, status, json: async () => result };
             };
             const run = new (Object.getPrototypeOf(async function() {}).constructor)('require', 'core', 'context', 'fetch', script);
-            run(require, core, { eventName }, fetch).then(() => console.log(JSON.stringify({ outputs, calls, failures }))).catch(error => {
+            run(require, core, { eventName }, fetch).then(() => console.log(JSON.stringify({ outputs, calls, failures, warnings }))).catch(error => {
               console.error(error);
               process.exitCode = 1;
             });
@@ -216,6 +218,9 @@ class AutoPublishWorkflowTests(unittest.TestCase):
                     self.assertEqual(result["calls"][2]["body"], {"releaseRevision": revision, "action": expected_action})
                     self.assertEqual(json.loads((directory / "decision.json").read_text())["publicCheck"],
                                      "confirmed" if expected_action == "confirm_public" else "failed")
+                    if removed and expected_action == "confirm_public":
+                        self.assertEqual(result["failures"], [])
+                        self.assertEqual(len(result["warnings"]), 1)
 
     def test_public_readback_unavailability_or_confirmation_conflict_requests_correction(self):
         revision = "a" * 40 + ":12:1"
