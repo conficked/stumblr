@@ -437,6 +437,31 @@ test("a new authenticated attempt recovers the same release and selective rollba
   expect(snapshotCount()).toBe(2);
 });
 
+test("an unproven addition is held back without quarantine and ships in a later run", async () => {
+  const api = await publisher();
+  const owner = actor();
+  const old = manualEntry();
+  installRuntimeCatalogue({ entries: [old] }, { revision: manualRevision, issuedAt: owner.issuedAt - 10 });
+  seedReading();
+  seedCandidate("forest-acoustics", "Listening to the acoustics of forests");
+  const preview = api.createAutoPublicationPreview(owner, 5);
+  const release = api.commitAutoPublicationPreview(owner, preview.proposalId, preview.expectedRevision, preview.contentHash);
+  expect(() => api.rollbackFreshAdditions(owner, release.revision!, ["chromatic-memory"], ["chromatic-memory"])).toThrow(RangeError);
+  const rollback = api.rollbackFreshAdditions(owner, release.revision!, [], ["chromatic-memory"]);
+  expect(rollback).toMatchObject({ removedIds: ["chromatic-memory"], deferredIds: ["chromatic-memory"] });
+  expect(() => api.rollbackFreshAdditions(owner, release.revision!, ["chromatic-memory"])).toThrow(/different set/);
+  expect(api.rollbackFreshAdditions(owner, release.revision!, [], ["chromatic-memory"])).toEqual(rollback);
+  expect(api.completeAutoPublicationPublicCheck(owner, release.revision!, "confirmed")).toMatchObject({ publicCheck: "confirmed" });
+  expect(ids()).toEqual(["reviewed-archive", "forest-acoustics"]);
+  expect(openOpsDb().prepare("SELECT status FROM discovery_candidates WHERE id = 'chromatic-memory'").get()?.status).toBe("pending_review");
+
+  const next = actor("432", owner.issuedAt + 1);
+  const later = api.createAutoPublicationPreview(next, 5);
+  expect(later.additions.map(entry => entry.id)).toEqual(["chromatic-memory"]);
+  await confirm(next, later);
+  expect(ids()).toEqual(["reviewed-archive", "forest-acoustics", "chromatic-memory"]);
+});
+
 test("an interrupted or rejected selective rollback cannot expose a provisional release", async () => {
   const api = await publisher();
   const owner = actor();

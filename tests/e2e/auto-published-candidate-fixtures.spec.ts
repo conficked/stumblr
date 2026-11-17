@@ -177,6 +177,51 @@ test("a reset confined to header preflight is unverified and cannot request sele
 });
 
 
+test("an unverified addition beside a proven one is deferred while hard failures roll back", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "stumblr-proof-defer-"));
+  const destination = createServer((request, response) => {
+    if (request.url === "/blank") {
+      response.end("<!doctype html><body></body>");
+      return;
+    }
+    if (request.url === "/reading" && request.headers["user-agent"] === "StumblrReviewQualifier/1.0") {
+      request.socket.destroy();
+      return;
+    }
+    response.end(`<!doctype html><body><article>${readingText}</article></body>`);
+  });
+  const destinationOrigin = await listen(destination);
+  const api = createServer((request, response) => {
+    if (request.url === "/api/catalogue") {
+      response.setHeader("Content-Type", "application/json");
+      response.end(JSON.stringify({
+        revision, entries: [
+          { id: "preflight-reset", canonicalUrl: destinationOrigin + "/reading", status: "evaluation_only" },
+          { id: "blank", canonicalUrl: destinationOrigin + "/blank", status: "evaluation_only" },
+          { id: "proven", canonicalUrl: destinationOrigin + "/article", status: "evaluation_only" },
+        ],
+      }));
+    } else response.end("<!doctype html><body></body>");
+  });
+  const apiOrigin = await listen(api);
+  try {
+    const output = join(directory, "proof.json");
+    const code = await execute(process.execPath, [
+      "scripts/verify_auto_publication.mjs", "--base-url", apiOrigin, "--revision", revision,
+      "--candidate-ids", '["preflight-reset","blank","proven"]', "--output", output,
+    ]).then(() => 0, error => error.code);
+    expect(code).toBe(2);
+    expect(JSON.parse(await readFile(output, "utf8"))).toMatchObject({
+      status: "unverified", failedIds: ["blank"], unverifiedIds: ["preflight-reset"],
+      rollbackPayload: { releaseRevision: revision, failedIds: ["blank"], deferredIds: ["preflight-reset"] },
+    });
+  } finally {
+    await close(api);
+    await close(destination);
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
 test("the browser applies the staged frame-src header to a direct destination", async () => {
   const directory = await mkdtemp(join(tmpdir(), "stumblr-proof-csp-"));
   const destination = createServer((_request, response) => response.end(`<!doctype html><body>${readingText}</body>`));

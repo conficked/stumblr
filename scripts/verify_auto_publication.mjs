@@ -103,10 +103,14 @@ async function verify({ base, revision, ids }) {
   }
   const failedIds = candidates.filter(row => row.status === "failed").map(row => row.id);
   const unverifiedIds = candidates.filter(row => row.status === "unverified").map(row => row.id);
+  // An unverified addition is held back for a later run only when some proven addition can still ship.
+  const hasVerified = candidates.some(row => row.status === "verified");
+  const selective = unverifiedIds.length ? hasVerified : failedIds.length > 0;
   return {
     status: unverifiedIds.length ? "unverified" : failedIds.length ? "failed" : "verified",
     revision, entryCount: entries.length, candidates, failedIds, unverifiedIds,
-    rollbackPayload: failedIds.length && !unverifiedIds.length ? { releaseRevision: revision, failedIds } : null,
+    rollbackPayload: selective ?
+      { releaseRevision: revision, failedIds, ...(unverifiedIds.length ? { deferredIds: unverifiedIds } : {}) } : null,
   };
 }
 
@@ -123,7 +127,7 @@ async function main() {
     };
   }
   await writeFile(options.output, JSON.stringify(report, null, 2) + "\n", { flag: "wx" });
-  process.exitCode = report.status === "verified" ? 0 : report.status === "failed" ? 2 : 1;
+  process.exitCode = report.rollbackPayload ? 2 : report.status === "verified" ? 0 : 1;
 }
 
 main().catch(() => {

@@ -99,7 +99,7 @@ export type CommitResult = {
   addedIds: string[];
   removedIds: string[];
 };
-export type RollbackResult = { revision: string; entryCount: number; removedIds: string[] };
+export type RollbackResult = { revision: string; entryCount: number; removedIds: string[]; deferredIds?: string[] };
 
 type ProofStatus = "legacy" | "pending" | "verified" | "unverified" | "rolled_back";
 type PublicCheck = "pending" | "confirmed" | "failed";
@@ -598,17 +598,21 @@ export function completeAutoPublicationPublicCheck(actor: AutoPublishActor, rele
       checkFreshSurvivors(db, row, readSnapshot(db, row.expected_revision as string | null), survivors);
       const now = new Date().toISOString();
       installVerifiedCandidates(db, survivors, revision, now);
-      quarantineFreshCandidates(db, initial.entries.filter(entry => failedIds.has(entry.id)), releaseRevision, now, true);
+      const deferred = new Set(rollback?.deferredIds ?? []);
+      quarantineFreshCandidates(db, initial.entries.filter(entry => failedIds.has(entry.id) && !deferred.has(entry.id)), releaseRevision, now, true);
     }
     db.prepare("UPDATE auto_publication_proposals SET public_check = ? WHERE proposal_id = ?").run(outcome, row.proposal_id);
     return { publicCheck: outcome, revision };
   });
 }
 
-export function rollbackFreshAdditions(actor: AutoPublishActor, releaseRevision: string, failedIds: string[]): RollbackResult {
-  const failed = new Set(failedIds);
-  if (!failed.size || failed.size !== failedIds.length || failed.size > 20 ||
-    failedIds.some(id => typeof id !== "string" || !id.length || id.length > 200)) throw new RangeError("Invalid failed candidate IDs");
+// Deferred IDs leave the release like failed IDs but stay queued for a later proof instead of being quarantined.
+export function rollbackFreshAdditions(actor: AutoPublishActor, releaseRevision: string, failedIds: string[], deferredIds: string[] = []): RollbackResult {
+  const requestedIds = [...failedIds, ...deferredIds];
+  const failed = new Set(requestedIds);
+  const deferred = new Set(deferredIds);
+  if (!failed.size || failed.size !== requestedIds.length || failed.size > 20 ||
+    requestedIds.some(id => typeof id !== "string" || !id.length || id.length > 200)) throw new RangeError("Invalid failed candidate IDs");
   return catalogueTransaction(db => {
     const proposal = readCommittedRelease(db, actor, releaseRevision);
     const release = db.prepare(`SELECT audit.*, snapshot.rowid AS sequence FROM auto_publication_audit AS audit
@@ -616,16 +620,19 @@ export function rollbackFreshAdditions(actor: AutoPublishActor, releaseRevision:
       WHERE audit.revision = ? AND audit.operation = 'publish'`).get(releaseRevision);
     if (!release) throw new AutoPublicationConflict("Unknown auto release");
     const fresh = new Set<string>(JSON.parse(String(release.additions_json)));
-    if (failedIds.some(id => !fresh.has(id))) throw new AutoPublicationConflict("Rollback can remove only fresh release additions");
+    if (requestedIds.some(id => !fresh.has(id))) throw new AutoPublicationConflict("Rollback can remove only fresh release additions");
 
     const revision = `${releaseRevision}:rollback`;
     const replay = db.prepare("SELECT result_json, requested_ids_json, removals_json FROM auto_publication_audit WHERE revision = ?").get(revision);
     if (replay) {
       const requested: string[] = JSON.parse(String(replay.requested_ids_json ?? replay.removals_json));
-      if (requested.length !== failed.size || requested.some(id => !failed.has(id))) {
+      const result: RollbackResult = JSON.parse(String(replay.result_json));
+      const priorDeferred = result.deferredIds ?? [];
+      if (requested.length !== failed.size || requested.some(id => !failed.has(id)) ||
+        priorDeferred.length !== deferred.size || priorDeferred.some(id => !deferred.has(id))) {
         throw new AutoPublicationConflict("Release already rolled back a different set");
       }
-      return JSON.parse(String(replay.result_json));
+      return result;
     }
 
     const staged = canProveRelease(proposal, actor);
@@ -656,8 +663,11 @@ export function rollbackFreshAdditions(actor: AutoPublishActor, releaseRevision:
     }
     // A refreshed proof token must not outrank an in-flight manual publication.
     insertCatalogueSnapshot(db, snapshot, { revision, issuedAt: staged ? Number(proposal.actor_issued_at) : head!.issuedAt }, now);
-    if (!staged) quarantineFreshCandidates(db, targets, releaseRevision, now);
-    const result = { revision, entryCount: projectRuntimeCatalogue(db, snapshot).visible.entries.length, removedIds: targets.map(entry => entry.id) };
+    if (!staged) quarantineFreshCandidates(db, targets.filter(entry => !deferred.has(entry.id)), releaseRevision, now);
+    const result: RollbackResult = {
+      revision, entryCount: projectRuntimeCatalogue(db, snapshot).visible.entries.length, removedIds: targets.map(entry => entry.id),
+      ...(deferred.size ? { deferredIds: targets.filter(entry => deferred.has(entry.id)).map(entry => entry.id) } : {}),
+    };
     setProofStatus(db, proposal, "rolled_back", actor);
     writeAudit(db, String(release.proposal_id), actor, now, "rollback", head?.revision ?? null, releaseRevision, result, [], [...failed].sort());
     return result;

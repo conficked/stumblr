@@ -200,22 +200,24 @@ jobs:
             const { release } = JSON.parse(fs.readFileSync(`${dir}/decision.json`, 'utf8'));
             const proof = JSON.parse(fs.readFileSync(`${dir}/proof.json`, 'utf8'));
             const { rollbackPayload } = proof;
-            const { releaseRevision, failedIds } = rollbackPayload ?? {};
-            if (proof.status !== 'failed' || proof.unverifiedIds?.length !== 0 ||
-                releaseRevision !== release.revision || !Array.isArray(failedIds) || !failedIds.length ||
-                new Set(failedIds).size !== failedIds.length || failedIds.some(id => !release.addedIds.includes(id))) {
-              throw new Error('Rollback requires failing IDs from this release');
+            const { releaseRevision, failedIds, deferredIds = [] } = rollbackPayload ?? {};
+            const removed = [...(failedIds ?? []), ...(Array.isArray(deferredIds) ? deferredIds : [])];
+            const same = (a, b) => Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every(id => b.includes(id));
+            if (!same(failedIds, proof.failedIds) || !same(deferredIds, proof.unverifiedIds) ||
+                releaseRevision !== release.revision || !removed.length || new Set(removed).size !== removed.length ||
+                removed.some(id => !release.addedIds.includes(id)) || (deferredIds.length && removed.length >= release.addedIds.length)) {
+              throw new Error('Rollback requires failing or deferred IDs from this release');
             }
             const token = await core.getIDToken('https://stumblr.dev/catalogue-auto-publish');
             const response = await fetch('https://stumblr.dev/api/catalogue/auto/rollback', {
               method: 'POST', redirect: 'error', signal: AbortSignal.timeout(30_000),
               headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-              body: JSON.stringify({ releaseRevision, failedIds }),
+              body: JSON.stringify({ releaseRevision, failedIds, ...(deferredIds.length ? { deferredIds } : {}) }),
             });
             if (!response.ok) throw new Error(`Rollback rejected (${response.status})`);
             const rollback = await response.json();
             if (!rollback.ok || rollback.revision !== `${releaseRevision}:rollback` ||
-                !Array.isArray(rollback.removedIds) || failedIds.some(id => !rollback.removedIds.includes(id))) {
+                !Array.isArray(rollback.removedIds) || removed.some(id => !rollback.removedIds.includes(id))) {
               throw new Error('Invalid selective rollback result');
             }
             fs.writeFileSync(`${dir}/rollback.json`, JSON.stringify(rollback, null, 2));
@@ -330,7 +332,10 @@ jobs:
               ...decision, status: selective ? 'rolled_back' : 'published', publicCheck,
               activatedRevision: expected.revision, publishedByFamily, publishedByTopic,
             }, null, 2));
-            if (selective) core.warning(`Fresh production proof failed for ${removedIds.length} addition(s); selective rollback publicly verified.`);
+            const deferredCount = rollback.deferredIds?.length ?? 0;
+            const failedCount = removedIds.length - deferredCount;
+            if (failedCount) core.warning(`Fresh production proof failed for ${failedCount} addition(s); selective rollback publicly verified.`);
+            if (deferredCount) core.notice(`${deferredCount} unproven addition(s) held back for a later run.`);
       - name: Retain release reports
         if: always()
         uses: actions/upload-artifact@v4
