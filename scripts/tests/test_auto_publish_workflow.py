@@ -28,7 +28,7 @@ class AutoPublishWorkflowTests(unittest.TestCase):
         self.assertEqual((mode["type"], mode["options"], mode["default"]), ("choice", ["report", "publish"], "report"))
         self.assertEqual(self.workflow["permissions"], {"contents": "read", "id-token": "write"})
         self.assertIn("refs/heads/main", self.job["if"])
-        self.assertEqual(self.steps["actions/checkout@v4"]["with"], {"ref": "main", "persist-credentials": False})
+        self.assertEqual(self.steps["actions/checkout@v7"]["with"], {"ref": "main", "persist-credentials": False})
         for name in ("preview", "commit", "rollback"):
             script = self.steps[name]["with"]["script"]
             self.assertIn("getIDToken('https://stumblr.dev/catalogue-auto-publish')", script)
@@ -247,7 +247,7 @@ class AutoPublishWorkflowTests(unittest.TestCase):
         })
         self.assertLessEqual(self.job["timeout-minutes"], 20)
         self.assertLessEqual(self.steps["proof"]["timeout-minutes"], 7)
-        upload = self.steps["actions/upload-artifact@v4"]
+        upload = self.steps["actions/upload-artifact@v7"]
         self.assertEqual(upload["if"], "always()")
         self.assertEqual(upload["with"]["retention-days"], 3)
         for report in ("preview", "decision", "proof", "rollback"):

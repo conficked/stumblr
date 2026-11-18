@@ -21,8 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Run bounded discovery batch
@@ -35,7 +35,7 @@ jobs:
             --owner "gha-${GITHUB_RUN_ID}" \
             --output-dir docs/catalogue
       - name: Upload local proof artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: discovery-artifacts
           path: |

@@ -47,10 +47,10 @@ jobs:
       ceiling: ${{ steps.plan.outputs.ceiling }}
       recheck: ${{ steps.plan.outputs.recheck }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Plan maintenance or explicit manual bootstrap shards
@@ -91,7 +91,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Load bounded authenticated established-entry health targets
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           TARGETS_PATH: ${{ runner.temp }}/runtime-health-targets.json
         with:
@@ -105,7 +105,7 @@ jobs:
             core.info(`Established runtime health targets: ${targets.length} (${Number(reported) || 0} reported broken by visitors)`);
 
       - name: Upload runtime health targets for this attempt
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: runtime-health-targets-${{ github.run_id }}-${{ github.run_attempt }}
           retention-days: 3
@@ -123,17 +123,17 @@ jobs:
       http: ${{ steps.http.outputs.artifact-id }}
       browser: ${{ steps.browser.outputs.artifact-id }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: "22"
       - name: Download runtime targets for this attempt
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: runtime-health-targets-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}
@@ -141,7 +141,7 @@ jobs:
         run: python3 scripts/recheck_runtime_catalogue.py "${{ runner.temp }}/runtime-health-targets.json" "${{ runner.temp }}/runtime-rechecks.json"
       - name: Upload bounded HTTP observations
         id: http
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: runtime-health-http-${{ github.run_id }}-${{ github.run_attempt }}
           retention-days: 3
@@ -157,7 +157,7 @@ jobs:
             --max-candidates 24 --budget-ms 120000
       - name: Upload bounded browser observations
         id: browser
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: runtime-health-browser-${{ github.run_id }}-${{ github.run_attempt }}
           retention-days: 3
@@ -173,23 +173,23 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Download original runtime targets for this attempt
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: runtime-health-targets-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/runtime-targets
       - name: Download HTTP observations for this attempt
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: runtime-health-http-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/runtime-http
       - name: Download browser observations for this attempt
         if: ${{ needs.observe-runtime-health.outputs.browser != '' }}
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: runtime-health-browser-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/runtime-browser
       - name: Persist runtime HTTP and paired browser evidence with collector authority
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           TARGETS_PATH: ${{ runner.temp }}/runtime-targets/runtime-health-targets.json
           RECHECK_PATH: ${{ runner.temp }}/runtime-http/runtime-rechecks.json
@@ -263,22 +263,22 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Check out the requested revision without stored credentials
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
       - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
       - name: Set up Node.js 22 for screened destination identities
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: "22"
 
       - name: Load authenticated known URLs for cross-run deduplication
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           KNOWN_PATH: ${{ runner.temp }}/known-urls.json
           COMMUNITY_PATH: ${{ runner.temp }}/community-urls.json
@@ -329,7 +329,7 @@ jobs:
           PYCOLLECT
 
       - name: Persist repository attribution for existing destinations only
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           ASSOCIATIONS_PATH: ${{ runner.temp }}/discovery-output/discovery_associations.json
         with:
@@ -444,7 +444,7 @@ jobs:
 
       - name: Persist untrusted candidates to the shared review queue only
         if: ${{ steps.review_yield.outputs.has_candidates == 'true' }}
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           CHUNKS_PATH: ${{ runner.temp }}/discovery-output/import-chunks
         with:
@@ -464,7 +464,7 @@ jobs:
 
       - name: Load confirmed queue URLs awaiting browser evidence
         id: qualification-input
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           SOURCE_FAMILY: ${{ matrix.family }}
           QUALIFICATION_PATH: ${{ runner.temp }}/discovery-output/qualification-candidates.json
@@ -484,7 +484,7 @@ jobs:
 
       - name: Upload private review artifacts
         if: ${{ always() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: discovery-manual-review-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.family }}
           retention-days: 3
@@ -519,7 +519,7 @@ jobs:
     steps:
       - name: Download the private candidate artifact for this shard
         # A missing artifact fails only this matrix shard (fail-fast is false).
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: discovery-manual-review-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.family }}
           path: ${{ runner.temp }}/qualification-input
@@ -534,11 +534,11 @@ jobs:
             echo "eligible=false" >> "$GITHUB_OUTPUT"
             echo "Skipping browser qualification: no confirmed queue URLs await evidence."
           fi
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         if: ${{ steps.eligibility.outputs.eligible == 'true' }}
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         if: ${{ steps.eligibility.outputs.eligible == 'true' }}
         with:
           node-version: "22"
@@ -558,7 +558,7 @@ jobs:
             --max-candidates 24 --budget-ms 120000
       - name: Upload private browser evidence only
         if: ${{ success() && steps.eligibility.outputs.eligible == 'true' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: discovery-browser-evidence-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.family }}
           retention-days: 3
@@ -577,13 +577,13 @@ jobs:
       id-token: write
     steps:
       - name: Download successful browser evidence from this run attempt
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: discovery-browser-evidence-${{ github.run_id }}-${{ github.run_attempt }}-*
           path: ${{ runner.temp }}/qualification-evidence
 
       - name: Persist browser evidence with collector authority
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           EVIDENCE_DIR: ${{ runner.temp }}/qualification-evidence
           QUALIFIER_VERSION: browser-qualification-v4

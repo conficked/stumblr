@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: main
           persist-credentials: false
@@ -40,7 +40,7 @@ jobs:
           done
       - name: Request server preview
         id: preview
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         timeout-minutes: 2
         env:
           MODE: ${{ inputs.mode }}
@@ -68,7 +68,7 @@ jobs:
             }, null, 2));
             core.setOutput('publish', String(publish));
             core.setOutput('has_additions', String(additions.length > 0 && (!recovery || ['pending', 'unverified'].includes(recovery.status))));
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         if: steps.preview.outputs.publish == 'true' && steps.preview.outputs.has_additions == 'true'
         with:
           node-version: '22'
@@ -82,7 +82,7 @@ jobs:
       - name: Commit the exact preview and check the current live revision
         id: commit
         if: steps.preview.outputs.publish == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         timeout-minutes: 2
         with:
           script: |
@@ -150,7 +150,7 @@ jobs:
       - name: Retrieve the authenticated provisional catalogue
         id: proof_input
         if: steps.commit.outputs.status == 'published'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         timeout-minutes: 2
         env:
           RELEASE_REVISION: ${{ steps.commit.outputs.revision }}
@@ -191,7 +191,7 @@ jobs:
       - name: Roll back only verified hard failures in this release
         id: rollback
         if: steps.proof.outputs.rollback == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         timeout-minutes: 2
         with:
           script: |
@@ -225,7 +225,7 @@ jobs:
       - name: Record proof outcome and activate only a verified revision
         id: complete
         if: always() && steps.commit.outputs.status == 'published' && steps.proof.outputs.rollback != 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         timeout-minutes: 2
         env:
           RELEASE_REVISION: ${{ steps.commit.outputs.revision }}
@@ -259,7 +259,7 @@ jobs:
       - name: Verify the exact activated catalogue through the public API
         id: public_check
         if: always() && (steps.complete.outputs.activated == 'true' || steps.rollback.outputs.activated == 'true' || steps.commit.outputs.public_check == 'true')
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         timeout-minutes: 2
         with:
           script: |
@@ -338,7 +338,7 @@ jobs:
             if (deferredCount) core.notice(`${deferredCount} unproven addition(s) held back for a later run.`);
       - name: Retain release reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: auto-publication-${{ github.run_id }}-${{ github.run_attempt }}
           retention-days: 3
