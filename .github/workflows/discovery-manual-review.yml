@@ -592,7 +592,11 @@ jobs:
             const fs = require('node:fs');
             const path = require('node:path');
             const directory = process.env.EVIDENCE_DIR;
-            const shards = fs.existsSync(directory) ? fs.readdirSync(directory, {withFileTypes: true}) : [];
+            const artifactName = 'browser-qualification.json';
+            // download-artifact extracts a lone pattern match straight into `path`, several into per-artifact subdirectories.
+            const shards = !fs.existsSync(directory) ? [] :
+              fs.existsSync(path.join(directory, artifactName)) ? [directory] :
+              fs.readdirSync(directory, {withFileTypes: true}).map(entry => entry.isDirectory() ? path.join(directory, entry.name) : null);
             const identity = {
               run_id: process.env.GITHUB_RUN_ID,
               run_attempt: Number(process.env.GITHUB_RUN_ATTEMPT),
@@ -644,8 +648,8 @@ jobs:
             let failed = 0;
             for (const shard of shards) {
               try {
-                if (!shard.isDirectory()) throw new Error('invalid artifact path');
-                const artifact = path.join(directory, shard.name, 'browser-qualification.json');
+                if (!shard) throw new Error('invalid artifact path');
+                const artifact = path.join(shard, artifactName);
                 // Pretty-printed rows can contain 48 long URLs and escaped diagnostics.
                 if (fs.statSync(artifact).size > 8 * 1024 * 1024) throw new Error('oversized artifact');
                 const observations = JSON.parse(fs.readFileSync(artifact, 'utf8'));
