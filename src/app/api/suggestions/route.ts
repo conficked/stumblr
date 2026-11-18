@@ -2,13 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Topic } from "@/lib/catalogue/types";
 import { processSuggestion } from "@/lib/submissions/service";
 import { validateSameOriginJson } from "@/lib/security/requestOrigin";
-
-function submitterTokenFromRequest(req: NextRequest): string {
-  const forwarded = req.headers.get("x-forwarded-for") ?? "";
-  const primaryIp = forwarded.split(",")[0]?.trim();
-  const ua = req.headers.get("user-agent") ?? "unknown";
-  return `${primaryIp || "no-ip"}|${ua.slice(0, 80)}`;
-}
+import { submitterKeyFromHeaders } from "@/lib/security/submitter";
 
 export async function POST(req: NextRequest) {
   const requestRejection = validateSameOriginJson(req);
@@ -65,7 +59,7 @@ export async function POST(req: NextRequest) {
       note: payload.note,
       topics,
     },
-    submitterTokenFromRequest(req),
+    submitterKeyFromHeaders(req.headers),
   );
 
   const headers = new Headers();

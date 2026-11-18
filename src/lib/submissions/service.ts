@@ -2,6 +2,7 @@ import crypto from "node:crypto";
 import { catalogueEntries } from "@/lib/catalogue/entries";
 import { readRuntimeCatalogue } from "@/lib/catalogue/runtimeStore";
 import { Topic } from "@/lib/catalogue/types";
+import { hashSubmitter } from "@/lib/security/submitter";
 import { canonicalizeHttpsUrl, resolveHostSafety } from "@/lib/url/safeUrl";
 import { findPendingByCanonicalOrDomain, findScreenedOutCandidate, insertCommunitySuggestion } from "./storage";
 import { CommunitySuggestion, SuggestionInput } from "./types";
@@ -12,10 +13,6 @@ const MAX_NOTE_LEN = 600;
 const MAX_TITLE_LEN = 120;
 
 const rateLimiter = new Map<string, number[]>();
-
-function hashSubmitter(value: string): string {
-  return crypto.createHash("sha256").update(value).digest("hex").slice(0, 24);
-}
 
 function nowIso() {
   return new Date().toISOString();

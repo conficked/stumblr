@@ -13,3 +13,7 @@ test("fixtures can opt in to self frame ancestors for local iframe testing", () 
   const headers = buildSecurityHeaders(["https://example.org"], { frameAncestors: "'self'" });
   expect(headers["Content-Security-Policy"]).toContain("frame-ancestors 'self'");
 });
+
+test("HSTS is sent for a year including subdomains", () => {
+  expect(buildSecurityHeaders([])["Strict-Transport-Security"]).toBe("max-age=31536000; includeSubDomains");
+});

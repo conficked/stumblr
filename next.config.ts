@@ -4,6 +4,7 @@ import { buildSecurityHeaders } from "./src/lib/security/headers";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  poweredByHeader: false,
   outputFileTracingExcludes: {
     "/*": [
       "data/**/*.sqlite",

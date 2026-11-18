@@ -1,7 +1,7 @@
-import crypto from "node:crypto";
 import { openOpsDb } from "@/lib/db/client";
 import { catalogueEntries } from "@/lib/catalogue/entries";
 import { readRuntimeCatalogue } from "@/lib/catalogue/runtimeStore";
+import { hashSubmitter } from "@/lib/security/submitter";
 
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 const RATE_LIMIT_MAX = 12;
@@ -41,7 +41,7 @@ export function processReport(input: ReportInput, submitterToken: string) {
     };
   }
   const note = typeof input.note === "string" ? input.note.replace(/\s+/g, " ").trim().slice(0, MAX_NOTE_LEN) || null : null;
-  const submitterHash = crypto.createHash("sha256").update(submitterToken).digest("hex").slice(0, 24);
+  const submitterHash = hashSubmitter(submitterToken);
   openOpsDb()
     .prepare(`INSERT INTO community_reports (entry_id, canonical_url, kind, note, submitter_hash, submitted_at)
       VALUES (?, ?, ?, ?, ?, ?)`)
