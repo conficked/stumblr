@@ -34,6 +34,13 @@ const githubRow = (id: string, canonical_url: string, repository_id: string | nu
  provenance: { repository_id, repository_full_name: "owner/demo", repository_url: "https://github.com/owner/demo", demo_url: canonical_url, description: "Demo", topics: ["art"], stars: 42, pushed_at: "2026-11-01T00:00:00Z", archived: false, source_query: "topic:art" },
 });
 
+test("an id already stored under the redirect-adopted URL does not reject the batch",()=>{
+ const row={...githubRow("site-225db8649d7b","https://site.example/post/"),source_family:"blog-directory",provenance:undefined};
+ expect(importCandidateBatch([row]).inserted).toBe(1);
+ expect(importCandidateBatch([{...row,canonical_url:"https://site.example/post"},{...row,id:"other",canonical_url:"https://other.example/",domain:"other.example"}]).inserted).toBe(1);
+ expect(openOpsDb().prepare("SELECT canonical_url FROM discovery_candidates WHERE id='site-225db8649d7b'").get()?.canonical_url).toBe("https://site.example/post/");
+});
+
 test("collector persists only screened terminal identity and preserves it through rechecks", () => {
  const row = githubRow("first", "https://demo.example/start");
  importCandidateBatch([row]);

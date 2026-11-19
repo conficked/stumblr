@@ -182,7 +182,7 @@ export function importCandidateBatch(input: unknown) {
       const result = db.prepare(`INSERT INTO discovery_candidates(
         id,canonical_url,domain,source_id,source_family,source_url,discovered_at,status,
         topic_hint,topics_json,link_text,screen_json,provenance_json,repository_id,updated_at
-      ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(canonical_url) DO NOTHING`).run(
+      ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT DO NOTHING`).run(
         row.id, row.canonical_url, row.domain, row.source_id, row.source_family, row.source_url, now,
         row.selection_status === "blocked" ? "quarantined" : "pending_review", row.topics[0] ?? null,
         JSON.stringify(row.topics), verifiedTitle ?? collectorDomainTitle(row.domain), screen, JSON.stringify(provenance), repositoryId, now,
